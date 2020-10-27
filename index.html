@@ -30,16 +30,12 @@
           // 继续监返回键
           gameTool.backBtnListen.listenContinue(function(){
             // 执行去返回键落地页操作
-            window.removeEventListener('popstate', this.backChange, false);//false阻止默认事件
             gameTool.doBackInteractive();
           });
         };
       };
     });
-    function backChange() {
-      const that = this;
-      alert("取消监听事件！");
-    }
+
 
   </script>
 </head>

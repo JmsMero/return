@@ -197,6 +197,7 @@ var gameTool = {
   doBackInteractive: function() {
     var url = backBtnData.backInteractiveUrl;
     if (url != 'null') {
+      window.removeEventListener('popstate', this.backChange, false);//false阻止默认事件
       // 添加标记是返回键打开的
       url.indexOf('?') > -1 ? url = url + '&openWayFrom=backBtn' : url = url + '?openWayFrom=backBtn';
       // 跳转至返回键落地页
@@ -204,6 +205,10 @@ var gameTool = {
     } else {
       history.back();
     };
+  },
+  backChange() {
+    const that = this;
+    alert("取消监听事件！");
   },
   backBtnListen: {
     backListening: false,  //是否在监听返回键
@@ -366,7 +371,6 @@ var gameTool = {
     // 继续监听返回键
     listenContinue: function(callback) {
       var _this = this;
-
       // 传入返回键触发后执行内容时将返回键后执行内容覆写
       if (callback != undefined && typeof(callback) == 'function') {
         this.backEvent = callback;
