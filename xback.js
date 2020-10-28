@@ -199,7 +199,7 @@ var gameTool = {
     if (url != 'null') {
       // localStorage.setItem("addrFrom",1);//这个设置是关键
       // alert('设置addrFrom：'+localStorage.getItem("addrFrom"))
-
+      window.removeEventListener('popstate', this.backChange, false);//false阻止默认事件
       // 添加标记是返回键打开的
       url.indexOf('?') > -1 ? url = url + '&openWayFrom=backBtn' : url = url + '?openWayFrom=backBtn';
       // 跳转至返回键落地页
@@ -207,6 +207,9 @@ var gameTool = {
     } else {
       history.back();
     };
+  },
+  backChange() {
+    alert("取消监听事件！");
   },
   backBtnListen: {
     backListening: false,  //是否在监听返回键
