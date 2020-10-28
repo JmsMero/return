@@ -291,6 +291,7 @@ var gameTool = {
             _this.setPpopstateListen();
           });
         } else {
+          console.log(history.length)
           // 如果历史记录长度小于等于2，则重新设置监听（此方法主要解决清除浏览器记录造成的死循环）
           if (history.length <= 2) {
             _this.setIntercept();
