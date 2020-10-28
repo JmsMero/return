@@ -197,9 +197,9 @@ var gameTool = {
   doBackInteractive: function() {
     var url = backBtnData.backInteractiveUrl;
     if (url != 'null') {
-      // localStorage.setItem("addrFrom",1);//这个设置是关键
-      // alert('设置addrFrom：'+localStorage.getItem("addrFrom"))
-      window.removeEventListener('popstate', this.backChange, false);//false阻止默认事件
+      localStorage.setItem("addrFrom",1);//这个设置是关键
+      alert('设置addrFrom：'+localStorage.getItem("addrFrom"))
+      // window.removeEventListener('popstate', this.backChange, false);//false阻止默认事件
       // 添加标记是返回键打开的
       url.indexOf('?') > -1 ? url = url + '&openWayFrom=backBtn' : url = url + '?openWayFrom=backBtn';
       // 跳转至返回键落地页

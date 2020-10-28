@@ -7,17 +7,17 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>2</title>
   <script>
-    // onInit();
-    // function onInit(){
-    //   var addrFrom = localStorage.getItem("addrFrom");
-    //   if(addrFrom){
-    //     alert('addrFrom：'+addrFrom)
-    //     localStorage.removeItem("addrFrom");
-    //   }else{
-    //     alert('跳上上页：'+addrFrom)
-    //     history.go(-2);//这个是关键，点击A页面返回自己跳转到A的上一页
-    //   }
-    // }
+    onInit();
+    function onInit(){
+      var addrFrom = localStorage.getItem("addrFrom");
+      if(addrFrom){
+        alert('addrFrom：'+addrFrom)
+        localStorage.removeItem("addrFrom");
+      }else{
+        alert('跳上上页：'+addrFrom)
+        history.go(-2);//这个是关键，点击A页面返回自己跳转到A的上一页
+      }
+    }
   </script>
 </head>
 <body>
