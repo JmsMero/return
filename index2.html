@@ -7,6 +7,22 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>2</title>
   <script>
+    pushHistory();
+    //监听浏览器后退事件
+    window.addEventListener("popstate",
+      function(e) {
+        //转向指定的URL
+        location.href=url;
+      }, false);
+    //清空浏览器历史记录
+    function pushHistory() {
+      var url = "#";
+      var state = {
+        title: "title",
+        url: "#"
+      };
+      window.history.pushState(state, "title", "#");
+    }
   </script>
   <style>
   </style>
