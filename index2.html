@@ -9,13 +9,13 @@
   <script>
     pushHistory();
     //监听浏览器后退事件
-    window.addEventListener("popstate",
-      function(e) {
-        //转向指定的URL
-        window.close()
-        // console.log(url)
-        location.href=url;
-      }, false);
+    // window.addEventListener("popstate",
+    //   function(e) {
+    //     //转向指定的URL
+    //     window.close()
+    //     // console.log(url)
+    //     // location.href=url;
+    //   }, false);
     //清空浏览器历史记录
     function pushHistory() {
       var url = "#";
