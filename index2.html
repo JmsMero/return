@@ -8,11 +8,27 @@
   <title>2</title>
   <script>
 
-    //防止页面后退
-    history.pushState(null, null, document.URL);
-    window.addEventListener('popstate', function () {
-      history.pushState(null, null, document.URL);
-    });
+    console.log(1)
+    // pushHistory();
+    // //监听浏览器后退事件
+    window.addEventListener("popstate",
+      function(e) {
+        console.log(3)
+        //转向指定的URL
+        window.close()
+        // console.log(url)
+        // location.href=url;
+        window.history.go(-2);
+      }, false);
+    //清空浏览器历史记录
+    function pushHistory() {
+      var url = "#";
+      var state = {
+        title: "title",
+        url: "#"
+      };
+      window.history.pushState(state, "title", "#");
+    }
   </script>
   <style>
   </style>
