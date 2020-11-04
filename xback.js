@@ -198,21 +198,12 @@ var gameTool = {
     var url = backBtnData.backInteractiveUrl;
     if (url != 'null') {
       // 添加标记是返回键打开的
-      this.pushHistory()
       url.indexOf('?') > -1 ? url = url + '&openWayFrom=backBtn' : url = url + '?openWayFrom=backBtn';
       // 跳转至返回键落地页
       window.location.href = url;
     } else {
       history.back();
     };
-  },
-  pushHistory() {
-    var url = "#";
-    var state = {
-      title: "title",
-      url: "#"
-    };
-    window.history.pushState(state, "title", "#");
   },
   backBtnListen: {
     backListening: false,  //是否在监听返回键

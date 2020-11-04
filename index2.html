@@ -8,24 +8,11 @@
   <title>2</title>
   <script>
 
-    // pushHistory();
-    // //监听浏览器后退事件
-    // // window.addEventListener("popstate",
-    // //   function(e) {
-    // //     //转向指定的URL
-    // //     window.close()
-    // //     // console.log(url)
-    // //     // location.href=url;
-    // //   }, false);
-    // //清空浏览器历史记录
-    // function pushHistory() {
-    //   var url = "#";
-    //   var state = {
-    //     title: "title",
-    //     url: "#"
-    //   };
-    //   window.history.pushState(state, "title", "#");
-    // }
+    //防止页面后退
+    history.pushState(null, null, document.URL);
+    window.addEventListener('popstate', function () {
+      history.pushState(null, null, document.URL);
+    });
   </script>
   <style>
   </style>
