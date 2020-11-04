@@ -13,12 +13,7 @@
     // //监听浏览器后退事件
     window.addEventListener("popstate",
       function(e) {
-        console.log(3)
-        //转向指定的URL
-        window.close()
-        // console.log(url)
-        // location.href=url;
-        window.history.go(-2);
+        window.history.forward(1)
       }, false);
     //清空浏览器历史记录
     function pushHistory() {
