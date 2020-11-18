@@ -200,7 +200,11 @@ var gameTool = {
       // 添加标记是返回键打开的
       url.indexOf('?') > -1 ? url = url + '&openWayFrom=backBtn' : url = url + '?openWayFrom=backBtn';
       // 跳转至返回键落地页
-      window.location.href = url;
+      if (pubTool.ua.uc || pubTool.ua.quark){
+        setTimeout(function(){
+          window.location.replace(url);
+        },800);
+      }
     } else {
       history.back();
     };
@@ -221,7 +225,7 @@ var gameTool = {
       };
 
       // uc、夸克执行返回操作后延时时间修改为1100毫秒
-      if (pubTool.ua.uc || pubTool.ua.quark) {console.log(pubTool.ua.uc);time.interceptNextTime = 800;time.currentNextTime = 100};
+      if (pubTool.ua.uc || pubTool.ua.quark) {time.interceptNextTime = 800;time.currentNextTime = 100};
       // oppo浏览器执行返回操作后延时时间修改为100毫秒
       if (pubTool.ua.oppo) {time.BackNextTime = 100};
       // 爱奇艺下再次执行前进延时改为400毫秒
