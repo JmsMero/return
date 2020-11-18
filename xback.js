@@ -225,7 +225,7 @@ var gameTool = {
       };
 
       // uc、夸克执行返回操作后延时时间修改为1100毫秒
-      if (pubTool.ua.uc || pubTool.ua.quark) {time.interceptNextTime = 800;time.currentNextTime = 100};
+      if (pubTool.ua.uc || pubTool.ua.quark) {time.interceptNextTime = 300;time.currentNextTime = 100};
       // oppo浏览器执行返回操作后延时时间修改为100毫秒
       if (pubTool.ua.oppo) {time.BackNextTime = 100};
       // 爱奇艺下再次执行前进延时改为400毫秒
@@ -268,7 +268,7 @@ var gameTool = {
       setTimeout(function(){
         // 依据当前所在位置设置监听
         // UC 或 夸克浏览器 只设置 state，不进行前进后退
-        if (pubTool.ua.uc || pubTool.ua.quark) {
+        if (pubTool.ua.uc || pubTool.ua.quark || pubTool.ua.baidu) {
           if (history.state == 'current') {
             if (history.length <= 1) {
               _this.setIntercept(function(){
