@@ -378,20 +378,18 @@ var gameTool = {
     // 设置返回键监听
     setListen: function(callback) {
       // 非百度浏览器下监听返回键
-      if (!pubTool.ua.baidu) {
-        // 传入返回键触发后执行内容时将返回键后执行内容覆写
-        if (callback != undefined && typeof(callback) == 'function') {
-          this.backEvent = callback;
-        };
-        // 判断设备是否支持监听返回键用到的方法
-        if (window.history.replaceState && window.history.pushState) {
-          this.isSupportListen  = true;
-          this.setHistoryRecords();
-        } else {
-          this.isSupportListen  = false;
-          // 不支持时在控制面版输出警告信息
-          console.warn('设备不支持replaceState与pushState');
-        };
+      // 传入返回键触发后执行内容时将返回键后执行内容覆写
+      if (callback != undefined && typeof(callback) == 'function') {
+        this.backEvent = callback;
+      };
+      // 判断设备是否支持监听返回键用到的方法
+      if (window.history.replaceState && window.history.pushState) {
+        this.isSupportListen  = true;
+        this.setHistoryRecords();
+      } else {
+        this.isSupportListen  = false;
+        // 不支持时在控制面版输出警告信息
+        console.warn('设备不支持replaceState与pushState');
       };
     },
     // 取消返回键监听

@@ -6,19 +6,35 @@
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>返回键</title>
-<!--  <script src="./xback.js"></script>-->
+  <script src="./xback.js"></script>
   <script>
-    (function(window, location) {
-      history.replaceState(null, document.title, location.pathname+"#!/stealingyourhistory");
-      history.pushState(null, document.title, location.pathname);
-      window.addEventListener("popstate", function() {
-        if(location.hash === "#!/stealingyourhistory") {
-          history.replaceState(null, document.title, location.pathname);
-          setTimeout(function(){
-            window.location.replace("https://www.xuexiareas.com/index/Articles/details/num/159")
-          },800);
-        }
-      }, false);  }(window, location));
+    var getAD = 0;
+    gameTool.backBtnListen.setListen(function() {
+      // 判断是否配置返回发券样式
+      if (backBtnData.backCouponType == 'null') {
+        // 未配置返回发券样式时执行去返回键落地页操作
+        gameTool.doBackInteractive();
+      } else {
+        if (getAD > 0) {
+          if (backBtnData.backCouponNum == getAD) {
+            // 继续监返回键
+            gameTool.backBtnListen.listenContinue(function(){
+              // 执行去返回键落地页操作
+              gameTool.doBackInteractive();
+            });
+          } else {
+            // 执行去返回键落地页操作
+            gameTool.doBackInteractive();
+          };
+        } else {
+          // 继续监返回键
+          gameTool.backBtnListen.listenContinue(function(){
+            // 执行去返回键落地页操作
+            gameTool.doBackInteractive();
+          });
+        };
+      };
+    });
 
 
   </script>
