@@ -208,20 +208,24 @@ var gameTool = {
   backBtnListen: {
     backListening: false,  //是否在监听返回键
     isListenPopstate: false,  //是否在监听popstate
-    isSupportListen: false,  // 是否支持监听返回键
+    isSupportListen: false,  //是否支持监听返回键
     // 各步骤执行下一步延时时间
     nextOutTime: function(){
       var time = {
+        startNextTime: 100,  //开始设置返回键监听操作延时时间
         interceptNextTime: 0,  //设置拦截页后下一步延时时间
         currentNextTime: 0,  //设置展示页后下一步延时时间
-        BackNextTime: 100,  //执行后退后下一步延时时间
-        ForwardNextTime: 10  //执行前进后下一步延时时间
+        BackNextTime: 200,  //执行后退后下一步延时时间
+        ForwardNextTime: 50,  //执行前进后下一步延时时间
+        doForwardAgainTime: 200  //再次执行前进延时时间
       };
 
-      // uc、夸克执行返回操作后延时时间修改为1024毫秒
-      if (pubTool.ua.uc || pubTool.ua.quark) {time.BackNextTime = 1024};
-      // oppo浏览器执行返回操作后延时时间修改为25毫秒
-      if (pubTool.ua.oppo) {time.ForwardNextTime = 25};
+      // uc、夸克执行返回操作后延时时间修改为1100毫秒
+      if (pubTool.ua.uc || pubTool.ua.quark) {time.interceptNextTime = 300;time.currentNextTime = 100};
+      // oppo浏览器执行返回操作后延时时间修改为100毫秒
+      if (pubTool.ua.oppo) {time.BackNextTime = 100};
+      // 爱奇艺下再次执行前进延时改为400毫秒
+      if (pubTool.ua.iqiyi) {time.doForwardAgainTime = 400};
       return time;
     }(),
 
@@ -257,20 +261,47 @@ var gameTool = {
     setHistoryRecords: function() {
       var _this = this;
 
-      // 依据当前所在位置设置监听
-      if (history.state == 'current') {
-        _this.historyBackForward();
-      } else if (history.state == 'intercept') {
-        _this.setCurrent(function(){
-          _this.historyBackForward();
-        });
-      } else {
-        _this.setIntercept(function(){
-          _this.setCurrent(function(){
+      setTimeout(function(){
+        // 依据当前所在位置设置监听
+        // UC 或 夸克浏览器 只设置 state，不进行前进后退
+        if (pubTool.ua.uc || pubTool.ua.quark) {
+          if (history.state == 'current') {
+            if (history.length <= 1) {
+              _this.setIntercept(function(){
+                _this.setCurrent(function(){
+                  _this.setPpopstateListen();
+                });
+              });
+            } else {
+              _this.setPpopstateListen();
+            };
+          } else if (history.state == 'intercept') {
+            _this.setCurrent(function(){
+              _this.setPpopstateListen();
+            });
+          } else {
+            _this.setIntercept(function(){
+              _this.setCurrent(function(){
+                _this.setPpopstateListen();
+              });
+            });
+          };
+        } else {
+          if (history.state == 'current') {
             _this.historyBackForward();
-          });
-        });
-      };
+          } else if (history.state == 'intercept') {
+            _this.setCurrent(function(){
+              _this.historyBackForward();
+            });
+          } else {
+            _this.setIntercept(function(){
+              _this.setCurrent(function(){
+                _this.historyBackForward();
+              });
+            });
+          };
+        };
+      }, this.nextOutTime.startNextTime);
     },
     // 通过执行一次先后退再前进操作，解决部分环境必须和浏览器有交互的问题（腾讯系浏览器暂无法解决）
     historyBackForward: function() {
@@ -284,10 +315,20 @@ var gameTool = {
           _this.doHistoryForward(function() {
             _this.setPpopstateListen();
           });
-        } else {
-          console.log(history.length)
-          // 如果历史记录长度小于等于2，则重新设置监听（此方法主要解决清除浏览器记录造成的死循环）
-          if (history.length <= 2) {
+        } else if (history.state == 'current' && pubTool.ua.qqBrowser) { // QQ浏览器下，后退不生效时直接监听
+          _this.setPpopstateListen();
+        } else if(history.state == 'current' && pubTool.ua.iqiyi){// 爱奇艺下，后退不是监听页时延时再次判断
+          setTimeout(function() {
+            if (history.state == 'intercept') {
+              // 前进后监听popstate
+              _this.doHistoryForward(function() {
+                _this.setPpopstateListen();
+              });
+            };
+          }, _this.nextOutTime.doForwardAgainTime);
+        }else{
+          // 如果历史记录长度小于等于1，则重新设置监听（此方法主要解决清除浏览器记录造成的死循环）
+          if (history.length <= 1) {
             _this.setIntercept();
             _this.setHistoryRecords();
           };
@@ -330,6 +371,7 @@ var gameTool = {
     // 触发返回键后执行内容
     backEvent: function() {
     },
+    // 设置返回键监听
     setListen: function(callback) {
       // 非百度浏览器下监听返回键
       if (!pubTool.ua.baidu) {
@@ -367,6 +409,7 @@ var gameTool = {
     // 继续监听返回键
     listenContinue: function(callback) {
       var _this = this;
+
       // 传入返回键触发后执行内容时将返回键后执行内容覆写
       if (callback != undefined && typeof(callback) == 'function') {
         this.backEvent = callback;
