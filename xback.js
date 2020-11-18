@@ -221,7 +221,7 @@ var gameTool = {
       };
 
       // uc、夸克执行返回操作后延时时间修改为1100毫秒
-      if (pubTool.ua.uc || pubTool.ua.quark) {time.interceptNextTime = 300;time.currentNextTime = 100};
+      if (pubTool.ua.uc || pubTool.ua.quark) {console.log(pubTool.ua.uc);time.interceptNextTime = 800;time.currentNextTime = 800};
       // oppo浏览器执行返回操作后延时时间修改为100毫秒
       if (pubTool.ua.oppo) {time.BackNextTime = 100};
       // 爱奇艺下再次执行前进延时改为400毫秒

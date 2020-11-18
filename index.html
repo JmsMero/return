@@ -14,32 +14,24 @@
       // 判断是否配置返回发券样式
       if (backBtnData.backCouponType == 'null') {
         // 未配置返回发券样式时执行去返回键落地页操作
-        setTimeout(function(){
-          gameTool.doBackInteractive();
-        },800);
+        gameTool.doBackInteractive();
       } else {
         if (getAD > 0) {
           if (backBtnData.backCouponNum == getAD) {
             // 继续监返回键
             gameTool.backBtnListen.listenContinue(function(){
               // 执行去返回键落地页操作
-              setTimeout(function(){
-                gameTool.doBackInteractive();
-              },800);
+              gameTool.doBackInteractive();
             });
           } else {
             // 执行去返回键落地页操作
-            setTimeout(function(){
-              gameTool.doBackInteractive();
-            },800);
+            gameTool.doBackInteractive();
           };
         } else {
           // 继续监返回键
           gameTool.backBtnListen.listenContinue(function(){
             // 执行去返回键落地页操作
-            setTimeout(function(){
-              gameTool.doBackInteractive();
-            },800);
+            gameTool.doBackInteractive();
           });
         };
       };
