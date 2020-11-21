@@ -12,6 +12,37 @@
         height: 300px;
     }
   </style>
+  <script>
+    var pubTool = {
+      /***
+       *  浏览器UA信息
+       */
+      ua: function() {
+        var u = navigator.userAgent;
+        return {
+          ie: u.indexOf('Trident') > -1 || (u.indexOf('compatible') > -1 && u.indexOf('MSIE') > -1),
+          edge: u.indexOf('Edge') > -1,
+          opera: u.indexOf('Presto') > -1 || u.indexOf('Opera') > -1 || u.indexOf('OPR/') > -1,
+          firefox: (u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1 && u.indexOf('Trident') == -1) || u.indexOf('Firefox') > -1,
+          safari: u.indexOf('Safari') > -1 && u.indexOf('Chrome') == -1 && u.indexOf('OPR/') == -1,
+          webKit: u.indexOf('AppleWebKit') > -1,
+          mobile: !!u.match(/AppleWebKit.*Mobile.*/) || u.indexOf('Mobile') > -1,
+          ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/),
+          android: u.indexOf('Android') > -1 || u.indexOf('Adr') > -1,
+          iPhone: u.indexOf('iPhone') > -1 ,
+          iPad: u.indexOf('iPad') > -1,
+          wechat: u.indexOf('MicroMessenger') > -1,
+          qq: !!u.match(/QQ\/\d/i) || !!u.match(/QQ\//i),
+          qqBrowser: u.indexOf('MQQBrowser') > -1,  // QQ浏览器
+          uc: u.indexOf('UCBrowser') > -1,  // UC浏览器
+          quark: u.indexOf('Quark') > -1,  // 夸克浏览器
+          oppo: u.indexOf('HeyTapBrowser') > -1,  // oppo浏览器
+          baidu: u.indexOf('Baidu') > -1,  // 百度浏览器
+          iqiyi: !!u.match(/iqiyi/i)  // 爱奇艺
+        };
+      }()
+    };
+  </script>
 </head>
 <body>
   <a href="https://www.baidu.com/"></a>
@@ -21,9 +52,14 @@
     // init vConsole
     var vConsole = new VConsole();
     console.log('Hello world');
+    pubTool.ua.iPhone
     window.addEventListener('pageshow', (e) => {
       if (e.persisted || (window.performance && window.performance.navigation.type == 2)) {
         console.log('执行页面缓存')
+        document.write('执行页面缓存')
+        document.write('iPhone:'+pubTool.ua.iPhone)
+        document.write('ios:'+pubTool.ua.iPhone)
+        document.write('夸克:'+pubTool.ua.quark)
         document.write('执行页面缓存')
       }else{
         document.write('刷新页面进入')
