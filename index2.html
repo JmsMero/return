@@ -45,8 +45,12 @@
   </script>
 </head>
 <body>
-  <a href="https://www.baidu.com/"></a>
-  <a href="./index.html"></a>
+  <a href="https://www.baidu.com/">百度</a>
+  <a href="./index.html">首页</a>
+  <p id="p1"></p>
+  <p id="p2"></p>
+  <p id="p3"></p>
+  <p id="p4"></p>
   <script src="https://interactive-js.h5qa09.cn/1605683699097_vconsole.min.js"></script>
   <script>
     // init vConsole
@@ -54,14 +58,11 @@
     console.log('Hello world');
     window.addEventListener('pageshow', (e) => {
       if (e.persisted || (window.performance && window.performance.navigation.type == 2)) {
-        console.log('执行页面缓存')
-        document.write('执行页面缓存')
-        document.write('iPhone:'+pubTool.ua.iPhone)
-        document.write('ios:'+pubTool.ua.iPhone)
-        document.write('夸克:'+pubTool.ua.quark)
-        document.write('执行页面缓存')
+        document.getElementById('p1').innerHTML = "缓存进入"
+        document.getElementById('p2').innerHTML = "夸克："+pubTool.ua.quark
+        document.getElementById('p3').innerHTML = "iphone:"+pubTool.ua.iPhone
       }else{
-        document.write('刷新页面进入')
+        document.getElementById('p4').innerHTML = "刷新执行进入"
       }
     }, false)
   </script>
