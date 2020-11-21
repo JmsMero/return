@@ -14,6 +14,21 @@
   </style>
 </head>
 <body>
-  <img src="https://interactive-oss.h5qa09.cn/1605839191331_lkqd.jpg" alt="">
+  <a href="https://www.baidu.com/"></a>
+  <a href="./index.html"></a>
+  <script src="https://interactive-js.h5qa09.cn/1605683699097_vconsole.min.js"></script>
+  <script>
+    // init vConsole
+    var vConsole = new VConsole();
+    console.log('Hello world');
+    window.addEventListener('pageshow', (e) => {
+      if (e.persisted || (window.performance && window.performance.navigation.type == 2)) {
+        console.log('执行页面缓存')
+        document.write('执行页面缓存')
+      }else{
+        document.write('刷新页面进入')
+      }
+    }, false)
+  </script>
 </body>
 </html>
