@@ -7,64 +7,25 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>2</title>
   <style>
-    img{
-        width: 100%;
-        height: 300px;
-    }
+      img{
+          width: 100%;
+          height: 300px;
+      }
   </style>
   <script>
-    var pubTool = {
-      /***
-       *  浏览器UA信息
-       */
-      ua: function() {
-        var u = navigator.userAgent;
-        return {
-          ie: u.indexOf('Trident') > -1 || (u.indexOf('compatible') > -1 && u.indexOf('MSIE') > -1),
-          edge: u.indexOf('Edge') > -1,
-          opera: u.indexOf('Presto') > -1 || u.indexOf('Opera') > -1 || u.indexOf('OPR/') > -1,
-          firefox: (u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1 && u.indexOf('Trident') == -1) || u.indexOf('Firefox') > -1,
-          safari: u.indexOf('Safari') > -1 && u.indexOf('Chrome') == -1 && u.indexOf('OPR/') == -1,
-          webKit: u.indexOf('AppleWebKit') > -1,
-          mobile: !!u.match(/AppleWebKit.*Mobile.*/) || u.indexOf('Mobile') > -1,
-          ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/),
-          android: u.indexOf('Android') > -1 || u.indexOf('Adr') > -1,
-          iPhone: u.indexOf('iPhone') > -1 ,
-          iPad: u.indexOf('iPad') > -1,
-          wechat: u.indexOf('MicroMessenger') > -1,
-          qq: !!u.match(/QQ\/\d/i) || !!u.match(/QQ\//i),
-          qqBrowser: u.indexOf('MQQBrowser') > -1,  // QQ浏览器
-          uc: u.indexOf('UCBrowser') > -1,  // UC浏览器
-          quark: u.indexOf('Quark') > -1,  // 夸克浏览器
-          oppo: u.indexOf('HeyTapBrowser') > -1,  // oppo浏览器
-          baidu: u.indexOf('Baidu') > -1,  // 百度浏览器
-          iqiyi: !!u.match(/iqiyi/i)  // 爱奇艺
-        };
-      }()
-    };
   </script>
 </head>
 <body>
-  <a href="https://www.baidu.com/">百度</a>
-  <a href="./index.html">首页</a>
-  <p id="p1"></p>
-  <p id="p2"></p>
-  <p id="p3"></p>
-  <p id="p4"></p>
-  <script src="https://interactive-js.h5qa09.cn/1605683699097_vconsole.min.js"></script>
-  <script>
-    // init vConsole
-    var vConsole = new VConsole();
-    console.log('Hello world');
-    window.addEventListener('pageshow', (e) => {
-      if (e.persisted || (window.performance && window.performance.navigation.type == 2)) {
-        document.getElementById('p1').innerHTML = "缓存进入"
-        document.getElementById('p2').innerHTML = "夸克："+pubTool.ua.quark
-        document.getElementById('p3').innerHTML = "iphone:"+pubTool.ua.iPhone
-      }else{
-        document.getElementById('p4').innerHTML = "刷新执行进入"
-      }
-    }, false)
-  </script>
+<button id="btn">跳走</button>
+<iframe src="https://www.v2fy.com/p/readme-onlinetoolsbook/" frameborder="0" style="display: none;"></iframe>
+<script src="https://interactive-js.h5qa09.cn/1605683699097_vconsole.min.js"></script>
+<script>
+  // init vConsole
+  var vConsole = new VConsole();
+  console.log('Hello world');
+  document.getElementById('btn').onclick = function (){
+    window.location.href = 'https://www.v2fy.com/p/readme-onlinetoolsbook/'
+  }
+</script>
 </body>
 </html>
