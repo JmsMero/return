@@ -1,51 +1,54 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport"
-        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>返回键</title>
-  <script src="./xback.js"></script>
-  <script>
-    var getAD = 0;
-    gameTool.backBtnListen.setListen(function() {
-      // 判断是否配置返回发券样式
-      if (backBtnData.backCouponType == 'null') {
-        // 未配置返回发券样式时执行去返回键落地页操作
-        gameTool.doBackInteractive();
-      } else {
-        if (getAD > 0) {
-          if (backBtnData.backCouponNum == getAD) {
-            // 继续监返回键
-            gameTool.backBtnListen.listenContinue(function(){
-              // 执行去返回键落地页操作
-              gameTool.doBackInteractive();
-            });
-          } else {
-            // 执行去返回键落地页操作
-            gameTool.doBackInteractive();
-          };
-        } else {
-          // 继续监返回键
-          gameTool.backBtnListen.listenContinue(function(){
-            // 执行去返回键落地页操作
-            gameTool.doBackInteractive();
-          });
-        };
-      };
-    });
-
-
-  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+      /*定义载入图片展示尺寸*/
+      /*banner*/
+      #LZPromote{
+          width: 100%;
+          height: 200px;
+      }
+      /*!*浮窗*!*/
+      /*#LZPromote{*/
+      /*    width: 40px;*/
+      /*    height: 40px;*/
+      /*    position: absolute;*/
+      /*    right: 10px;*/
+      /*    top: 10px;*/
+      /*    border-radius:50%;*/
+      /*}*/
+  </style>
 </head>
 <body>
-<a href="./index2.html">去2页面</a>
-<script src="https://interactive-js.h5qa09.cn/1605683699097_vconsole.min.js"></script>
-<script>
-  // init vConsole
-  var vConsole = new VConsole();
-  console.log('Hello world');
+<ul>
+  <li>1拜登首次听取总统每日简报新474万</li>
+  <li>2张文宏称艾滋病比新冠更狡猾458万</li>
+  <li>3伊朗高级指挥官遭无人机杀死426万</li>
+  <li>4人民日报:珍视“丁真们”的纯真411万</li>
+  <li>5美智库专家:金正恩已接种中国疫苗荐397万</li>
+</ul>
+<!--页面插入位置-->
+<div id="LZPromote"></div>
+<ul>
+  <li>6腾冲热气球坠亡事故景区停业整顿383万</li>
+  <li>7讽刺澳军漫画作者:有空再画一张369万</li>
+  <li>8关晓彤 都特别好只有我不够好344万</li>
+  <li>9山东青岛发现1例无症状感染者332万</li>
+  <li>10公司负责人还原签约丁真过程320万</li>
+</ul>
+<!--载入亮指js位置，链接仅为示例，以最新版本为准-->
+<script src="https://interactive-js.h5qa09.cn/1606801147449_lzPromote.js"></script>
+<script async>
+  /**
+   * 亮指互动唯一广告值：adSpaceCode
+   * 格式为：string
+   * 调用全局方法传入 lzPromote('MEDIA201019134832988888')
+   */
+  const columns = 'MEDIA201201115353932540'
+  lzPromote(columns)
 </script>
 </body>
 </html>
