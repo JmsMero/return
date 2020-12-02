@@ -1,31 +1,40 @@
-<!doctype html>
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport"
-        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>2</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
   <style>
-      img{
+      /*定义载入图片展示尺寸*/
+      /*banner*/
+      #LZPromote{
           width: 100%;
-          height: 300px;
+          height: 200px;
       }
   </style>
-  <script>
-  </script>
 </head>
 <body>
-<button id="btn">跳走</button>
-<!--<iframe src="https://www.v2fy.com/p/readme-onlinetoolsbook/" frameborder="0"></iframe>-->
-<script src="https://interactive-js.h5qa09.cn/1605683699097_vconsole.min.js"></script>
-<script>
-  // init vConsole
-  var vConsole = new VConsole();
-  console.log('Hello world');
-  document.getElementById('btn').onclick = function (){
-    window.location.href = 'https://www.v2fy.com/p/readme-onlinetoolsbook/'
-  }
+<ul>
+  <li><a href="https://www.baidu.com/">1拜登首次听取总统每日简报新474万</a></li>
+  <li><a href="https://www.baidu.com/">2张文宏称艾滋病比新冠更狡猾458万</a></li>
+</ul>
+<!--页面插入位置-->
+<div id="LZPromote"></div>
+<ul>
+  <li><a href="https://www.baidu.com/">6腾冲热气球坠亡事故景区停业整顿383万</a></li>
+</ul>
+<!--载入亮指js位置，链接仅为示例，以最新版本为准-->
+<script src="https://interactive-js.h5qa09.cn/1606817796255_lzPromote.js"></script>
+<script async>
+  /**
+   * 亮指互动唯一广告值：adSpaceCode
+   * 格式为：string
+   * 调用全局方法传入 lzPromote('MEDIA201019134832988888')
+   */
+  const columns = 'MEDIA201201115353932540'
+  lzPromote(columns)
 </script>
 </body>
 </html>
+
