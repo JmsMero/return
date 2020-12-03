@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name ="viewport" content ="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
   <title>jQuery下拉选择框美化插件select-mania</title>
   <link rel="stylesheet" href="http://www.jq22.com/jquery/font-awesome.4.6.0.css">
   <link href="css/select-mania.css" rel="stylesheet" type="text/css">
@@ -30,55 +31,10 @@
 <div class="container">
   <h2>With timepicker</h2>
   <input type="text"  value="" id="demo-2">
-  <h2>Dependent datepicker</h2>
-  <table class="table">
-    <thead>
-    <tr>
-      <th>Check in:
-        <input type="text" class="span2" value="" id="dpd1">
-      </th>
-      <th>Check out:
-        <input type="text" class="span2" value="" id="dpd2">
-      </th>
-    </tr>
-    </thead>
-  </table>
 </div>
 <script src="js/jquery-1.11.0.min.js"></script>
 <script src="js/select-mania.js"></script>
 <script src="js/foundation-datepicker.js"></script>
-<script src="js/locales/foundation-datepicker.zh-CN.js"></script>
-<script>
-  $('#demo-1').fdatepicker();
-  $('#demo-2').fdatepicker({
-    format: 'yyyy-mm-dd hh:ii',
-    pickTime: true
-  });
-  $('#demo-3').fdatepicker();
-
-  var nowTemp = new Date();
-  var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
-  var checkin = $('#dpd1').fdatepicker({
-    onRender: function (date) {
-      return date.valueOf() < now.valueOf() ? 'disabled' : '';
-    }
-  }).on('changeDate', function (ev) {
-    if (ev.date.valueOf() > checkout.date.valueOf()) {
-      var newDate = new Date(ev.date)
-      newDate.setDate(newDate.getDate() + 1);
-      checkout.update(newDate);
-    }
-    checkin.hide();
-    $('#dpd2')[0].focus();
-  }).data('datepicker');
-  var checkout = $('#dpd2').fdatepicker({
-    onRender: function (date) {
-      return date.valueOf() <= checkin.date.valueOf() ? 'disabled' : '';
-    }
-  }).on('changeDate', function (ev) {
-    checkout.hide();
-  }).data('datepicker');
-</script>
 <script type="text/javascript">
   $('.demo-1').selectMania({
     size: 'small',
@@ -86,6 +42,10 @@
     placeholder: 'Please select me!',
     removable: true,
     search: true,
+  });
+  $('#demo-2').fdatepicker({
+    format: 'yyyy-mm-dd hh:ii',
+    pickTime: true
   });
 </script>
 </body>
