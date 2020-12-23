@@ -17,6 +17,7 @@
 <body>
 <!--载入亮指js位置，链接仅为示例，以最新版本为准-->
 <script src="https://interactive-js.angpi.cn/1597804968352_jquery.min.js"></script>
+<script src="https://interactive-js.angpi.cn/1608703552094_vconsole.js"></script>
 <script async>
   $.ajax({
     type: "GET",
@@ -27,6 +28,11 @@
       console.log(data)
     }
   });
+</script>
+<script>
+  // init vConsole
+  var vConsole = new VConsole();
+  console.log('Hello world');
 </script>
 </body>
 </html>
