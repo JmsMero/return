@@ -15,25 +15,18 @@
   </style>
 </head>
 <body>
-<ul>
-  <li><a href="https://www.baidu.com/">1拜登首次听取总统每日简报新474万</a></li>
-  <li><a href="https://www.baidu.com/">2张文宏称艾滋病比新冠更狡猾458万</a></li>
-</ul>
-<!--页面插入位置-->
-<div id="LZPromote"></div>
-<ul>
-  <li><a href="https://www.baidu.com/">6腾冲热气球坠亡事故景区停业整顿383万</a></li>
-</ul>
 <!--载入亮指js位置，链接仅为示例，以最新版本为准-->
-<script src="https://interactive-js.h5qa09.cn/1606817796255_lzPromote.js"></script>
+<script src="https://interactive-js.angpi.cn/1597804968352_jquery.min.js"></script>
 <script async>
-  /**
-   * 亮指互动唯一广告值：adSpaceCode
-   * 格式为：string
-   * 调用全局方法传入 lzPromote('MEDIA201019134832988888')
-   */
-  const columns = 'MEDIA201201115353932540'
-  lzPromote(columns)
+  $.ajax({
+    type: "GET",
+    url: "http://api.3w.cn/api.htm",
+    data: {url:'https://u.3w.cn/member/account/info',key:'5f35e4fd75bb4ce1d404e0f140@69090bd8ef8abab69c449d1df4e6bad0'},
+    dataType: "json",
+    success: function(data){
+      console.log(data)
+    }
+  });
 </script>
 </body>
 </html>

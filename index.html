@@ -1,52 +1,42 @@
-<!DOCTYPE html>
-<html lang="zh">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name ="viewport" content ="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
-  <title>jQuery下拉选择框美化插件select-mania</title>
-  <link rel="stylesheet" href="http://www.jq22.com/jquery/font-awesome.4.6.0.css">
-  <link href="css/select-mania.css" rel="stylesheet" type="text/css">
-  <link href="css/foundation.min.css" rel="stylesheet" type="text/css">
-  <link href="css/foundation-datepicker.css" rel="stylesheet" type="text/css">
-  <style type="text/css">
-      .container {
-          margin: 150px auto;
-          max-width: 280px;
-      }
-  </style>
-</head>
+<html>
+
 <body>
-<div class="container">
-  <h1>jQuery select-mania 插件示例演示</h1>
-  <h2>Square+Red Theme</h2>
-  <select class="demo-1">
-    <option value="sx">初中数学</option>
-    <option value="yw">初中语文</option>
-    <option value="yy">初中英语</option>
-    <option value="wl">初中物理</option>
-  </select>
-</div>
-<div class="container">
-  <h2>With timepicker</h2>
-  <input type="text"  value="" id="demo-2">
-</div>
-<script src="js/jquery-1.11.0.min.js"></script>
-<script src="js/select-mania.js"></script>
-<script src="js/foundation-datepicker.js"></script>
+<span id="clock" style="font-size: 3em">30:00</span>
 <script type="text/javascript">
-  $('.demo-1').selectMania({
-    size: 'small',
-    themes: ['square','red'],
-    placeholder: 'Please select me!',
-    removable: true,
-    search: true,
-  });
-  $('#demo-2').fdatepicker({
-    format: 'yyyy-mm-dd hh:ii',
-    pickTime: true
-  });
+  var start1 = "30:00";
+  var finish = "00:00";
+  var timer = null;
+
+  run();
+  function run() {//定义时间函数，让秒表每100ms变化一次
+    timer = setInterval("onTimer()", 100);//100ms的定时器
+  }
+  // 倒计时
+  function onTimer() {
+    if (start1 == finish)//如果倒计时结束清除时间函数
+    {
+      clearInterval(timer);
+      start1 = "00:10";//(清除时间函数后还是会执行一次 所以多给一个10ms再动态赋值)
+    }
+
+    var hms = new String(start1).split(":");//以:作为分隔符号取字符串内的数据
+    var ms = new Number(hms[1]);//给每个数据定义对象
+    var s = new Number(hms[0]);
+    ms -= 10;//每次执行ms减10
+    if (ms < 0)//判断时间并进行变化
+    {
+      ms = 90;
+      s -= 1;
+      if (s < 0) {
+        s = 59;
+      }
+    }
+    var ms = ms < 10 ? ("0" + ms) : ms;//如果出现个位数给个位数前面添加0
+    var ss = s < 10 ? ("0" + s) : s;
+    start1 = ss + ":" + ms;
+    console.log(start1)
+    // oclock.innerHTML = start1;//重新给oclock赋值
+  }
 </script>
 </body>
-</html>
+</heml>
