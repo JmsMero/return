@@ -1,39 +1,193 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>test</title>
+  <link rel="stylesheet" href="https://interactive-css.angpi.cn/1608860093625_bootstrap.min.css">
   <style>
-      /*定义载入图片展示尺寸*/
-      /*banner*/
-      #LZPromote{
+      .media-statement-table{
           width: 100%;
-          height: 200px;
+          border-left: 1px solid #808080;
+          border-top: 1px solid #808080;
+      }
+      .media-statement-table .ms-title{
+          padding: 20px 0 ;
+          text-align: center;
+          font-size: 24px;
+          color: #B2B2B2;
+          border-right: 1px solid #808080;
+          border-bottom: 1px solid #808080;
+      }
+      .media-statement-table .ms-table-row{
+          display: flex;
+      }
+      .media-statement-table .ms-table-row span{
+          color: #FF3C3C;
+      }
+      .media-statement-table .ms-table-row div{
+          height: 35px;
+          line-height: 35px;
+          border-right: 1px solid #808080;
+          border-bottom: 1px solid #808080;
+          font-size: 16px;
+      }
+      .media-statement-table  div.ms-instructions{
+          width: 100%;
+          height: 226px;
+          border-right: 1px solid #808080;
+          border-bottom: 1px solid #808080;
+          padding: 15px 32px;
+      }
+      .media-statement-table .ms-table-row input{
+          width: 100%;
+          height: 100%;
+          border: 0;
+      }
+      .media-statement-table .blank-space{
+          height: 16px;
+          border-right: 1px solid #808080;
+          border-bottom: 1px solid #808080;
+      }
+      .ms-instructions{
+          position: relative;
+      }
+      .ms-instructions h6{
+          font-size: 16px;
+          color: #313131;
+          font-weight: bold;
+          margin-bottom: 16px;
+      }
+      .ms-instructions ol{
+          font-size: 16px;
+          color: #313131;
+      }
+      .ms-instructions ol span{
+          display: inline-block;
+          width: 21px;
+      }
+      .ms-instructions ol li{
+          margin-bottom: 6px;
+      }
+      .ms-instructions p{
+          position: absolute;
+          bottom: 20px;
+          right: 280px;
+      }
+      .media-statement-content .media-statement-btn{
+          text-align: center;
+          margin-top: 20px;
+      }
+      .media-statement-content .media-statement-btn button{
+          width: 159px;
+          height: 42px;
+          border-radius: 4px;
+          font-size: 18px;
+      }
+      .media-statement-content .media-statement-btn button:first-child{
+          color: #fff;
+          background: #4672FF;
+          border: 1px solid #4672FF;
+          margin-right: 22px;
+      }
+      .media-statement-content .media-statement-btn button:nth-child(2){
+          background: #FFFFFF;
+          border: 1px solid #B3B3B3;
+      }
+      .ms-20-row{
+          width: 20%;
+          text-align: center;
+      }
+      .ms-30-row{
+          width: 30%;
+          padding-left: 29px;
+      }
+      .ms-80-row{
+          width: 80%;
+          padding-left: 29px;
+      }
+      .put-ash{
+          background-color: #F5F5F5;
+          color: #B3B3B3;
       }
   </style>
+  <script src="https://interactive-js.angpi.cn/1608860161948_jspdf.umd.min.js"></script>
+  <script src="https://interactive-js.angpi.cn/1608860114600_html2canvas.min.js"></script>
 </head>
 <body>
-<!--载入亮指js位置，链接仅为示例，以最新版本为11准-->
-<script src="https://interactive-js.angpi.cn/1597804968352_jquery.min.js"></script>
-<script src="https://interactive-js.angpi.cn/1608703552094_vconsole.js"></script>
-<script async>
-  $.ajax({
-    type: "GET",
-    url: "http://api.3w.cn/api.htm",
-    data: {url:'https://u.3w.cn/member/account/info',key:'5f35e4fd75bb4ce1d404e0f140@69090bd8ef8abab69c449d1df4e6bad0'},
-    dataType: "json",
-    success: function(data){
-      console.log(data)
-    }
-  });
-</script>
+<button id="print-btn" class="btn btn-success m-5">生成PDF</button>
+
+<div id="page" style="width: 1000px;color: black;background: white;">
+  <!--1st-->
+  <div id="first">
+    <div class="media-statement-table">
+      <div class="ms-title put-ash">北京天卓科技有限公司&北京展鸿软通科技股份有限公司何合作结算单</div>
+      <div class="ms-table-row put-ash">
+        <div class="ms-20-row">媒体名称</div>
+        <div class="ms-30-row">北京天卓科技有限公司</div>
+        <div class="ms-20-row">提现金额</div>
+        <div class="ms-30-row">¥45,673.00</div>
+      </div>
+      <div class="ms-table-row put-ash">
+        <div class="ms-20-row">结算周期</div>
+        <div class="ms-80-row">2020.11</div>
+      </div>
+      <div class="blank-space"></div>
+      <div class="ms-table-row">
+        <div class="ms-20-row">联系人<span>*</span></div>
+        <div class="ms-30-row"><input type="text" placeholder="请输入媒体主联系人"></div>
+        <div class="ms-20-row">联系电话<span>*</span></div>
+        <div class="ms-30-row"><input type="text" placeholder="请输入媒体主电话"></div>
+      </div>
+      <div class="ms-table-row">
+        <div class="ms-20-row">寄件人地址<span>*</span></div>
+        <div class="ms-80-row"><input type="text" placeholder="请输入寄件地址,需要回寄结算单,请填写并核准后回寄信息"></div>
+      </div>
+      <div class="ms-table-row">
+        <div class="ms-20-row">银行卡号<span>*</span></div>
+        <div class="ms-30-row"><input type="text" placeholder="请输入银行卡号"></div>
+        <div class="ms-20-row">开户名称<span>*</span></div>
+        <div class="ms-30-row"><input type="text" placeholder="请输入银行卡号"></div>
+      </div>
+      <div class="ms-table-row">
+        <div class="ms-20-row">开户银行<span>*</span></div>
+        <div class="ms-80-row"><input type="text" placeholder="请输入开户银行名称"></div>
+      </div>
+      <div class="ms-instructions">
+        <h6>说明</h6>
+        <ol>
+          <li><span>1、</span>此结算单不包括结算周期以外发生的款项，如有错漏，请与我司业务负责人联系。</li>
+          <li><span>2、</span>收到此结算单核对无误后请及时盖章并回传。（可以以扫描件形式发送给我司相关业务负责人）</li>
+          <li><span>3、</span>以上数据如有错误请在五天内告知，以便更在，否则当确认伦。<br>&nbsp;&nbsp;&nbsp;&nbsp;以上信息，请尽快核对，感谢贵司一直以来的支持和惠顾！</li>
+        </ol>
+        <p>
+          (签字/盖章）
+          <br>日期
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://interactive-js.angpi.cn/1608860135538_jspdf-html2canvas.min.js"></script>
 <script>
-  // init vConsole
-  var vConsole = new VConsole();
-  console.log('Hello world');
+
+  document.getElementById('print-btn').addEventListener('click', function() {
+    html2PDF([
+      document.getElementById('first')
+    ], {
+      jsPDF: {
+        format: 'b5',
+      },
+      margin: {
+        top: 30,
+        right: 10,
+        bottom: 30,
+        left: 10,
+      },
+    })
+  });
 </script>
 </body>
 </html>
-
