@@ -8,7 +8,79 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <title>[[link_title]]</title>
   <script>var gameType="[[interactive_type]]",gameConfig={kefu:true};</script>
-  <script>;var lrtool={url2json:function(a){var b=a.substr(a.indexOf('?')).substr(1),paramsArr=b.split("&"),paramJson={};if(b!=''){for(var i=0;i<paramsArr.length;i++){var c=paramsArr[i].split("=");c[1]==undefined?paramJson[c[0]]='':paramJson[c[0]]=c[1]}};return paramJson},getCookie:function(a){var b,reg=new RegExp("(^| )"+a+"=([^;]*)(;|$)");if(b=document.cookie.match(reg)){return unescape(b[2])}else{return null}}};var responseHeaderData={getFromHeader:false,req:''};!function(){var u=navigator.userAgent,ua={ios:!!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/),uc:u.indexOf('UCBrowser')>-1,quark:u.indexOf('Quark')>-1,baidu:u.indexOf('Baidu')>-1},urlParams=lrtool.url2json(window.location.href),istrans=urlParams.serverCookie!=undefined,url='//api.interactive.lzdata.com.cn/landingPageStatus',interactiveType=gameType,adSpaceCode=urlParams.adSpaceCode,platLogRequestId='',backInteractiveType=urlParams.backInteractiveType==undefined?null:urlParams.backInteractiveType,sitename=lrtool.getCookie('apicookie_'+adSpaceCode);platLogRequestId=lrtool.getCookie('platLogRequestId');if(istrans){if(ua.ios&&(ua.uc||ua.quark||ua.baidu)){var a=new XMLHttpRequest();a.open('GET',document.location,false);a.send(null);responseHeaderData.getFromHeader=true;responseHeaderData.req=a;platLogRequestId=a.getResponseHeader('platLogRequestId')};sitename=urlParams.serverCookie};var b=url+"?adSpaceCode="+adSpaceCode+'&platLogRequestId='+platLogRequestId+'&interactiveType='+interactiveType+'&sitename='+sitename+'&backInteractiveType='+backInteractiveType;new Image().src=b}();;</script>
+  <script>
+    "use strict";
+
+    ;
+    var lrtool = {
+      url2json: function url2json(a) {
+        var b = a.substr(a.indexOf('?')).substr(1),
+          paramsArr = b.split("&"),
+          paramJson = {};
+
+        if (b != '') {
+          for (var i = 0; i < paramsArr.length; i++) {
+            var c = paramsArr[i].split("=");
+            c[1] == undefined ? paramJson[c[0]] = '' : paramJson[c[0]] = c[1];
+          }
+        }
+
+        ;
+        return paramJson;
+      },
+      getCookie: function getCookie(a) {
+        var b,
+          reg = new RegExp("(^| )" + a + "=([^;]*)(;|$)");
+
+        if (b = document.cookie.match(reg)) {
+          return unescape(b[2]);
+        } else {
+          return null;
+        }
+      }
+    };
+    var responseHeaderData = {
+      getFromHeader: false,
+      req: ''
+    };
+    !function () {
+      var u = navigator.userAgent,
+        ua = {
+          ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/),
+          uc: u.indexOf('UCBrowser') > -1,
+          quark: u.indexOf('Quark') > -1,
+          baidu: u.indexOf('Baidu') > -1
+        },
+        urlParams = lrtool.url2json(window.location.href),
+        istrans = urlParams.serverCookie != undefined,
+        url = '//api.interactive.lzdata.com.cn/landingPageStatus',
+        interactiveType = gameType,
+        adSpaceCode = urlParams.adSpaceCode,
+        platLogRequestId = '',
+        backInteractiveType = urlParams.backInteractiveType == undefined ? null : urlParams.backInteractiveType,
+        sitename = lrtool.getCookie('apicookie_' + adSpaceCode);
+      platLogRequestId = lrtool.getCookie('platLogRequestId');
+
+      if (istrans) {
+        if (ua.ios && (ua.uc || ua.quark || ua.baidu)) {
+          var a = new XMLHttpRequest();
+          a.open('GET', document.location, false);
+          a.send(null);
+          responseHeaderData.getFromHeader = true;
+          responseHeaderData.req = a;
+          platLogRequestId = a.getResponseHeader('platLogRequestId');
+        }
+
+        ;
+        sitename = urlParams.serverCookie;
+      }
+
+      ;
+      var b = url + "?adSpaceCode=" + adSpaceCode + '&platLogRequestId=' + platLogRequestId + '&interactiveType=' + interactiveType + '&sitename=' + sitename + '&backInteractiveType=' + backInteractiveType;
+      new Image().src = b;
+    }();
+    ;
+  </script>
 </head>
 <body>
 <div id="ggk-rule-modal" class="rulemodal">
@@ -21,48 +93,14 @@
     <div class="rule_close"></div>
   </div>
 </div>
-<div class="errormodal">
-  <div class="error_close"></div>
-  <div class="error_body">
-    <div class="error_banner"></div>
-    <div class="error_title">系统开小差啦</div><div class="error_tip"></div>
-    <div class="error_btn">好的</div>
-  </div>
-</div>
-<div class="thanksmodal">
-  <span class="thanks-modal-close"><i class="modal-close"></i></span>
-  <div class="thanks-body">
-    <div class="thanks-btn-b">再来一次</div>
-  </div>
-</div>
-<section class="layer-105 showprizemodal">
-  <div class="close pclose"></div>
-  <div class="container">
-    <div class="box">
-      <div class="light"></div>
-      <div class="caidai"></div>
-      <div class="dialog">
-        <div class="dialog-title"></div>
-        <div class="couponLight couponLight1"></div>
-        <div class="couponLight couponLight2"></div>
-        <div class="coupon"><img class="pimg"></div>
-        <div class="counpon-name"><span class="name pname">平安110万保障免费领取</span></div>
-        <div class="btn pbtn"></div>
-      </div>
-    </div>
-  </div>
-</section>
-<div class="recommendmodal">
-  <div class="caidaisprites"></div>
-  <div class="recommend-modal-dialog">
-    <span class="recommend-modal-close"><i class="close"></i></span>
-    <div class="recommend-body"></div>
-  </div>
-</div>
 <script src="https://lib.sinaapp.com/js/jquery/1.4.4/jquery.min.js"></script>
 <script src="https://interactive-js.angpi.cn/1610180163992_index.js"></script>
-<script>[[bottom_js]]</script>
-<script src="https://interactive-js.angpi.cn/1610180302829_xback.js"></script>
+<script>
+  $(function (){
+    // 统计页面打开
+    gameRequest.clickRedBagNum();
+  })
+</script>
 <script src="//cdn.bootcss.com/eruda/1.5.2/eruda.min.js"></script>
 <script>eruda.init();</script>
 </body>
