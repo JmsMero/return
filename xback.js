@@ -1,429 +1,807 @@
-;var pubTool = {
-  /**
-   * rem
-   * (以750设计为基准)
-   * (750 下 1rem = 100px)
-   * (最大100px)
-   */
-  rem: function(w) {
-    var doc = w.document, docEle = doc.documentElement,
-      resizeEvt = "orientationchange" in w ? "orientationchange" : "resize",
-      designWidth = 750, devWidth = 375, oenRtoP = 100,
-      recalc = function() {
-        var clientWidth = docEle.clientWidth || devWidth;
-        clientWidth > designWidth ? clientWidth = designWidth : "";
-        if (clientWidth) {
-          var fz = oenRtoP * (clientWidth / designWidth);
-          docEle.style.fontSize = fz + "px";
-          w.remscale = clientWidth / designWidth;
-        };
-      };
-    doc.addEventListener && (w.addEventListener(resizeEvt, recalc, false), doc.addEventListener("DOMContentLoaded", recalc, false));
-    return {
-      designWidth: designWidth,
-      devWidth: devWidth,
-      oenRtoP: oenRtoP,
-      setRem: recalc
-    };
-  }(window),
+"use strict";
 
-  /***
-   *  浏览器UA信息
-   */
-  ua: function() {
-    var u = navigator.userAgent;
-    return {
-      ie: u.indexOf('Trident') > -1 || (u.indexOf('compatible') > -1 && u.indexOf('MSIE') > -1),
-      edge: u.indexOf('Edge') > -1,
-      opera: u.indexOf('Presto') > -1 || u.indexOf('Opera') > -1 || u.indexOf('OPR/') > -1,
-      firefox: (u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1 && u.indexOf('Trident') == -1) || u.indexOf('Firefox') > -1,
-      safari: u.indexOf('Safari') > -1 && u.indexOf('Chrome') == -1 && u.indexOf('OPR/') == -1,
-      webKit: u.indexOf('AppleWebKit') > -1,
-      mobile: !!u.match(/AppleWebKit.*Mobile.*/) || u.indexOf('Mobile') > -1,
-      ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/),
-      android: u.indexOf('Android') > -1 || u.indexOf('Adr') > -1,
-      iPhone: u.indexOf('iPhone') > -1 ,
-      iPad: u.indexOf('iPad') > -1,
-      wechat: u.indexOf('MicroMessenger') > -1,
-      qq: !!u.match(/QQ\/\d/i) || !!u.match(/QQ\//i),
-      uc: u.indexOf('UCBrowser') > -1,  // UC浏览器
-      quark: u.indexOf('Quark') > -1,  // 夸克浏览器
-      oppo: u.indexOf('HeyTapBrowser') > -1,  // oppo浏览器
-      baidu: u.indexOf('Baidu') > -1  // 百度浏览器
-    };
-  }(),
+;
+$(function () {
+  // 游戏名称
+  var gameName = gameType; // 中奖奖品信息
 
-  /**
-   * 读取cookie
-   * @param {String} name cookie名
-   * @returns {String} 返回对应kookie值或null
-   */
-  getCookie: function(name) {
-    var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
-    if (arr = document.cookie.match(reg)) {
-      return unescape(arr[2]);
-    } else {
-      return null;
-    };
-  },
+  var awardInfo = {
+    name: "",
+    img: "",
+    link: ""
+  }; // 显示可用次数
 
-  /**
-   * 写入cookie
-   * @param {String} key cookie名
-   * @param {String} value cookies值
-   * @param {Number} date 到期时间(年/月/日 时:分:秒)
-   * @param {String} path cookie路径
-   */
-  setCookie: function(key, value, date, path) {
-    var oDate = new Date(date);
-    document.cookie = key + '=' + value + ';expires=' + oDate.toUTCString() + ';path=' + path;
-  },
-
-  /**
-   * 删除cookie
-   * @param {String} key cookie名
-   * @param {String} path cookie路径
-   */
-  delCookie: function(key, path) {
-    var oDate = new Date();
-    oDate.setTime(oDate.getTime() - 1);
-    document.cookie = key + '=;expires=' + oDate.toUTCString() + ';path=' + path;
-  },
-
-  /**
-   * url 参数转 Json
-   * @param {String} url url地址
-   * @return {JSON} json格式参数
-   */
-  urlParamsToJson: function(url) {
-    var urlParams = url.substr(url.indexOf('?')).substr(1);
-    var paramsArr = urlParams.split("&");
-    var paramJson = {};
-
-    if ( urlParams != '') {
-      for (var i=0; i<paramsArr.length; i++) {
-        var pair = paramsArr[i].split("=");
-        pair[1] == undefined ? paramJson[pair[0]] = '' : paramJson[pair[0]] = pair[1];
-      };
-    };
-    return paramJson;
-  },
-
-  /**
-   * 毫秒数转为天-时-分-秒-毫秒对象
-   * @param {Number} totalms 总毫秒数
-   * @returns {JSON} 返回天,时,分,秒,毫秒对象
-   */
-  timeCompute: function(totalms) {
-    var d,h,m,s,ms;
-    d = Math.floor(totalms / 1000 / 60 / 60 / 24);
-    h = Math.floor(totalms / 1000 / 60 / 60 % 24);
-    m = Math.floor(totalms / 1000 / 60 % 60);
-    s = Math.floor(totalms / 1000 % 60);
-    ms = Math.floor(totalms % 1000);
-    return {day:d, hour:h, minute:m, second:s, millisecond:ms};
-  },
-
-  /**
-   * 范围随即数
-   * @param {*} Min 最小范围
-   * @param {*} Max 最大范围
-   * @returns {Number} 随机数
-   */
-  randomNumBoth: function(Min,Max){
-    var Range = Max - Min;
-    var Rand = Math.random();
-    var num = Min + Math.round(Rand * Range);
-    return num;
-  },
-
-  /**
-   * 日期格式化
-   * @param {Date} date 需格式化的日期
-   * @param {String} fmt 所需的格式
-   * @returns {String} 格式化后的日期字符串
-   */
-  dateFtt: function(date, fmt) {
-    var o = {
-      "M+" : date.getMonth()+1,
-      "d+" : date.getDate(),
-      "h+" : date.getHours(),
-      "m+" : date.getMinutes(),
-      "s+" : date.getSeconds(),
-      "q+" : Math.floor((date.getMonth()+3)/3),
-      "S+" : date.getMilliseconds()
-    };
-    if(/(y+)/.test(fmt)) {
-      fmt=fmt.replace(RegExp.$1, (date.getFullYear()+"").substr(4 - RegExp.$1.length));
-    };
-    for(var k in o) {
-      if(new RegExp("("+ k +")").test(fmt)) {
-        if (k == 'S+') {
-          fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1 || RegExp.$1.length==2) ? (o[k]) : (("000"+ o[k]).substr((""+ o[k]).length)));
-        } else {
-          fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1) ? (o[k]) : (("00"+ o[k]).substr((""+ o[k]).length)));
-        };
-      };
-    };
-    return fmt;
-  },
-
-  /**
-   * 生成uuid
-   */
-  generateUUID: function() {
-    var d = new Date().getTime();
-    if (window.performance && typeof window.performance.now === "function") {
-      d += performance.now();
-    }
-    var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
-      var r = (d + Math.random() * 16) % 16 | 0;
-      d = Math.floor(d / 16);
-      return (c == 'x' ? r : (r & 0x3 | 0x8)).toString(16);
-    });
-    return uuid;
+  function showTimes(num) {
+    $('.times span').text(num);
   }
 
-};
-// 返回键相关数据
-var backBtnData = {
-  backCouponNum: 1,
-  backCouponType: 'https://www.baidu.com',
-  backInteractiveUrl: 'https://www.baidu.com/',
-  openWayFrom: null
-};
-var gameTool = {
-  // 执行返回键落地页
-  doBackInteractive: function() {
-    var url = backBtnData.backInteractiveUrl;
-    if (url != 'null') {
-      // 添加标记是返回键打开的
-      url.indexOf('?') > -1 ? url = url + '&openWayFrom=backBtn' : url = url + '?openWayFrom=backBtn';
-      // 跳转至返回键落地页
-      if (pubTool.ua.uc || pubTool.ua.quark){
-        setTimeout(function(){
-          window.location.replace(url);
-        },800);
+  ; // 显示网络错误弹窗
+
+  function showNetworkError() {
+    $('.errormodal .error_close,.errormodal .error_btn').off('click').on('click', function (e) {
+      ggkGame.reset();
+      $('.errormodal').hide();
+    });
+    $('.errormodal').show();
+  }
+
+  ; // 显示次数超限弹窗
+
+  function showRecommendmodal() {
+    $('.recommendmodal .close').off('click').on('click', function (e) {
+      ggkGame.reset();
+      $('.recommendmodal').hide();
+    });
+    $('.recommendmodal').show();
+  }
+
+  ; // 显示未中奖弹窗
+
+  function showThanksmodal() {
+    $('.thanksmodal .thanks-modal-close,.thanksmodal .thanks-btn-b').off('click').on('click', function (e) {
+      ggkGame.reset();
+      $('.thanksmodal').hide();
+    });
+    $('.thanksmodal').show();
+  }
+
+  ; // 点击弹窗关闭按钮计数
+
+  function clickPopupCloseCount() {
+    gameState.colsePopup += 1;
+    gameTool.setGameSatesCookie(gameState);
+  }
+
+  ; // 启用专属弹窗方法
+
+  function setPersonalGamePopup() {
+    personalGamePopup.closeEvent = function (e) {
+      var _this = this;
+
+      ggkGame.reset();
+      clickPopupCloseCount();
+      prizeModalPopup = localGamePopup; // 第二次点击关闭按钮或返回键发券，显示关闭广告提醒弹窗
+
+      if (gameState.colsePopup == 2 || awardInfo.getEvent == 'back') {
+        gameTool.closeIntercept.show(awardInfo);
+
+        _this.close();
+      } else {
+        // 非关闭广告提醒弹窗下执行关闭动画
+        this.closeAnimation({
+          myPrize: $('.my-prize'),
+          popupMask: $('.specialWinPopup .mask'),
+          popupBody: $('.specialWinPopup .tc-container'),
+          before: function before() {},
+          end: function end() {
+            _this.close();
+          }
+        });
       }
+
+      ;
+    };
+
+    personalGamePopup.jumpEvent = function (e) {
+      var _this = this; // 统计领券量
+
+
+      gameRequest.receiveCoupon({
+        addData: {
+          event: awardInfo.getEvent + '_receive_coupon'
+        },
+        success: function success(data) {
+          ggkGame.reset();
+          gameTool.loading.show();
+
+          _this.close();
+
+          prizeModalPopup = localGamePopup;
+          window.location.href = awardInfo.link;
+        },
+        error: function error(x, t, e) {
+          gameTool.toast('网络好像有点问题，请稍后再试吧~');
+        }
+      });
+    };
+
+    personalGamePopup.popupType = 'personal';
+    prizeModalPopup = personalGamePopup;
+    ggkGame.openPrize(ggkGame.eleEvent, 'win');
+  }
+
+  ;
+  window.setPersonalGamePopup = setPersonalGamePopup; // 初始化本地弹窗
+
+  var localGamePopup = new gameTool.GamePopup({
+    popupType: 'local',
+    $ele: $('.showprizemodal'),
+    $closeBtn: $('.showprizemodal .pclose'),
+    $jumpBtn: $('.showprizemodal .pbtn'),
+    open: function open(awardData) {
+      this.awardData = awardData;
+      $('.showprizemodal .pimg').attr('src', this.awardData.img);
+      $('.showprizemodal .pname').text(this.awardData.name);
+      this.$ele.show();
+    },
+    close: function close() {
+      ggkGame.reset();
+      this.$ele.hide();
+      $('.showprizemodal .pimg').attr('src', '');
+      $('.showprizemodal .pname').text('');
+    },
+    closeClick: function closeClick(e) {
+      var _this = this;
+
+      clickPopupCloseCount(); // 第二次点击关闭按钮或返回键发券，显示关闭广告提醒弹窗
+
+      if (gameState.colsePopup == 2 || this.awardData.getEvent == 'back') {
+        gameTool.closeIntercept.show(this.awardData);
+
+        _this.close();
+      } else {
+        // 非关闭广告提醒弹窗下执行关闭动画
+        this.closeAnimation({
+          myPrize: $('.my-prize'),
+          popupMask: $('.showprizemodal'),
+          popupBody: $('.showprizemodal .container'),
+          before: function before() {},
+          end: function end() {
+            _this.close();
+          }
+        });
+      }
+
+      ;
+    },
+    jumpClick: function jumpClick(e) {
+      var _this = this; // 统计领券量
+
+
+      gameRequest.receiveCoupon({
+        addData: {
+          event: _this.awardData.getEvent + '_receive_coupon'
+        },
+        success: function success(data) {
+          gameTool.loading.show();
+
+          _this.close();
+
+          window.location.href = _this.awardData.link;
+        },
+        error: function error(x, t, e) {
+          gameTool.toast('网络好像有点问题，请稍后再试吧~');
+        }
+      });
+    }
+  }); // 默认启用本地中奖弹窗
+
+  var prizeModalPopup = localGamePopup; // 初始化返回发券展示形式
+
+  var returnDisplayForm = {
+    popupState: 'unload'
+  }; // 设置返回发券展示形式内容
+
+  function setReturnPopup() {
+    personalReturnPopup.tempData = null;
+
+    personalReturnPopup.openBefore = function () {
+      // 请求广告
+      gameRequest.getPlat({
+        addData: {
+          event: 'backing_out_type'
+        },
+        success: function success(data) {
+          personalReturnPopup.tempData = {};
+
+          if (data.code == "000000") {
+            gameState.getAD += 1;
+            gameTool.setGameSatesCookie(gameState);
+            awardInfo.img = data.data.materialLink;
+            awardInfo.link = data.data.adLink;
+            awardInfo.name = data.data.materialDesc;
+            awardInfo.getEvent = 'back';
+
+            if (data.data.adExclusivePop != undefined) {
+              personalReturnPopup.tempData.popupType = 'personal';
+              $('.specialWinPopup').remove();
+              $('body').append(data.data.adExclusivePop);
+            } else {
+              personalReturnPopup.tempData.popupType = 'local';
+              prizeModalPopup = localGamePopup;
+            }
+
+            ;
+          } else {
+            personalReturnPopup.tempData.popupType = 'noPopup';
+            gameTool.toast('获取数据异常');
+          }
+
+          ;
+        },
+        error: function error(x, t, e) {
+          personalReturnPopup.tempData = {};
+          personalReturnPopup.tempData.popupType = 'noPopup';
+          gameTool.toast('网络好像有点问题，请稍后再试吧~');
+        }
+      });
+    };
+
+    personalReturnPopup.closeEvent = function (e) {
+      var _this = this,
+        times = 300;
+
+      var intervalId = '';
+      intervalId = setInterval(function () {
+        times--;
+
+        if (personalReturnPopup.tempData != null) {
+          // 判断广告请求是否结束
+          if (personalReturnPopup.tempData.popupType == 'noPopup') {
+            // 判断是否请求到广告
+            _this.close();
+
+            clearInterval(intervalId);
+          } else {
+            // 判断弹窗类型，如果是专属弹窗，必须等专属弹窗加载完毕后打开
+            if (personalReturnPopup.tempData.popupType = 'local' || (personalReturnPopup.tempData.popupType = 'personal' && prizeModalPopup.popupType == 'personal')) {
+              _this.close();
+
+              prizeModalPopup.open(awardInfo);
+              clearInterval(intervalId);
+            }
+
+            ;
+          }
+
+          ;
+        }
+
+        ;
+
+        if (times <= 0) {
+          clearInterval(intervalId);
+        }
+
+        ;
+      }, 50);
+    };
+
+    personalReturnPopup.popupState = 'loaded';
+    returnDisplayForm = personalReturnPopup;
+  }
+
+  ;
+  window.setReturnPopup = setReturnPopup; // 显示发券展示形式
+
+  function showReturnForm() {
+    var intervalId = '',
+      times = 500;
+    personalReturnPopup.popupState = 'loaded';
+    intervalId = setInterval(function () {
+      times--;
+
+      if (returnDisplayForm.popupState == 'loaded') {
+        returnDisplayForm.open();
+        clearInterval(intervalId);
+      }
+
+      ;
+
+      if (times <= 0) {
+        clearInterval(intervalId);
+      }
+
+      ;
+    }, 50);
+  }
+
+  ; // 是否缓存
+
+  window.addEventListener('pageshow', function (e) {
+    if (e.persisted || window.performance && window.performance.navigation.type == 2) {
+      gameTool.loading.hide();
+    }
+  }, false); // 初始化游戏请请求数据
+
+  gameRequest.setGameType(gameName);
+  gameRequest.initData(); // 初始获取游戏状态值
+
+  gameTool.getGameSatesCookie() == null ? gameTool.setGameSatesCookie({
+    times: 8,
+    colsePopup: 0,
+    getAD: 0
+  }) : '';
+  var gameState = gameTool.getGameSatesCookie(); // 统计页面打开
+
+  gameRequest.clickRedBagNum(); // 客服按钮初始化
+
+  gameConfig.kefu ? gameTool.userService.init() : ""; // 我的奖品按钮初始化
+
+  gameTool.myPrize.show('.my-prize'); // 插入loading
+
+  gameTool.loading.init(); // 初始化是否加载关闭广告弹窗提醒
+
+  gameState.colsePopup <= 1 ? gameTool.closeIntercept.init() : ''; // 页面不是通过返回键打开且有返回形式或返回落地页时监听返回键
+
+  if (backBtnData.openWayFrom != 'backBtn') {
+    if (backBtnData.backCouponType != 'null' || backBtnData.backInteractiveUrl != 'null') {
+      // 监听返回键
+      gameTool.backBtnListen.setListen(function () {
+        // 判断是否配置返回发券样式
+        if (backBtnData.backCouponType == 'null') {
+          // 未配置返回发券样式时执行去返回键落地页操作
+          gameTool.doBackInteractive();
+        } else {
+          if (gameState.getAD > 0) {
+            if (backBtnData.backCouponNum == gameState.getAD) {
+              // 继续监返回键
+              gameTool.backBtnListen.listenContinue(function () {
+                // 执行去返回键落地页操作
+                gameTool.doBackInteractive();
+              }); // 显示发券展示形式
+
+              showReturnForm();
+            } else {
+              // 执行去返回键落地页操作
+              gameTool.doBackInteractive();
+            }
+
+            ;
+          } else {
+            // 执行去返回键落地页操作
+            gameTool.backBtnListen.listenContinue(function () {
+              if (backBtnData.backCouponNum == gameState.getAD) {
+                gameTool.backBtnListen.listenContinue(function () {
+                  // 执行去返回键落地页操作
+                  gameTool.doBackInteractive();
+                }); // 显示发券展示形式
+
+                showReturnForm();
+              } else {
+                gameTool.doBackInteractive();
+              }
+            });
+            showReturnForm();
+          }
+
+          ;
+        }
+
+        ;
+      });
+    }
+
+    ;
+  } else {
+    gameTool.backBtnListen.setListen(function () {
+      window.history.go(-1);
+    });
+  } // 初始化显示次数
+
+
+  showTimes(gameState.times); // 规则按钮点击
+
+  $('#ggk-rule-btn').click(function () {
+    $('#ggk-rule-modal').show();
+  }); // 规则弹窗关闭按钮点击
+
+  $('#ggk-rule-modal .rule_close').click(function () {
+    $("#ggk-rule-modal").hide();
+  }); // 游戏初始化
+
+  ggkGame.init(); // 初始化中奖状态
+
+  var isPrize = false; // 按下或触摸刮卡区域事件
+
+  ggkGame.downEvent = function (e) {
+    // 判断是否还有游戏次数
+    if (gameState.times <= 0) {
+      showRecommendmodal();
+      ggkGame.canStart = false;
     } else {
-      history.back();
+      ggkGame.canStart = true;
+    }
+
+    ;
+  }; // 首次按下或触摸刮卡区域事件
+
+
+  ggkGame.firstDownEvent = function (e) {
+    // 统计活动参与数
+    gameRequest.clickNum(); // 获取广告
+
+    gameRequest.getPlat({
+      addData: {
+        event: 'interacvite_game_type'
+      },
+      success: function success(data) {
+        if (data.code == '000000') {
+          gameState.getAD += 1;
+          gameTool.setGameSatesCookie(gameState);
+          awardInfo.img = data.data.materialLink;
+          awardInfo.link = data.data.adLink;
+          awardInfo.name = data.data.materialDesc;
+          awardInfo.getEvent = 'interacvite';
+          isPrize = true;
+
+          if (data.data.adExclusivePop != undefined && data.data.adExclusivePop.indexOf('specialWinPopup') > -1) {
+            ggkGame.eleEvent = e;
+            $('.specialWinPopup').remove();
+            $('body').append(data.data.adExclusivePop);
+          } else {
+            prizeModalPopup = localGamePopup;
+            ggkGame.openPrize(e, 'win');
+          }
+        } else {
+          isPrize = false;
+          ggkGame.openPrize(e, 'no');
+        }
+
+        ;
+      },
+      error: function error(x, t, e) {
+        showNetworkError();
+      }
+    });
+  }; // 刮卡结束后事件
+
+
+  ggkGame.endEvent = function (e) {
+    // 单次游戏结束后处理
+    gameState.times <= 0 ? gameState.times = 0 : gameState.times -= 1;
+    gameTool.setGameSatesCookie(gameState);
+    showTimes(gameState.times); // 判断serverCookie是否需要发送
+
+    if (gameRequest.serverCookie) {
+      gameRequest.transCookie();
+    }
+
+    ; // 显示中奖结果
+
+    if (isPrize) {
+      prizeModalPopup.open(awardInfo);
+    } else {
+      showThanksmodal();
+    }
+
+    ;
+  };
+});
+/* 游戏功能主体 */
+
+var ggkGame = {
+  canvas: $('#card_canvas')[0],
+  ctx: null,
+  coverImg: new Image(),
+  cardBg: $('.card_bg')[0],
+  coverColor: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAnYAAAGUAQMAAACC/v2uAAAABlBMVEUAAADU09LtLwEHAAAAAXRSTlMAQObYZgAAAIlJREFUeNrtzLENAAAEADCJ/2/mAiaTtAc0gEXWHZ/P5/P5fD6fz+fz+Xw+n8/n8/l8Pp/P5/P5fD6fz+fz+Xw+n8/n8/l8Pp/P5/P5fD6fz+fz+Xw+n8/n8/l8Pp/P5/P5fD6fz+fz+Xw+n8/n8/l8Pp/P5/P5fD6fz+fz+Xw+n8/n8/m+fMCkAU2SGpGQIMjgAAAAAElFTkSuQmCC',
+  showAllPercent: 35,
+  radius: 45,
+  pixelRatio: 1,
+  fadeId: '',
+  autoId: '',
+  AnimationFrameId: '',
+  isDown: false,
+  done: false,
+  firstdown: true,
+  isAuto: false,
+  scratchEnd: false,
+  prizeResult: null,
+  canStart: true,
+  // 初始化游戏对象和事件
+  init: function init() {
+    $('.hand').show();
+
+    var _this = this;
+
+    this.ctx = this.canvas.getContext('2d');
+    this.offsetX = this.canvas.getBoundingClientRect().left;
+    this.offsetY = this.canvas.getBoundingClientRect().top;
+    this.ctx.globalCompositeOperation = "source-over";
+
+    this.coverImg.onload = function () {
+      _this.ctx.drawImage(_this.coverImg, 0, 0);
+
+      _this.ctx.globalCompositeOperation = 'destination-out';
+      $(_this.cardBg).hide();
+    };
+
+    this.coverImg.onerror = function () {
+      _this.coverImg.src = _this.coverColor;
+      _this.coverImg.onerror = null;
+    };
+
+    this.coverImg.crossOrigin = "anonymous";
+    this.coverImg.src = this.cardBg.src;
+    this.addEvent(); // AnimationFrame 兼容
+
+    if (!Date.now) Date.now = function () {
+      return new Date().getTime();
+    };
+
+    (function () {
+      'use strict';
+
+      var vendors = ['webkit', 'moz'];
+
+      for (var i = 0; i < vendors.length && !window.requestAnimationFrame; ++i) {
+        var vp = vendors[i];
+        window.requestAnimationFrame = window[vp + 'RequestAnimationFrame'];
+        window.cancelAnimationFrame = window[vp + 'CancelAnimationFrame'] || window[vp + 'CancelRequestAnimationFrame'];
+      }
+
+      ;
+
+      if (/iP(ad|hone|od).*OS 6/.test(window.navigator.userAgent) || !window.requestAnimationFrame || !window.cancelAnimationFrame) {
+        var lastTime = 0;
+
+        window.requestAnimationFrame = function (callback) {
+          var now = Date.now();
+          var nextTime = Math.max(lastTime + 16, now);
+          return setTimeout(function () {
+            callback(lastTime = nextTime);
+          }, nextTime - now);
+        };
+
+        window.cancelAnimationFrame = clearTimeout;
+      }
+
+      ;
+    })();
+  },
+  // 监听触摸或鼠标事件
+  addEvent: function addEvent() {
+    this.canvas.addEventListener('touchstart', this.eventDown.bind(this), {
+      passive: false
+    });
+    this.canvas.addEventListener('touchmove', this.eventMove.bind(this), {
+      passive: false
+    });
+    this.canvas.addEventListener('touchend', this.eventUp.bind(this), {
+      passive: false
+    });
+    this.canvas.addEventListener('mousedown', this.eventDown.bind(this), {
+      passive: false
+    });
+    this.canvas.addEventListener('mousemove', this.eventMove.bind(this), {
+      passive: false
+    });
+    this.canvas.addEventListener('mouseup', this.eventUp.bind(this), {
+      passive: false
+    });
+    this.canvas.addEventListener('mouseleave', this.eventLeave.bind(this), {
+      passive: false
+    });
+  },
+  // 重置游戏
+  reset: function reset() {
+    $('.hand').show();
+    $('.result-show').removeClass('jump').show();
+    $(this.canvas).removeClass('hide');
+    $('.core .boom').hide();
+    clearTimeout(this.autoId);
+    this.cancelAutoScratch();
+    this.done = false;
+    this.firstdown = true;
+    this.isAuto = false;
+    this.scratchEnd = false;
+    this.prizeResult = null;
+    this.canStart = true;
+    this.ctx.globalCompositeOperation = "source-over";
+    this.ctx.drawImage(this.coverImg, 0, 0);
+    this.ctx.globalCompositeOperation = 'destination-out';
+  },
+  // 按下事件
+  eventDown: function eventDown(e) {
+    e.stopPropagation();
+    e.preventDefault();
+    this.isDown = true;
+    this.downEvent(e);
+
+    if (this.firstdown && this.canStart) {
+      this.firstdown = false;
+      $('.hand').hide();
+      $('.result-show').addClass('jump');
+      this.scratch(e);
+      this.firstDownEvent(e);
+    }
+
+    ;
+  },
+  // 抬起事件
+  eventUp: function eventUp(e) {
+    e.stopPropagation();
+    e.preventDefault();
+    this.isDown = false;
+
+    var _this = this;
+
+    if (!this.done && this.canStart) {
+      if (this.getFilledPercentage() > this.showAllPercent && !this.isAuto) {
+        this.scratchEnd = true;
+        this.openPrize(e);
+      } else {
+        if (!this.isAuto) {
+          this.isAuto = true;
+          clearTimeout(this.autoId);
+          this.autoId = setTimeout(function () {
+            _this.autoScratch(e);
+          }, 800);
+        }
+
+        ;
+      }
+
+      ;
+    }
+
+    ;
+  },
+  // 离开事件（仅限鼠标触发）
+  eventLeave: function eventLeave(e) {
+    e.stopPropagation();
+    e.preventDefault();
+    this.isDown = false;
+  },
+  // 移动事件
+  eventMove: function eventMove(e) {
+    e.stopPropagation();
+    e.preventDefault();
+
+    if (this.canStart) {
+      this.scratch(e);
+    }
+
+    ;
+  },
+  // 计算绘画坐标
+  computeAxis: function computeAxis(x, y) {
+    var l = x - this.canvas.getBoundingClientRect().left,
+      t = y - this.canvas.getBoundingClientRect().top;
+    l = l <= 0 ? 0 : l;
+    t = t <= 0 ? 0 : t;
+    return {
+      x: l / window.remscale,
+      y: t / window.remscale
     };
   },
-  backBtnListen: {
-    backListening: false,  //是否在监听返回键
-    isListenPopstate: false,  //是否在监听popstate
-    isSupportListen: false,  //是否支持监听返回键
-    // 各步骤执行下一步延时时间
-    nextOutTime: function(){
-      var time = {
-        startNextTime: 100,  //开始设置返回键监听操作延时时间
-        interceptNextTime: 0,  //设置拦截页后下一步延时时间
-        currentNextTime: 0,  //设置展示页后下一步延时时间
-        BackNextTime: 200,  //执行后退后下一步延时时间
-        ForwardNextTime: 50,  //执行前进后下一步延时时间
-        doForwardAgainTime: 200  //再次执行前进延时时间
-      };
+  // 获取刮开区域占比
+  getFilledPercentage: function getFilledPercentage() {
+    var imgData = this.ctx.getImageData(0, 0, this.canvas.width, this.canvas.height);
+    var pixels = imgData.data;
+    var transPixels = [];
 
-      // uc、夸克执行返回操作后延时时间修改为1100毫秒
-      if (pubTool.ua.uc || pubTool.ua.quark) {time.interceptNextTime = 300;time.currentNextTime = 100};
-      // oppo浏览器执行返回操作后延时时间修改为100毫秒
-      if (pubTool.ua.oppo) {time.BackNextTime = 100};
-      // 爱奇艺下再次执行前进延时改为400毫秒
-      if (pubTool.ua.iqiyi) {time.doForwardAgainTime = 400};
-      return time;
-    }(),
+    for (var i = 0; i < pixels.length; i += 4) {
+      if (pixels[i + 3] < 128) {
+        transPixels.push(pixels[i + 3]);
+      }
 
-    // 设置返回键拦截页
-    setIntercept: function(next) {
-      window.history.replaceState('intercept', null);
-      setTimeout(function(){
-        next != undefined && typeof(next) == "function" && next();
-      }, this.nextOutTime.interceptNextTime);
-    },
-    // 设置新增一条页面记录，用于展示原页面内容
-    setCurrent: function(next) {
-      window.history.pushState('current', null);
-      setTimeout(function(){
-        next != undefined && typeof(next) == "function" && next();
-      }, this.nextOutTime.currentNextTime);
-    },
-    // 执行历史记录后退
-    doHistoryBack: function(next) {
-      window.history.back();
-      setTimeout(function(){
-        next != undefined && typeof(next) == "function" && next();
-      }, this.nextOutTime.BackNextTime);
-    },
-    // 执行历史记录前进
-    doHistoryForward: function(next) {
-      window.history.forward();
-      setTimeout(function(){
-        next != undefined && typeof(next) == "function" && next();
-      }, this.nextOutTime.ForwardNextTime);
-    },
-    // 设置历史记录
-    setHistoryRecords: function() {
-      var _this = this;
+      ;
+    }
 
-      setTimeout(function(){
-        // 依据当前所在位置设置监听
-        // UC 或 夸克浏览器 只设置 state，不进行前进后退
-        if (pubTool.ua.uc || pubTool.ua.quark || pubTool.ua.baidu) {
-          if (history.state == 'current') {
-            if (history.length <= 1) {
-              _this.setIntercept(function(){
-                _this.setCurrent(function(){
-                  _this.setPpopstateListen();
-                });
-              });
-            } else {
-              _this.setPpopstateListen();
-            };
-          } else if (history.state == 'intercept') {
-            _this.setCurrent(function(){
-              _this.setPpopstateListen();
-            });
-          } else {
-            _this.setIntercept(function(){
-              _this.setCurrent(function(){
-                _this.setPpopstateListen();
-              });
-            });
-          };
-        } else {
-          if (history.state == 'current') {
-            _this.historyBackForward();
-          } else if (history.state == 'intercept') {
-            _this.setCurrent(function(){
-              _this.historyBackForward();
-            });
-          } else {
-            _this.setIntercept(function(){
-              _this.setCurrent(function(){
-                _this.historyBackForward();
-              });
-            });
-          };
-        };
-      }, this.nextOutTime.startNextTime);
-    },
-    // 通过执行一次先后退再前进操作，解决部分环境必须和浏览器有交互的问题（腾讯系浏览器暂无法解决）
-    historyBackForward: function() {
-      var _this = this;
+    ;
+    return (transPixels.length / (pixels.length / 4) * 100).toFixed(2);
+  },
+  // 绘制刮过区域
+  guka: function guka(x, y) {
+    var _this = this;
 
-      // 执行后退操作
-      _this.doHistoryBack(function() {
-        // 执行后退操作后如果是拦截页则进行前进操作
-        if (history.state == 'intercept') {
-          // 前进后监听popstate
-          _this.doHistoryForward(function() {
-            _this.setPpopstateListen();
-          });
-        } else if (history.state == 'current' && pubTool.ua.qqBrowser) { // QQ浏览器下，后退不生效时直接监听
-          _this.setPpopstateListen();
-        } else if(history.state == 'current' && pubTool.ua.iqiyi){// 爱奇艺下，后退不是监听页时延时再次判断
-          setTimeout(function() {
-            if (history.state == 'intercept') {
-              // 前进后监听popstate
-              _this.doHistoryForward(function() {
-                _this.setPpopstateListen();
-              });
-            };
-          }, _this.nextOutTime.doForwardAgainTime);
-        }else{
-          // 如果历史记录长度小于等于1，则重新设置监听（此方法主要解决清除浏览器记录造成的死循环）
-          if (history.length <= 1) {
-            _this.setIntercept();
-            _this.setHistoryRecords();
-          };
-        };
+    this.ctx.beginPath();
+    this.ctx.arc(x * _this.pixelRatio, y * _this.pixelRatio, _this.radius * _this.pixelRatio, 0, Math.PI * 2);
+    this.ctx.fill();
+    this.ctx.closePath();
+  },
+  // 进行刮卡操作及计算
+  scratch: function scratch(e, till) {
+    if (this.isDown && !this.done || till == 'till') {
+      if (e.changedTouches) {
+        e = e.changedTouches[e.changedTouches.length - 1];
+      }
+
+      ;
+      var axis = this.computeAxis(e.clientX, e.clientY);
+      this.guka(axis.x, axis.y);
+    }
+
+    ;
+  },
+  // 自动刮卡动画
+  autoScratch: function autoScratch(e) {
+    var loca = [[590, 60], [50, 120], [590, 160], [45, 230], [590, 280], [50, 320]];
+
+    var _this = this;
+
+    var progress = 0;
+    var arr = []; // 计算坐标
+
+    function math(from, to) {
+      var w = Math.abs(to[0] - from[0]),
+        h = Math.abs(to[1] - from[1]),
+        len = Math.pow(Math.pow(w, 2) + Math.pow(h, 2), 1 / 2);
+
+      for (var i = 1; i < len; i += 30) {
+        var t = [];
+        from[0] < to[0] ? t.push(from[0] + w / len * i) : t.push(from[0] - w / len * i);
+        from[1] < to[1] ? t.push(from[1] + h / len * i) : t.push(from[1] - h / len * i);
+        arr.push(t);
+      }
+
+      ;
+    }
+
+    ;
+
+    for (var j = 0; j < loca.length - 1; j++) {
+      arr.push(loca[j]);
+      math(loca[j], loca[j + 1]);
+    }
+
+    ;
+    arr.push(loca[loca.length - 1]); // 渲染自动刮卡效果
+
+    function renderScratch() {
+      if (progress < arr.length) {
+        _this.guka(arr[progress][0], arr[progress][1]);
+
+        _this.AnimationFrameId = window.requestAnimationFrame(renderScratch);
+      } else {
+        _this.autoScratchEnded(e);
+      }
+
+      ;
+      progress++;
+    }
+
+    ; // 第一帧渲染
+
+    _this.AnimationFrameId = window.requestAnimationFrame(renderScratch);
+  },
+  // 自动刮卡结束事件
+  autoScratchEnded: function autoScratchEnded(e) {
+    this.isAuto = false;
+    this.scratchEnd = true;
+    this.openPrize(e);
+  },
+  cancelAutoScratch: function cancelAutoScratch() {
+    window.cancelAnimationFrame(this.AnimationFrameId);
+  },
+  // 刮开全部区域
+  scratchAll: function scratchAll(e) {
+    var _this = this;
+
+    this.done = true;
+    $('.result-show').removeClass('jump').hide();
+    $('.core .boom').show();
+    clearTimeout(this.fadeId);
+    this.fadeId = setTimeout(function () {
+      $(_this.canvas).addClass('hide');
+      $(_this.canvas).off("webkitTransitionEnd").one('webkitTransitionEnd', function () {
+        _this.ctx.fillRect(0, 0, _this.canvas.width, _this.canvas.height);
       });
 
-    },
-    // 设置popstate监听
-    setPpopstateListen: function() {
-      var _this = this;
+      _this.scratchAllEnd(e);
 
-      // 设置popstate触发后执行内容
-      _this.setpopstateEvent();
-      // 如果没有在监听popstate则进行监听
-      if (!_this.isListenPopstate) {
-        // 监听popstate
-        window.addEventListener('popstate', function(e){
-          _this.popstateEvent(e);
-        }, false);
-        _this.isListenPopstate = true;
-      };
-    },
-    // popstate触发后执行内容
-    popstateEvent: function(e) {
-    },
-    // 设置popstate触发后执行内容
-    setpopstateEvent: function() {
-      // 将popstate触发执行内容赋为监听返回键
-      this.popstateEvent = this.listenBack;
-      this.backListening = true;
-    },
-    // 监听是否是返回键
-    listenBack: function(e) {
-      // 如果回到了监听页面，则说明触发了返回键
-      if (history.state == 'intercept') {
-        this.cancelListen();
-        this.backEvent(e);
-      };
-    },
-    // 触发返回键后执行内容
-    backEvent: function() {
-    },
-    // 设置返回键监听
-    setListen: function(callback) {
-      // 非百度浏览器下监听返回键
-      // 传入返回键触发后执行内容时将返回键后执行内容覆写
-      if (callback != undefined && typeof(callback) == 'function') {
-        this.backEvent = callback;
-      };
-      // 判断设备是否支持监听返回键用到的方法
-      if (window.history.replaceState && window.history.pushState) {
-        this.isSupportListen  = true;
-        this.setHistoryRecords();
-      } else {
-        this.isSupportListen  = false;
-        // 不支持时在控制面版输出警告信息
-        console.warn('设备不支持replaceState与pushState');
-      };
-    },
-    // 取消返回键监听
-    cancelListen: function() {
-      // 将popstate触发后执行内容赋为空
-      this.popstateEvent = function() {};
-      this.backListening = false;
-    },
-    // 再次设置返回键监听
-    setListenAgain: function(callback) {
-      if(this.isSupportListen && !this.backListening) {
-        // 传入返回键触发后执行内容时将返回键后执行内容覆写
-        if (callback != undefined && typeof(callback) == 'function') {
-          this.backEvent = callback;
-        };
-        this.setHistoryRecords();
-      };
-    },
-    // 继续监听返回键
-    listenContinue: function(callback) {
-      var _this = this;
-
-      // 传入返回键触发后执行内容时将返回键后执行内容覆写
-      if (callback != undefined && typeof(callback) == 'function') {
-        this.backEvent = callback;
-      };
-      // 如果没有在监听则进行继续监听
-      if (!_this.backListening) {
-        _this.doHistoryForward(function(){
-          _this.setpopstateEvent();
-        });
-      } else{
-        _this.doHistoryForward();
-      };
-    }
-  }
+      $('.core .boom').hide();
+    }, 800);
+  },
+  // 全部刮开后事件
+  scratchAllEnd: function scratchAllEnd(e) {
+    this.endEvent(e);
+  },
+  // 红包打开动画并全部刮开
+  openPrize: function openPrize(e, result) {
+    result == undefined ? '' : this.prizeResult = result;
+    this.prizeResult != null && this.scratchEnd ? this.scratchAll(e) : '';
+  },
+  // 鼠标按下或触摸后事件
+  downEvent: function downEvent(e) {
+    this.canStart = true;
+  },
+  // 首次鼠标按下或触摸后事件
+  firstDownEvent: function firstDownEvent(e) {
+    this.openPrize(e, 'win');
+  },
+  // 单次刮卡结束后处理
+  endEvent: function endEvent(e) {}
 };
