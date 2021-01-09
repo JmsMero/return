@@ -1,42 +1,69 @@
+<!DOCTYPE html>
 <html>
-
+<head>
+  <meta charset="UTF-8">
+  <meta https-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <title>[[link_title]]</title>
+  <script>var gameType="[[interactive_type]]",gameConfig={kefu:true};</script>
+  <script>;var lrtool={url2json:function(a){var b=a.substr(a.indexOf('?')).substr(1),paramsArr=b.split("&"),paramJson={};if(b!=''){for(var i=0;i<paramsArr.length;i++){var c=paramsArr[i].split("=");c[1]==undefined?paramJson[c[0]]='':paramJson[c[0]]=c[1]}};return paramJson},getCookie:function(a){var b,reg=new RegExp("(^| )"+a+"=([^;]*)(;|$)");if(b=document.cookie.match(reg)){return unescape(b[2])}else{return null}}};var responseHeaderData={getFromHeader:false,req:''};!function(){var u=navigator.userAgent,ua={ios:!!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/),uc:u.indexOf('UCBrowser')>-1,quark:u.indexOf('Quark')>-1,baidu:u.indexOf('Baidu')>-1},urlParams=lrtool.url2json(window.location.href),istrans=urlParams.serverCookie!=undefined,url='//api.interactive.lzdata.com.cn/landingPageStatus',interactiveType=gameType,adSpaceCode=urlParams.adSpaceCode,platLogRequestId='',backInteractiveType=urlParams.backInteractiveType==undefined?null:urlParams.backInteractiveType,sitename=lrtool.getCookie('apicookie_'+adSpaceCode);platLogRequestId=lrtool.getCookie('platLogRequestId');if(istrans){if(ua.ios&&(ua.uc||ua.quark||ua.baidu)){var a=new XMLHttpRequest();a.open('GET',document.location,false);a.send(null);responseHeaderData.getFromHeader=true;responseHeaderData.req=a;platLogRequestId=a.getResponseHeader('platLogRequestId')};sitename=urlParams.serverCookie};var b=url+"?adSpaceCode="+adSpaceCode+'&platLogRequestId='+platLogRequestId+'&interactiveType='+interactiveType+'&sitename='+sitename+'&backInteractiveType='+backInteractiveType;new Image().src=b}();;</script>
+</head>
 <body>
-<span id="clock" style="font-size: 3em">30:00</span>
-<script type="text/javascript">
-  var start1 = "30:00";
-  var finish = "00:00";
-  var timer = null;
-
-  run();
-  function run() {//定义时间函数，让秒表每100ms变化一次
-    timer = setInterval("onTimer()", 100);//100ms的定时器
-  }
-  // 倒计时
-  function onTimer() {
-    if (start1 == finish)//如果倒计时结束清除时间函数
-    {
-      clearInterval(timer);
-      start1 = "00:10";//(清除时间函数后还是会执行一次 所以多给一个10ms再动态赋值)
-    }
-
-    var hms = new String(start1).split(":");//以:作为分隔符号取字符串内的数据
-    var ms = new Number(hms[1]);//给每个数据定义对象
-    var s = new Number(hms[0]);
-    ms -= 10;//每次执行ms减10
-    if (ms < 0)//判断时间并进行变化
-    {
-      ms = 90;
-      s -= 1;
-      if (s < 0) {
-        s = 59;
-      }
-    }
-    var ms = ms < 10 ? ("0" + ms) : ms;//如果出现个位数给个位数前面添加0
-    var ss = s < 10 ? ("0" + s) : s;
-    start1 = ss + ":" + ms;
-    console.log(start1)
-    // oclock.innerHTML = start1;//重新给oclock赋值
-  }
-</script>
+<div id="ggk-rule-modal" class="rulemodal">
+  <div class="rule_body">
+    <div class="rule_content">
+      <div class="rule_wrapper">
+        <p>[[active_rule]]</p>
+      </div>
+    </div>
+    <div class="rule_close"></div>
+  </div>
+</div>
+<div class="errormodal">
+  <div class="error_close"></div>
+  <div class="error_body">
+    <div class="error_banner"></div>
+    <div class="error_title">系统开小差啦</div><div class="error_tip"></div>
+    <div class="error_btn">好的</div>
+  </div>
+</div>
+<div class="thanksmodal">
+  <span class="thanks-modal-close"><i class="modal-close"></i></span>
+  <div class="thanks-body">
+    <div class="thanks-btn-b">再来一次</div>
+  </div>
+</div>
+<section class="layer-105 showprizemodal">
+  <div class="close pclose"></div>
+  <div class="container">
+    <div class="box">
+      <div class="light"></div>
+      <div class="caidai"></div>
+      <div class="dialog">
+        <div class="dialog-title"></div>
+        <div class="couponLight couponLight1"></div>
+        <div class="couponLight couponLight2"></div>
+        <div class="coupon"><img class="pimg"></div>
+        <div class="counpon-name"><span class="name pname">平安110万保障免费领取</span></div>
+        <div class="btn pbtn"></div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="recommendmodal">
+  <div class="caidaisprites"></div>
+  <div class="recommend-modal-dialog">
+    <span class="recommend-modal-close"><i class="close"></i></span>
+    <div class="recommend-body"></div>
+  </div>
+</div>
+<script src="https://interactive-js.angpi.cn/1597804968352_jquery.min.js"></script>
+<script src="https://interactive-js.angpi.cn/1608604259504_commonTools.js"></script>
+<script>[[bottom_js]]</script>
+<script src="https://interactive-js.angpi.cn/1605941052455_ggk01.js"></script>
+<script src="//cdn.bootcss.com/eruda/1.5.2/eruda.min.js"></script>
+<script>eruda.init();</script>
 </body>
-</heml>
+</html>
