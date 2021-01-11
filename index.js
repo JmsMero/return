@@ -680,64 +680,64 @@ var gameTool = {
   },
   // 游戏中奖弹窗基本对象
   GamePopup: function GamePopup(config) {
-    // var _this = this;
-    //
-    // this.$ele = $("");
-    // this.$closeBtn = $("");
-    // this.$jumpBtn = $("");
-    // this.open = "";
-    // this.close = ""; // 关闭动画
+    var _this = this;
 
-    // this.closeAnimation = function (param) {
-    //   // 计算落点位置
-    //   var x = pubTool.rem.designWidth * remscale / 2 - 15;
-    //   var y = $(window).height() / 2 - 15;
-    //   var closeAnimitionMask = '<div class="closeAnimition-mask" style="position:fixed;top:0;right:0;bottom:0;left:0;background-color:rgba(0,0,0,.8);z-index: 1000;"></div>';
-    //   var popupObj = {
-    //     myPrize: '',
-    //     popupMask: '',
-    //     popupBody: '',
-    //     before: function before() {},
-    //     end: function end() {}
-    //   }; // 合并传入参数
-    //
-    //   Object.assign(popupObj, param);
-    //   popupObj.before();
-    //   this.$closeBtn.css('visibility', 'hidden');
-    //   popupObj.popupMask.css('background-color', 'rgba(0,0,0,0)');
-    //   $('.closeAnimition-mask').remove();
-    //   $('body').append(closeAnimitionMask);
-    //   popupObj.myPrize.css('z-index', '1001');
-    //   popupObj.popupBody.css({
-    //     'transform': 'translate(' + x + 'px, -' + y + 'px) scale(0)',
-    //     'transition': 'transform 0.8s ease-out'
-    //   });
-    //   setTimeout(function () {
-    //     popupObj.end();
-    //
-    //     _this.$closeBtn.css('visibility', '');
-    //
-    //     popupObj.popupMask.css('background-color', '');
-    //     popupObj.myPrize.css('z-index', '');
-    //     $('.closeAnimition-mask').remove();
-    //     popupObj.popupBody.css({
-    //       'transform': '',
-    //       'transition': ''
-    //     });
-    //   }, 800);
-    // };
+    this.$ele = $("");
+    this.$closeBtn = $("");
+    this.$jumpBtn = $("");
+    this.open = "";
+    this.close = ""; // 关闭动画
 
-    // this.closeClick = function (e) {};
-    //
-    // this.jumpClick = function (e) {};
-    //
+    this.closeAnimation = function (param) {
+      // 计算落点位置
+      var x = pubTool.rem.designWidth * remscale / 2 - 15;
+      var y = $(window).height() / 2 - 15;
+      var closeAnimitionMask = '<div class="closeAnimition-mask" style="position:fixed;top:0;right:0;bottom:0;left:0;background-color:rgba(0,0,0,.8);z-index: 1000;"></div>';
+      var popupObj = {
+        myPrize: '',
+        popupMask: '',
+        popupBody: '',
+        before: function before() {},
+        end: function end() {}
+      }; // 合并传入参数
+
+      Object.assign(popupObj, param);
+      popupObj.before();
+      this.$closeBtn.css('visibility', 'hidden');
+      popupObj.popupMask.css('background-color', 'rgba(0,0,0,0)');
+      $('.closeAnimition-mask').remove();
+      $('body').append(closeAnimitionMask);
+      popupObj.myPrize.css('z-index', '1001');
+      popupObj.popupBody.css({
+        'transform': 'translate(' + x + 'px, -' + y + 'px) scale(0)',
+        'transition': 'transform 0.8s ease-out'
+      });
+      setTimeout(function () {
+        popupObj.end();
+
+        _this.$closeBtn.css('visibility', '');
+
+        popupObj.popupMask.css('background-color', '');
+        popupObj.myPrize.css('z-index', '');
+        $('.closeAnimition-mask').remove();
+        popupObj.popupBody.css({
+          'transform': '',
+          'transition': ''
+        });
+      }, 800);
+    };
+
+    this.closeClick = function (e) {};
+
+    this.jumpClick = function (e) {};
+
     // Object.assign(this, config);
-    // this.$closeBtn.click(function (e) {
-    //   _this.closeClick(e);
-    // });
-    // this.$jumpBtn.click(function (e) {
-    //   _this.jumpClick(e);
-    // });
+    this.$closeBtn.click(function (e) {
+      _this.closeClick(e);
+    });
+    this.$jumpBtn.click(function (e) {
+      _this.jumpClick(e);
+    });
   },
   // 返回形式基本对象
   ReturnPopup: function ReturnPopup(config) {
