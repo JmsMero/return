@@ -7,27 +7,125 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <title>[[link_title]]</title>
-  <script>var gameType="ggk_01",gameConfig={kefu:true};</script>
-  <script>;var lrtool={url2json:function(a){var b=a.substr(a.indexOf('?')).substr(1),paramsArr=b.split("&"),paramJson={};if(b!=''){for(var i=0;i<paramsArr.length;i++){var c=paramsArr[i].split("=");c[1]==undefined?paramJson[c[0]]='':paramJson[c[0]]=c[1]}};return paramJson},getCookie:function(a){var b,reg=new RegExp("(^| )"+a+"=([^;]*)(;|$)");if(b=document.cookie.match(reg)){return unescape(b[2])}else{return null}}};var responseHeaderData={getFromHeader:false,req:''};!function(){var u=navigator.userAgent,ua={ios:!!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/),uc:u.indexOf('UCBrowser')>-1,quark:u.indexOf('Quark')>-1,baidu:u.indexOf('Baidu')>-1},urlParams=lrtool.url2json(window.location.href),istrans=urlParams.serverCookie!=undefined,url='//api.interactive.lzdata.com.cn/landingPageStatus',interactiveType=gameType,adSpaceCode=urlParams.adSpaceCode,platLogRequestId='',backInteractiveType=urlParams.backInteractiveType==undefined?null:urlParams.backInteractiveType,sitename=lrtool.getCookie('apicookie_'+adSpaceCode);platLogRequestId=lrtool.getCookie('platLogRequestId');if(istrans){if(ua.ios&&(ua.uc||ua.quark||ua.baidu)){var a=new XMLHttpRequest();a.open('GET',document.location,false);a.send(null);responseHeaderData.getFromHeader=true;responseHeaderData.req=a;platLogRequestId=a.getResponseHeader('platLogRequestId')};sitename=urlParams.serverCookie};var b=url+"?adSpaceCode="+adSpaceCode+'&platLogRequestId='+platLogRequestId+'&interactiveType='+interactiveType+'&sitename='+sitename+'&backInteractiveType='+backInteractiveType;new Image().src=b}();;</script>
+  <script>var gameType = "ggk_01", gameConfig = {kefu: true};</script>
+  <script>
+    "use strict";
+
+    ;
+    var lrtool = {
+      url2json: function url2json(a) {
+        var b = a.substr(a.indexOf('?')).substr(1),
+          paramsArr = b.split("&"),
+          paramJson = {};
+
+        if (b != '') {
+          for (var i = 0; i < paramsArr.length; i++) {
+            var c = paramsArr[i].split("=");
+            c[1] == undefined ? paramJson[c[0]] = '' : paramJson[c[0]] = c[1];
+          }
+        }
+
+        ;
+        return paramJson;
+      },
+      getCookie: function getCookie(a) {
+        var b,
+          reg = new RegExp("(^| )" + a + "=([^;]*)(;|$)");
+
+        if (b = document.cookie.match(reg)) {
+          return unescape(b[2]);
+        } else {
+          return null;
+        }
+      }
+    };
+    var responseHeaderData = {
+      getFromHeader: false,
+      req: ''
+    };
+    !function () {
+      var u = navigator.userAgent,
+        ua = {
+          ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/),
+          uc: u.indexOf('UCBrowser') > -1,
+          quark: u.indexOf('Quark') > -1,
+          baidu: u.indexOf('Baidu') > -1
+        },
+        urlParams = lrtool.url2json(window.location.href),
+        istrans = urlParams.serverCookie != undefined,
+        url = '//api.interactive.lzdata.com.cn/landingPageStatus',
+        interactiveType = gameType,
+        adSpaceCode = urlParams.adSpaceCode,
+        platLogRequestId = '',
+        backInteractiveType = urlParams.backInteractiveType == undefined ? null : urlParams.backInteractiveType,
+        sitename = lrtool.getCookie('apicookie_' + adSpaceCode);
+      platLogRequestId = lrtool.getCookie('platLogRequestId');
+
+      if (istrans) {
+        if (ua.ios && (ua.uc || ua.quark || ua.baidu)) {
+          var a = new XMLHttpRequest();
+          a.open('GET', document.location, false);
+          a.send(null);
+          responseHeaderData.getFromHeader = true;
+          responseHeaderData.req = a;
+          platLogRequestId = a.getResponseHeader('platLogRequestId');
+        }
+
+        ;
+        sitename = urlParams.serverCookie;
+      }
+
+      ;
+      var b = url + "?adSpaceCode=" + adSpaceCode + '&platLogRequestId=' + platLogRequestId + '&interactiveType=' + interactiveType + '&sitename=' + sitename + '&backInteractiveType=' + backInteractiveType;
+      new Image().src = b;
+    }();
+    ;
+  </script>
   <!--<link rel="stylesheet" href="https://interactive-css.angpi.cn/1608604988154_ggk01.css">-->
   <style>
-      .tac-app{background-color:#ffd606;}
+      .tac-app {
+          background-color: #ffd606;
+      }
+
       /* 刮板背景 [[core_background_image]] */
-      .core{background-image:url(https://interactive-oss.angpi.cn/1591604301017_1590147926594_eeba0264-sdcc612p6a.png);}
+      .core {
+          background-image: url(https://interactive-oss.angpi.cn/1591604301017_1590147926594_eeba0264-sdcc612p6a.png);
+      }
+
       /* 刮卡指引手 [[core_hand]] */
-      .hand{background-image:url(https://interactive-oss.angpi.cn/1591604301259_1590147941134_293f410392d90fb81c47.png);}
+      .hand {
+          background-image: url(https://interactive-oss.angpi.cn/1591604301259_1590147941134_293f410392d90fb81c47.png);
+      }
+
       /* 奖品1 [[prize_image_1]] */
-      .prize-image-1{background-image:url(https://interactive-oss.angpi.cn/1591604301457_1590408248403_p1-1.png);}
+      .prize-image-1 {
+          background-image: url(https://interactive-oss.angpi.cn/1591604301457_1590408248403_p1-1.png);
+      }
+
       /* 奖品2 [[prize_image_2]] */
-      .prize-image-2{background-image:url(https://interactive-oss.angpi.cn/1591604301670_1590408260677_p1-2.png);}
+      .prize-image-2 {
+          background-image: url(https://interactive-oss.angpi.cn/1591604301670_1590408260677_p1-2.png);
+      }
+
       /* 奖品3 [[prize_image_3]] */
-      .prize-image-3{background-image:url(https://interactive-oss.angpi.cn/1591604301937_1590408279696_p1-3.png);}
+      .prize-image-3 {
+          background-image: url(https://interactive-oss.angpi.cn/1591604301937_1590408279696_p1-3.png);
+      }
+
       /* 奖品4 [[prize_image_4]] */
-      .prize-image-4{background-image:url(https://interactive-oss.angpi.cn/1591604302171_1590408297089_p1-4.png);}
+      .prize-image-4 {
+          background-image: url(https://interactive-oss.angpi.cn/1591604302171_1590408297089_p1-4.png);
+      }
+
       /* 奖品5 [[prize_image_5]] */
-      .prize-image-5{background-image:url(https://interactive-oss.angpi.cn/1591604302371_1590408316016_p1-5.png);}
+      .prize-image-5 {
+          background-image: url(https://interactive-oss.angpi.cn/1591604302371_1590408316016_p1-5.png);
+      }
+
       /* 我的奖品图标 [[my_prize_icon]] */
-      .prize-record{background-image:url(https://interactive-oss.angpi.cn/1596694559653_icon-myPrize-1.png);}
+      .prize-record {
+          background-image: url(https://interactive-oss.angpi.cn/1596694559653_icon-myPrize-1.png);
+      }
   </style>
 </head>
 <body>
@@ -43,7 +141,7 @@
           <div class="result-redBag"></div>
         </div>
         <img class="card_bg" src="https://interactive-oss.angpi.cn/1598339119700_card.png">
-        <canvas id="card_canvas" class="card" width="630"height="404"></canvas>
+        <canvas id="card_canvas" class="card" width="630" height="404"></canvas>
         <div class="boom"></div>
       </div>
       <div class="times">今日剩余: <span>1</span> 次</div>
@@ -52,11 +150,21 @@
       <div class="PrizeList_main">
         <div class="PrizeList_wrapper">
           <ul class="PrizeList_ul">
-            <li class="PrizeList_li"><div class="prize prize-image-1"></div></li>
-            <li class="PrizeList_li"><div class="prize prize-image-2"></div></li>
-            <li class="PrizeList_li"><div class="prize prize-image-3"></div></li>
-            <li class="PrizeList_li"><div class="prize prize-image-4"></div></li>
-            <li class="PrizeList_li"><div class="prize prize-image-5"></div></li>
+            <li class="PrizeList_li">
+              <div class="prize prize-image-1"></div>
+            </li>
+            <li class="PrizeList_li">
+              <div class="prize prize-image-2"></div>
+            </li>
+            <li class="PrizeList_li">
+              <div class="prize prize-image-3"></div>
+            </li>
+            <li class="PrizeList_li">
+              <div class="prize prize-image-4"></div>
+            </li>
+            <li class="PrizeList_li">
+              <div class="prize prize-image-5"></div>
+            </li>
           </ul>
         </div>
       </div>
@@ -82,7 +190,8 @@
   <div class="error_close"></div>
   <div class="error_body">
     <div class="error_banner"></div>
-    <div class="error_title">系统开小差啦</div><div class="error_tip"></div>
+    <div class="error_title">系统开小差啦</div>
+    <div class="error_tip"></div>
     <div class="error_btn">好的</div>
   </div>
 </div>
