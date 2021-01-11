@@ -680,8 +680,28 @@ var gameTool = {
   },
   // 游戏中奖弹窗基本对象
   GamePopup: function GamePopup(config) {
-    var _this = this;
+    if (typeof Object.assign != 'function') {
+      Object.assign = function(target) {
+        'use strict';
+        if (target == null) {
+          throw new TypeError('Cannot convert undefined or null to object');
+        }
 
+        target = Object(target);
+        for (var index = 1; index < arguments.length; index++) {
+          var source = arguments[index];
+          if (source != null) {
+            for (var key in source) {
+              if (Object.prototype.hasOwnProperty.call(source, key)) {
+                target[key] = source[key];
+              }
+            }
+          }
+        }
+        return target;
+      };
+    };
+    var _this = this;
     this.$ele = $("");
     this.$closeBtn = $("");
     this.$jumpBtn = $("");
@@ -742,7 +762,27 @@ var gameTool = {
   // 返回形式基本对象
   ReturnPopup: function ReturnPopup(config) {
     var _this = this;
+    if (typeof Object.assign != 'function') {
+      Object.assign = function(target) {
+        'use strict';
+        if (target == null) {
+          throw new TypeError('Cannot convert undefined or null to object');
+        }
 
+        target = Object(target);
+        for (var index = 1; index < arguments.length; index++) {
+          var source = arguments[index];
+          if (source != null) {
+            for (var key in source) {
+              if (Object.prototype.hasOwnProperty.call(source, key)) {
+                target[key] = source[key];
+              }
+            }
+          }
+        }
+        return target;
+      };
+    };
     this.$ele = $("");
     this.$closeBtn = $("");
     this.$jumpBtn = $("");
