@@ -427,6 +427,7 @@ $(function () {
           if (data.data.adExclusivePop != undefined && data.data.adExclusivePop.indexOf('specialWinPopup') > -1) {
             ggkGame.eleEvent = e;
             $('.specialWinPopup').remove();
+            conosle.log(data.data.adExclusivePop)
             $('body').append(data.data.adExclusivePop);
           } else {
             prizeModalPopup = localGamePopup;
