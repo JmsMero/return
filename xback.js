@@ -111,7 +111,7 @@ $(function () {
 
   ;
   window.setPersonalGamePopup = setPersonalGamePopup; // 初始化本地弹窗
-
+  console.log(gameTool.GamePopup)
   var localGamePopup = new gameTool.GamePopup({
     popupType: 'local'
   }); // 默认启用本地中奖弹窗
