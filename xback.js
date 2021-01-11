@@ -113,16 +113,7 @@ $(function () {
   window.setPersonalGamePopup = setPersonalGamePopup; // 初始化本地弹窗
 
   var localGamePopup = new gameTool.GamePopup({
-    popupType: 'local',
-    $ele: $('.showprizemodal'),
-    $closeBtn: $('.showprizemodal .pclose'),
-    $jumpBtn: $('.showprizemodal .pbtn'),
-    open: function open(awardData) {
-      this.awardData = awardData;
-      $('.showprizemodal .pimg').attr('src', this.awardData.img);
-      $('.showprizemodal .pname').text(this.awardData.name);
-      this.$ele.show();
-    }
+    popupType: 'local'
   }); // 默认启用本地中奖弹窗
 
   var prizeModalPopup = localGamePopup; // 初始化返回发券展示形式
