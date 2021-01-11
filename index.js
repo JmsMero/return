@@ -412,6 +412,8 @@ var gameRequest = {
   },
   // 追加请求参数
   addRequestData: function addRequestData(obj, data) {
+    console.log('原始数据！',obj)
+    console.log('追加数据！',data)
     if (obj != undefined && obj.addData != undefined) {
       for (var key in obj.addData) {
         data[key] = obj.addData[key];
