@@ -11,7 +11,79 @@
   <!-- 互动类型 [[interactive_type]] -->
   <script>var gameType="ggk_01",gameConfig={kefu:true};</script>
   <!-- 图片方式页面打开统计 -->
-  <script>;var lrtool={url2json:function(a){var b=a.substr(a.indexOf('?')).substr(1),paramsArr=b.split("&"),paramJson={};if(b!=''){for(var i=0;i<paramsArr.length;i++){var c=paramsArr[i].split("=");c[1]==undefined?paramJson[c[0]]='':paramJson[c[0]]=c[1]}};return paramJson},getCookie:function(a){var b,reg=new RegExp("(^| )"+a+"=([^;]*)(;|$)");if(b=document.cookie.match(reg)){return unescape(b[2])}else{return null}}};var responseHeaderData={getFromHeader:false,req:''};!function(){var u=navigator.userAgent,ua={ios:!!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/),uc:u.indexOf('UCBrowser')>-1,quark:u.indexOf('Quark')>-1,baidu:u.indexOf('Baidu')>-1},urlParams=lrtool.url2json(window.location.href),istrans=urlParams.serverCookie!=undefined,url='//api.interactive.lzdata.com.cn/landingPageStatus',interactiveType=gameType,adSpaceCode=urlParams.adSpaceCode,platLogRequestId='',backInteractiveType=urlParams.backInteractiveType==undefined?null:urlParams.backInteractiveType,sitename=lrtool.getCookie('apicookie_'+adSpaceCode);platLogRequestId=lrtool.getCookie('platLogRequestId');if(istrans){if(ua.ios&&(ua.uc||ua.quark||ua.baidu)){var a=new XMLHttpRequest();a.open('GET',document.location,false);a.send(null);responseHeaderData.getFromHeader=true;responseHeaderData.req=a;platLogRequestId=a.getResponseHeader('platLogRequestId')};sitename=urlParams.serverCookie};var b=url+"?adSpaceCode="+adSpaceCode+'&platLogRequestId='+platLogRequestId+'&interactiveType='+interactiveType+'&sitename='+sitename+'&backInteractiveType='+backInteractiveType;new Image().src=b}();;</script>
+  <script>
+    "use strict";
+
+    ;
+    var lrtool = {
+      url2json: function url2json(a) {
+        var b = a.substr(a.indexOf('?')).substr(1),
+          paramsArr = b.split("&"),
+          paramJson = {};
+
+        if (b != '') {
+          for (var i = 0; i < paramsArr.length; i++) {
+            var c = paramsArr[i].split("=");
+            c[1] == undefined ? paramJson[c[0]] = '' : paramJson[c[0]] = c[1];
+          }
+        }
+
+        ;
+        return paramJson;
+      },
+      getCookie: function getCookie(a) {
+        var b,
+          reg = new RegExp("(^| )" + a + "=([^;]*)(;|$)");
+
+        if (b = document.cookie.match(reg)) {
+          return unescape(b[2]);
+        } else {
+          return null;
+        }
+      }
+    };
+    var responseHeaderData = {
+      getFromHeader: false,
+      req: ''
+    };
+    !function () {
+      var u = navigator.userAgent,
+        ua = {
+          ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/),
+          uc: u.indexOf('UCBrowser') > -1,
+          quark: u.indexOf('Quark') > -1,
+          baidu: u.indexOf('Baidu') > -1
+        },
+        urlParams = lrtool.url2json(window.location.href),
+        istrans = urlParams.serverCookie != undefined,
+        url = '//api.interactive.lzdata.com.cn/landingPageStatus',
+        interactiveType = gameType,
+        adSpaceCode = urlParams.adSpaceCode,
+        platLogRequestId = '',
+        backInteractiveType = urlParams.backInteractiveType == undefined ? null : urlParams.backInteractiveType,
+        sitename = lrtool.getCookie('apicookie_' + adSpaceCode);
+      platLogRequestId = lrtool.getCookie('platLogRequestId');
+
+      if (istrans) {
+        if (ua.ios && (ua.uc || ua.quark || ua.baidu)) {
+          var a = new XMLHttpRequest();
+          a.open('GET', document.location, false);
+          a.send(null);
+          responseHeaderData.getFromHeader = true;
+          responseHeaderData.req = a;
+          platLogRequestId = a.getResponseHeader('platLogRequestId');
+        }
+
+        ;
+        sitename = urlParams.serverCookie;
+      }
+
+      ;
+      var b = url + "?adSpaceCode=" + adSpaceCode + '&platLogRequestId=' + platLogRequestId + '&interactiveType=' + interactiveType + '&sitename=' + sitename + '&backInteractiveType=' + backInteractiveType;
+      new Image().src = b;
+    }();
+    ;
+  </script>
   <link rel="stylesheet" href="https://interactive-css.angpi.cn/1608604988154_ggk01.css">
   <style>
       /* 游戏页面背景色 [[game_background_color]] */
