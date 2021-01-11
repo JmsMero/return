@@ -2,176 +2,124 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>test</title>
-  <link rel="stylesheet" href="https://interactive-css.angpi.cn/1608860093625_bootstrap.min.css">
+  <meta https-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <title>[[link_title]]</title>
+  <script>var gameType="ggk_01",gameConfig={kefu:true};</script>
+  <script>;var lrtool={url2json:function(a){var b=a.substr(a.indexOf('?')).substr(1),paramsArr=b.split("&"),paramJson={};if(b!=''){for(var i=0;i<paramsArr.length;i++){var c=paramsArr[i].split("=");c[1]==undefined?paramJson[c[0]]='':paramJson[c[0]]=c[1]}};return paramJson},getCookie:function(a){var b,reg=new RegExp("(^| )"+a+"=([^;]*)(;|$)");if(b=document.cookie.match(reg)){return unescape(b[2])}else{return null}}};var responseHeaderData={getFromHeader:false,req:''};!function(){var u=navigator.userAgent,ua={ios:!!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/),uc:u.indexOf('UCBrowser')>-1,quark:u.indexOf('Quark')>-1,baidu:u.indexOf('Baidu')>-1},urlParams=lrtool.url2json(window.location.href),istrans=urlParams.serverCookie!=undefined,url='//api.interactive.lzdata.com.cn/landingPageStatus',interactiveType=gameType,adSpaceCode=urlParams.adSpaceCode,platLogRequestId='',backInteractiveType=urlParams.backInteractiveType==undefined?null:urlParams.backInteractiveType,sitename=lrtool.getCookie('apicookie_'+adSpaceCode);platLogRequestId=lrtool.getCookie('platLogRequestId');if(istrans){if(ua.ios&&(ua.uc||ua.quark||ua.baidu)){var a=new XMLHttpRequest();a.open('GET',document.location,false);a.send(null);responseHeaderData.getFromHeader=true;responseHeaderData.req=a;platLogRequestId=a.getResponseHeader('platLogRequestId')};sitename=urlParams.serverCookie};var b=url+"?adSpaceCode="+adSpaceCode+'&platLogRequestId='+platLogRequestId+'&interactiveType='+interactiveType+'&sitename='+sitename+'&backInteractiveType='+backInteractiveType;new Image().src=b}();;</script>
+  <link rel="stylesheet" href="https://interactive-css.angpi.cn/1608604988154_ggk01.css">
   <style>
-      .media-statement-table{
-          width: 100%;
-          border-left: 1px solid #808080;
-          border-top: 1px solid #808080;
-      }
-      .media-statement-table .ms-title{
-          padding: 20px 0 ;
-          text-align: center;
-          font-size: 24px;
-          color: #B2B2B2;
-          border-right: 1px solid #808080;
-          border-bottom: 1px solid #808080;
-      }
-      .media-statement-table .ms-table-row{
-          display: flex;
-      }
-      .media-statement-table .ms-table-row span{
-          color: #FF3C3C;
-      }
-      .media-statement-table .ms-table-row div{
-          height: 35px;
-          line-height: 35px;
-          border-right: 1px solid #808080;
-          border-bottom: 1px solid #808080;
-          font-size: 16px;
-      }
-      .media-statement-table  div.ms-instructions{
-          width: 100%;
-          height: 226px;
-          border-right: 1px solid #808080;
-          border-bottom: 1px solid #808080;
-          padding: 15px 32px;
-      }
-      .media-statement-table .ms-table-row input{
-          width: 100%;
-          height: 100%;
-          border: 0;
-      }
-      .media-statement-table .blank-space{
-          height: 16px;
-          border-right: 1px solid #808080;
-          border-bottom: 1px solid #808080;
-      }
-      .ms-instructions{
-          position: relative;
-      }
-      .ms-instructions h6{
-          font-size: 16px;
-          color: #313131;
-          font-weight: bold;
-          margin-bottom: 16px;
-      }
-      .ms-instructions ol{
-          font-size: 16px;
-          color: #313131;
-      }
-      .ms-instructions ol span{
-          display: inline-block;
-          width: 21px;
-      }
-      .ms-instructions ol li{
-          margin-bottom: 6px;
-      }
-      .ms-instructions p{
-          position: absolute;
-          bottom: 20px;
-          right: 280px;
-      }
-      .media-statement-content .media-statement-btn{
-          text-align: center;
-          margin-top: 20px;
-      }
-      .media-statement-content .media-statement-btn button{
-          width: 159px;
-          height: 42px;
-          border-radius: 4px;
-          font-size: 18px;
-      }
-      .media-statement-content .media-statement-btn button:first-child{
-          color: #fff;
-          background: #4672FF;
-          border: 1px solid #4672FF;
-          margin-right: 22px;
-      }
-      .media-statement-content .media-statement-btn button:nth-child(2){
-          background: #FFFFFF;
-          border: 1px solid #B3B3B3;
-      }
-      .ms-20-row{
-          width: 20%;
-          text-align: center;
-      }
-      .ms-30-row{
-          width: 30%;
-          padding-left: 29px;
-      }
-      .ms-80-row{
-          width: 80%;
-          padding-left: 29px;
-      }
-      .put-ash{
-          background-color: #F5F5F5;
-          color: #B3B3B3;
-      }
+      .tac-app{background-color:#ffd606;}
+      /* 刮板背景 [[core_background_image]] */
+      .core{background-image:url(https://interactive-oss.angpi.cn/1591604301017_1590147926594_eeba0264-sdcc612p6a.png);}
+      /* 刮卡指引手 [[core_hand]] */
+      .hand{background-image:url(https://interactive-oss.angpi.cn/1591604301259_1590147941134_293f410392d90fb81c47.png);}
+      /* 奖品1 [[prize_image_1]] */
+      .prize-image-1{background-image:url(https://interactive-oss.angpi.cn/1591604301457_1590408248403_p1-1.png);}
+      /* 奖品2 [[prize_image_2]] */
+      .prize-image-2{background-image:url(https://interactive-oss.angpi.cn/1591604301670_1590408260677_p1-2.png);}
+      /* 奖品3 [[prize_image_3]] */
+      .prize-image-3{background-image:url(https://interactive-oss.angpi.cn/1591604301937_1590408279696_p1-3.png);}
+      /* 奖品4 [[prize_image_4]] */
+      .prize-image-4{background-image:url(https://interactive-oss.angpi.cn/1591604302171_1590408297089_p1-4.png);}
+      /* 奖品5 [[prize_image_5]] */
+      .prize-image-5{background-image:url(https://interactive-oss.angpi.cn/1591604302371_1590408316016_p1-5.png);}
+      /* 我的奖品图标 [[my_prize_icon]] */
+      .prize-record{background-image:url(https://interactive-oss.angpi.cn/1596694559653_icon-myPrize-1.png);}
   </style>
-  <script src="https://interactive-js.angpi.cn/1608860161948_jspdf.umd.min.js"></script>
-  <script src="https://interactive-js.angpi.cn/1608860114600_html2canvas.min.js"></script>
 </head>
 <body>
-<button id="print-btn" class="btn btn-success m-5">生成PDF</button>
-
-<div id="page" style="width: 1000px;color: black;background: white;">
-  <!--1st-->
-  <div id="first">
-    <div class="media-statement-table">
-      <div class="ms-title put-ash">北京天卓科技有限公司&北京展鸿软通科技股份有限公司何合作结算单</div>
-      <div class="ms-table-row put-ash">
-        <div class="ms-20-row">媒体名称</div>
-        <div class="ms-30-row">北京天卓科技有限公司</div>
-        <div class="ms-20-row">提现金额</div>
-        <div class="ms-30-row">¥45,673.00</div>
+<div class="tac-app">
+  <img class="tac-app-bg" src="https://interactive-oss.angpi.cn/1591604300618_1590407647114_ggk_01_bg.jpg">
+  <div class="tac-main">
+    <div class="style-main">
+      <div class="core">
+        <div class="hand"></div>
+        <div class="result-show">
+          <div class="star-left"></div>
+          <div class="star-right"></div>
+          <div class="result-redBag"></div>
+        </div>
+        <img class="card_bg" src="https://interactive-oss.angpi.cn/1598339119700_card.png">
+        <canvas id="card_canvas" class="card" width="630"height="404"></canvas>
+        <div class="boom"></div>
       </div>
-      <div class="ms-table-row put-ash">
-        <div class="ms-20-row">结算周期</div>
-        <div class="ms-80-row">2020.11</div>
+      <div class="times">今日剩余: <span>1</span> 次</div>
+    </div>
+    <div class="prizeContainer">
+      <div class="PrizeList_main">
+        <div class="PrizeList_wrapper">
+          <ul class="PrizeList_ul">
+            <li class="PrizeList_li"><div class="prize prize-image-1"></div></li>
+            <li class="PrizeList_li"><div class="prize prize-image-2"></div></li>
+            <li class="PrizeList_li"><div class="prize prize-image-3"></div></li>
+            <li class="PrizeList_li"><div class="prize prize-image-4"></div></li>
+            <li class="PrizeList_li"><div class="prize prize-image-5"></div></li>
+          </ul>
+        </div>
       </div>
-      <div class="blank-space"></div>
-      <div class="ms-table-row">
-        <div class="ms-20-row">联系人<span>*</span></div>
-        <div class="ms-30-row"><input type="text" placeholder="请输入媒体主联系人"></div>
-        <div class="ms-20-row">联系电话<span>*</span></div>
-        <div class="ms-30-row"><input type="text" placeholder="请输入媒体主电话"></div>
+      <div class="prize-tag"></div>
+    </div>
+  </div>
+  <div class="index_adtip"></div>
+  <div class="prize-record my-prize"></div>
+  <div id="ggk-rule-btn" class="tac-rule"></div>
+  <div class="index_disclaimer">[[records_info]]</div>
+</div>
+<div id="ggk-rule-modal" class="rulemodal">
+  <div class="rule_body">
+    <div class="rule_content">
+      <div class="rule_wrapper">
+        <p>123</p>
       </div>
-      <div class="ms-table-row">
-        <div class="ms-20-row">寄件人地址<span>*</span></div>
-        <div class="ms-80-row"><input type="text" placeholder="请输入寄件地址,需要回寄结算单,请填写并核准后回寄信息"></div>
-      </div>
-      <div class="ms-table-row">
-        <div class="ms-20-row">银行卡号<span>*</span></div>
-        <div class="ms-30-row"><input type="text" placeholder="请输入银行卡号"></div>
-        <div class="ms-20-row">开户名称<span>*</span></div>
-        <div class="ms-30-row"><input type="text" placeholder="请输入银行卡号"></div>
-      </div>
-      <div class="ms-table-row">
-        <div class="ms-20-row">开户银行<span>*</span></div>
-        <div class="ms-80-row"><input type="text" placeholder="请输入开户银行名称"></div>
-      </div>
-      <div class="ms-instructions">
-        <h6>说明</h6>
-        <ol>
-          <li><span>1、</span>此结算单不包括结算周期以外发生的款项，如有错漏，请与我司业务负责人联系。</li>
-          <li><span>2、</span>收到此结算单核对无误后请及时盖章并回传。（可以以扫描件形式发送给我司相关业务负责人）</li>
-          <li><span>3、</span>以上数据如有错误请在五天内告知，以便更在，否则当确认伦。<br>&nbsp;&nbsp;&nbsp;&nbsp;以上信息，请尽快核对，感谢贵司一直以来的支持和惠顾！</li>
-        </ol>
-        <p>
-          (签字/盖章）
-          <br>日期
-        </p>
+    </div>
+    <div class="rule_close"></div>
+  </div>
+</div>
+<div class="errormodal">
+  <div class="error_close"></div>
+  <div class="error_body">
+    <div class="error_banner"></div>
+    <div class="error_title">系统开小差啦</div><div class="error_tip"></div>
+    <div class="error_btn">好的</div>
+  </div>
+</div>
+<div class="thanksmodal">
+  <span class="thanks-modal-close"><i class="modal-close"></i></span>
+  <div class="thanks-body">
+    <div class="thanks-btn-b">再来一次</div>
+  </div>
+</div>
+<section class="layer-105 showprizemodal">
+  <div class="close pclose"></div>
+  <div class="container">
+    <div class="box">
+      <div class="light"></div>
+      <div class="caidai"></div>
+      <div class="dialog">
+        <div class="dialog-title"></div>
+        <div class="couponLight couponLight1"></div>
+        <div class="couponLight couponLight2"></div>
+        <div class="coupon"><img class="pimg"></div>
+        <div class="counpon-name"><span class="name pname">平安110万保障免费领取</span></div>
+        <div class="btn pbtn"></div>
       </div>
     </div>
   </div>
+</section>
+<div class="recommendmodal">
+  <div class="caidaisprites"></div>
+  <div class="recommend-modal-dialog">
+    <span class="recommend-modal-close"><i class="close"></i></span>
+    <div class="recommend-body"></div>
+  </div>
 </div>
-
-<script src="https://interactive-js.angpi.cn/1608860135538_jspdf-html2canvas.min.js"></script>
-<script>
-</script>
+<script src="https://interactive-js.angpi.cn/1597804968352_jquery.min.js"></script>
+<script src="https://interactive-js.angpi.cn/1610180163992_index.js"></script>
+<script src="https://interactive-js.angpi.cn/1605941052455_ggk01.js"></script>
+<script src="//cdn.bootcss.com/eruda/1.5.2/eruda.min.js"></script>
+<script>eruda.init();</script>
 </body>
 </html>
