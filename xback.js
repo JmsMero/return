@@ -3,6 +3,7 @@
 $(function () {
   // 游戏名称
   var gameName = gameType; // 中奖奖品信息
+
   var awardInfo = {
     name: "",
     img: "",
@@ -12,18 +13,382 @@ $(function () {
   function showTimes(num) {
     $('.times span').text(num);
   }
+
+  ; // 显示网络错误弹窗
+
+  function showNetworkError() {
+    $('.errormodal .error_close,.errormodal .error_btn').off('click').on('click', function (e) {
+      ggkGame.reset();
+      $('.errormodal').hide();
+    });
+    $('.errormodal').show();
+  }
+
+  ; // 显示次数超限弹窗
+
+  function showRecommendmodal() {
+    $('.recommendmodal .close').off('click').on('click', function (e) {
+      ggkGame.reset();
+      $('.recommendmodal').hide();
+    });
+    $('.recommendmodal').show();
+  }
+
+  ; // 显示未中奖弹窗
+
+  function showThanksmodal() {
+    $('.thanksmodal .thanks-modal-close,.thanksmodal .thanks-btn-b').off('click').on('click', function (e) {
+      ggkGame.reset();
+      $('.thanksmodal').hide();
+    });
+    $('.thanksmodal').show();
+  }
+
+  ; // 点击弹窗关闭按钮计数
+
+  function clickPopupCloseCount() {
+    gameState.colsePopup += 1;
+    gameTool.setGameSatesCookie(gameState);
+  }
+
+  ; // 启用专属弹窗方法
+
+  function setPersonalGamePopup() {
+    personalGamePopup.closeEvent = function (e) {
+      var _this = this;
+
+      ggkGame.reset();
+      clickPopupCloseCount();
+      prizeModalPopup = localGamePopup; // 第二次点击关闭按钮或返回键发券，显示关闭广告提醒弹窗
+
+      if (gameState.colsePopup == 2 || awardInfo.getEvent == 'back') {
+        gameTool.closeIntercept.show(awardInfo);
+
+        _this.close();
+      } else {
+        // 非关闭广告提醒弹窗下执行关闭动画
+        this.closeAnimation({
+          myPrize: $('.my-prize'),
+          popupMask: $('.specialWinPopup .mask'),
+          popupBody: $('.specialWinPopup .tc-container'),
+          before: function before() {},
+          end: function end() {
+            _this.close();
+          }
+        });
+      }
+
+      ;
+    };
+
+    personalGamePopup.jumpEvent = function (e) {
+      var _this = this; // 统计领券量
+
+
+      gameRequest.receiveCoupon({
+        addData: {
+          event: awardInfo.getEvent + '_receive_coupon'
+        },
+        success: function success(data) {
+          ggkGame.reset();
+          gameTool.loading.show();
+
+          _this.close();
+
+          prizeModalPopup = localGamePopup;
+          window.location.href = awardInfo.link;
+        },
+        error: function error(x, t, e) {
+          gameTool.toast('网络好像有点问题，请稍后再试吧~');
+        }
+      });
+    };
+
+    personalGamePopup.popupType = 'personal';
+    prizeModalPopup = personalGamePopup;
+    ggkGame.openPrize(ggkGame.eleEvent, 'win');
+  }
+
+  ;
+  window.setPersonalGamePopup = setPersonalGamePopup; // 初始化本地弹窗
+
+  var localGamePopup = new gameTool.GamePopup({
+    popupType: 'local',
+    $ele: $('.showprizemodal'),
+    $closeBtn: $('.showprizemodal .pclose'),
+    $jumpBtn: $('.showprizemodal .pbtn'),
+    open: function open(awardData) {
+      this.awardData = awardData;
+      $('.showprizemodal .pimg').attr('src', this.awardData.img);
+      $('.showprizemodal .pname').text(this.awardData.name);
+      this.$ele.show();
+    },
+    close: function close() {
+      ggkGame.reset();
+      this.$ele.hide();
+      $('.showprizemodal .pimg').attr('src', '');
+      $('.showprizemodal .pname').text('');
+    },
+    closeClick: function closeClick(e) {
+      var _this = this;
+
+      clickPopupCloseCount(); // 第二次点击关闭按钮或返回键发券，显示关闭广告提醒弹窗
+
+      if (gameState.colsePopup == 2 || this.awardData.getEvent == 'back') {
+        gameTool.closeIntercept.show(this.awardData);
+
+        _this.close();
+      } else {
+        // 非关闭广告提醒弹窗下执行关闭动画
+        this.closeAnimation({
+          myPrize: $('.my-prize'),
+          popupMask: $('.showprizemodal'),
+          popupBody: $('.showprizemodal .container'),
+          before: function before() {},
+          end: function end() {
+            _this.close();
+          }
+        });
+      }
+
+      ;
+    },
+    jumpClick: function jumpClick(e) {
+      var _this = this; // 统计领券量
+
+
+      gameRequest.receiveCoupon({
+        addData: {
+          event: _this.awardData.getEvent + '_receive_coupon'
+        },
+        success: function success(data) {
+          gameTool.loading.show();
+
+          _this.close();
+
+          window.location.href = _this.awardData.link;
+        },
+        error: function error(x, t, e) {
+          gameTool.toast('网络好像有点问题，请稍后再试吧~');
+        }
+      });
+    }
+  }); // 默认启用本地中奖弹窗
+
+  var prizeModalPopup = localGamePopup; // 初始化返回发券展示形式
+
+  var returnDisplayForm = {
+    popupState: 'unload'
+  }; // 设置返回发券展示形式内容
+
+  function setReturnPopup() {
+    personalReturnPopup.tempData = null;
+
+    personalReturnPopup.openBefore = function () {
+      // 请求广告
+      gameRequest.getPlat({
+        addData: {
+          event: 'backing_out_type'
+        },
+        success: function success(data) {
+          personalReturnPopup.tempData = {};
+
+          if (data.code == "000000") {
+            gameState.getAD += 1;
+            gameTool.setGameSatesCookie(gameState);
+            awardInfo.img = data.data.materialLink;
+            awardInfo.link = data.data.adLink;
+            awardInfo.name = data.data.materialDesc;
+            awardInfo.getEvent = 'back';
+
+            if (data.data.adExclusivePop != undefined) {
+              personalReturnPopup.tempData.popupType = 'personal';
+              $('.specialWinPopup').remove();
+              $('body').append(data.data.adExclusivePop);
+            } else {
+              personalReturnPopup.tempData.popupType = 'local';
+              prizeModalPopup = localGamePopup;
+            }
+
+            ;
+          } else {
+            personalReturnPopup.tempData.popupType = 'noPopup';
+            gameTool.toast('获取数据异常');
+          }
+
+          ;
+        },
+        error: function error(x, t, e) {
+          personalReturnPopup.tempData = {};
+          personalReturnPopup.tempData.popupType = 'noPopup';
+          gameTool.toast('网络好像有点问题，请稍后再试吧~');
+        }
+      });
+    };
+
+    personalReturnPopup.closeEvent = function (e) {
+      var _this = this,
+        times = 300;
+
+      var intervalId = '';
+      intervalId = setInterval(function () {
+        times--;
+
+        if (personalReturnPopup.tempData != null) {
+          // 判断广告请求是否结束
+          if (personalReturnPopup.tempData.popupType == 'noPopup') {
+            // 判断是否请求到广告
+            _this.close();
+
+            clearInterval(intervalId);
+          } else {
+            // 判断弹窗类型，如果是专属弹窗，必须等专属弹窗加载完毕后打开
+            if (personalReturnPopup.tempData.popupType = 'local' || (personalReturnPopup.tempData.popupType = 'personal' && prizeModalPopup.popupType == 'personal')) {
+              _this.close();
+
+              prizeModalPopup.open(awardInfo);
+              clearInterval(intervalId);
+            }
+
+            ;
+          }
+
+          ;
+        }
+
+        ;
+
+        if (times <= 0) {
+          clearInterval(intervalId);
+        }
+
+        ;
+      }, 50);
+    };
+
+    personalReturnPopup.popupState = 'loaded';
+    returnDisplayForm = personalReturnPopup;
+  }
+
+  ;
+  window.setReturnPopup = setReturnPopup; // 显示发券展示形式
+
+  function showReturnForm() {
+    var intervalId = '',
+      times = 500;
+    personalReturnPopup.popupState = 'loaded';
+    intervalId = setInterval(function () {
+      times--;
+
+      if (returnDisplayForm.popupState == 'loaded') {
+        returnDisplayForm.open();
+        clearInterval(intervalId);
+      }
+
+      ;
+
+      if (times <= 0) {
+        clearInterval(intervalId);
+      }
+
+      ;
+    }, 50);
+  }
+
+  ; // 是否缓存
+
+  window.addEventListener('pageshow', function (e) {
+    if (e.persisted || window.performance && window.performance.navigation.type == 2) {
+      gameTool.loading.hide();
+    }
+  }, false); // 初始化游戏请请求数据
+
   gameRequest.setGameType(gameName);
   gameRequest.initData(); // 初始获取游戏状态值
+
   gameTool.getGameSatesCookie() == null ? gameTool.setGameSatesCookie({
     times: 8,
     colsePopup: 0,
     getAD: 0
   }) : '';
   var gameState = gameTool.getGameSatesCookie(); // 统计页面打开
-  // 初始化显示次数
-  showTimes(gameState.times);
-  // 统计页面打开
-  gameRequest.clickRedBagNum();
+
+  gameRequest.clickRedBagNum(); // 客服按钮初始化
+
+  gameConfig.kefu ? gameTool.userService.init() : ""; // 我的奖品按钮初始化
+
+  gameTool.myPrize.show('.my-prize'); // 插入loading
+
+  gameTool.loading.init(); // 初始化是否加载关闭广告弹窗提醒
+
+  gameState.colsePopup <= 1 ? gameTool.closeIntercept.init() : ''; // 页面不是通过返回键打开且有返回形式或返回落地页时监听返回键
+
+  if (backBtnData.openWayFrom != 'backBtn') {
+    if (backBtnData.backCouponType != 'null' || backBtnData.backInteractiveUrl != 'null') {
+      // 监听返回键
+      gameTool.backBtnListen.setListen(function () {
+        // 判断是否配置返回发券样式
+        if (backBtnData.backCouponType == 'null') {
+          // 未配置返回发券样式时执行去返回键落地页操作
+          gameTool.doBackInteractive();
+        } else {
+          if (gameState.getAD > 0) {
+            if (backBtnData.backCouponNum == gameState.getAD) {
+              // 继续监返回键
+              gameTool.backBtnListen.listenContinue(function () {
+                // 执行去返回键落地页操作
+                gameTool.doBackInteractive();
+              }); // 显示发券展示形式
+
+              showReturnForm();
+            } else {
+              // 执行去返回键落地页操作
+              gameTool.doBackInteractive();
+            }
+
+            ;
+          } else {
+            // 执行去返回键落地页操作
+            gameTool.backBtnListen.listenContinue(function () {
+              if (backBtnData.backCouponNum == gameState.getAD) {
+                gameTool.backBtnListen.listenContinue(function () {
+                  // 执行去返回键落地页操作
+                  gameTool.doBackInteractive();
+                }); // 显示发券展示形式
+
+                showReturnForm();
+              } else {
+                gameTool.doBackInteractive();
+              }
+            });
+            showReturnForm();
+          }
+
+          ;
+        }
+
+        ;
+      });
+    }
+
+    ;
+  } else {
+    gameTool.backBtnListen.setListen(function () {
+      window.history.go(-1);
+    });
+  } // 初始化显示次数
+
+
+  showTimes(gameState.times); // 规则按钮点击
+
+  $('#ggk-rule-btn').click(function () {
+    $('#ggk-rule-modal').show();
+  }); // 规则弹窗关闭按钮点击
+
+  $('#ggk-rule-modal .rule_close').click(function () {
+    $("#ggk-rule-modal").hide();
+  }); // 游戏初始化
+
   ggkGame.init(); // 初始化中奖状态
 
   var isPrize = false; // 按下或触摸刮卡区域事件
@@ -31,6 +396,7 @@ $(function () {
   ggkGame.downEvent = function (e) {
     // 判断是否还有游戏次数
     if (gameState.times <= 0) {
+      showRecommendmodal();
       ggkGame.canStart = false;
     } else {
       ggkGame.canStart = true;
@@ -63,6 +429,7 @@ $(function () {
             $('.specialWinPopup').remove();
             $('body').append(data.data.adExclusivePop);
           } else {
+            prizeModalPopup = localGamePopup;
             ggkGame.openPrize(e, 'win');
           }
         } else {
@@ -73,6 +440,7 @@ $(function () {
         ;
       },
       error: function error(x, t, e) {
+        showNetworkError();
       }
     });
   }; // 刮卡结束后事件
@@ -93,6 +461,7 @@ $(function () {
     if (isPrize) {
       prizeModalPopup.open(awardInfo);
     } else {
+      showThanksmodal();
     }
 
     ;
