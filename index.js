@@ -731,7 +731,7 @@ var gameTool = {
 
     this.jumpClick = function (e) {};
 
-    // Object.assign(this, config);
+    Object.assign(_this, config);
     this.$closeBtn.click(function (e) {
       _this.closeClick(e);
     });
