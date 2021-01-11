@@ -680,13 +680,13 @@ var gameTool = {
   },
   // 游戏中奖弹窗基本对象
   GamePopup: function GamePopup(config) {
-    var _this = this;
-
-    this.$ele = $("");
-    this.$closeBtn = $("");
-    this.$jumpBtn = $("");
-    this.open = "";
-    this.close = ""; // 关闭动画
+    // var _this = this;
+    //
+    // this.$ele = $("");
+    // this.$closeBtn = $("");
+    // this.$jumpBtn = $("");
+    // this.open = "";
+    // this.close = ""; // 关闭动画
 
     // this.closeAnimation = function (param) {
     //   // 计算落点位置
@@ -727,17 +727,17 @@ var gameTool = {
     //   }, 800);
     // };
 
-    this.closeClick = function (e) {};
-
-    this.jumpClick = function (e) {};
-
-    Object.assign(this, config);
-    this.$closeBtn.click(function (e) {
-      _this.closeClick(e);
-    });
-    this.$jumpBtn.click(function (e) {
-      _this.jumpClick(e);
-    });
+    // this.closeClick = function (e) {};
+    //
+    // this.jumpClick = function (e) {};
+    //
+    // Object.assign(this, config);
+    // this.$closeBtn.click(function (e) {
+    //   _this.closeClick(e);
+    // });
+    // this.$jumpBtn.click(function (e) {
+    //   _this.jumpClick(e);
+    // });
   },
   // 返回形式基本对象
   ReturnPopup: function ReturnPopup(config) {
