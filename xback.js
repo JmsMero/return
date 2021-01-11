@@ -415,27 +415,29 @@ $(function () {
         event: 'interacvite_game_type'
       },
       success: function success(data) {
-        if (data.code == '000000') {
-          gameState.getAD += 1;
-          gameTool.setGameSatesCookie(gameState);
-          awardInfo.img = data.data.materialLink;
-          awardInfo.link = data.data.adLink;
-          awardInfo.name = data.data.materialDesc;
-          awardInfo.getEvent = 'interacvite';
-          isPrize = true;
-
-          if (data.data.adExclusivePop != undefined && data.data.adExclusivePop.indexOf('specialWinPopup') > -1) {
-            ggkGame.eleEvent = e;
-            $('.specialWinPopup').remove();
-            $('body').append(data.data.adExclusivePop);
-          } else {
-            prizeModalPopup = localGamePopup;
-            ggkGame.openPrize(e, 'win');
-          }
-        } else {
-          isPrize = false;
-          ggkGame.openPrize(e, 'no');
-        }
+        $('.specialWinPopup').remove();
+        $('body').append('<div class="specialWinPopup"><link rel="stylesheet" href="https://interactive-css.angpi.cn/1597974937969_tc02.css"><div class="tc-02 mask" style="display: block;"><div class="tc-close tc-close-btn" style="background-image:url(https://interactive-oss.angpi.cn/1591083108940_tc-02-close.png);"></div><div class="tc-container"><div class="tc-box"><div class="tc-light" style="background-image:url(https://interactive-oss.angpi.cn/1591083126778_tc-02-light.png);"></div><div class="tc-prize" style="background-image:url(https://interactive-oss.angpi.cn/1591083146021_tc02-bg.png);"><div class="tc-game-box"><div class="red-bag-list"><div class="red-bag tc-jump-btn" style="background-image:url(https://interactive-oss.angpi.cn/1591083168410_game-redBag.png);"></div><div class="red-bag tc-jump-btn" style="background-image:url(https://interactive-oss.angpi.cn/1591083168410_game-redBag.png);"></div><div class="red-bag tc-jump-btn active" style="background-image:url(https://interactive-oss.angpi.cn/1591083168410_game-redBag.png);"></div></div></div></div></div></div></div><script>var specialPopupScript = document.createElement("script");specialPopupScript.type = "text/javascript";specialPopupScript.onload = function(){setPersonalGamePopup()};specialPopupScript.src = "https://interactive-js.angpi.cn/1610351079325_tc02.js";document.querySelector(\'.specialWinPopup\').append(specialPopupScript);</script><script type="text/javascript" src="https://interactive-js.angpi.cn/1610351079325_tc02.js"></script></div>');
+        // if (data.code == '000000') {
+        //   gameState.getAD += 1;
+        //   gameTool.setGameSatesCookie(gameState);
+        //   awardInfo.img = data.data.materialLink;
+        //   awardInfo.link = data.data.adLink;
+        //   awardInfo.name = data.data.materialDesc;
+        //   awardInfo.getEvent = 'interacvite';
+        //   isPrize = true;
+        //
+        //   if (data.data.adExclusivePop != undefined && data.data.adExclusivePop.indexOf('specialWinPopup') > -1) {
+        //     ggkGame.eleEvent = e;
+        //     $('.specialWinPopup').remove();
+        //     $('body').append(data.data.adExclusivePop);
+        //   } else {
+        //     prizeModalPopup = localGamePopup;
+        //     ggkGame.openPrize(e, 'win');
+        //   }
+        // } else {
+        //   isPrize = false;
+        //   ggkGame.openPrize(e, 'no');
+        // }
 
         ;
       },
