@@ -1,6 +1,5 @@
 "use strict";
 
-;
 $(function () {
   // 游戏名称
   var gameName = gameType; // 中奖奖品信息
@@ -687,10 +686,13 @@ var ggkGame = {
   guka: function guka(x, y) {
     var _this = this;
 
-    this.ctx.beginPath();
-    this.ctx.arc(x * _this.pixelRatio, y * _this.pixelRatio, _this.radius * _this.pixelRatio, 0, Math.PI * 2);
-    this.ctx.fill();
-    this.ctx.closePath();
+    _this.ctx.beginPath();
+
+    _this.ctx.arc(x * _this.pixelRatio, y * _this.pixelRatio, _this.radius * _this.pixelRatio, 0, Math.PI * 2);
+
+    _this.ctx.fill();
+
+    _this.ctx.closePath();
   },
   // 进行刮卡操作及计算
   scratch: function scratch(e, till) {
