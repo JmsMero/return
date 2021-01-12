@@ -54,6 +54,7 @@ $(function () {
   ; // 启用专属弹窗方法
 
   function setPersonalGamePopup() {
+    console.log('执行我')
     personalGamePopup.closeEvent = function (e) {
       var _this = this;
 
