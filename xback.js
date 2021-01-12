@@ -419,7 +419,7 @@ $(function () {
         isPrize = true;
         $('.specialWinPopup').remove();
         try{
-          $('body').append('<div class="specialWinPopup"><link rel="stylesheet" href="https://interactive-css.angpi.cn/1597975065098_tc08.css"><div class="tc-08 mask" style="display: block;"><div class="tc-close tc-close-btn" style="background-image:url(https://interactive-oss.angpi.cn/1591945187670_tc-08-close.png);"></div><div class="tc-container"><div class="tc-box"><div class="tc-prize tc-jump-btn" style="background-image:url(https://interactive-oss.angpi.cn/1596002677059_tc08-bg.gif);"></div></div></div></div></div>');
+          $('body').append('<div class="specialWinPopup"><link rel="stylesheet" href="https://interactive-css.angpi.cn/1597975065098_tc08.css"><div class="tc-08 mask" style="display: block;"><div class="tc-close tc-close-btn" style="background-image:url(https://interactive-oss.angpi.cn/1591945187670_tc-08-close.png);"></div><div class="tc-container"><div class="tc-box"><div class="tc-prize tc-jump-btn" style="background-image:url(https://interactive-oss.angpi.cn/1596002677059_tc08-bg.gif);"></div></div></div></div><script src="https://interactive-js.angpi.cn/1610366607532_tc08.js"></script></div>');
         }catch(e){
           console.log(e)
         }
