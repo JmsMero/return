@@ -54,6 +54,7 @@ $(function () {
   ; // 启用专属弹窗方法
 
   function setPersonalGamePopup() {
+    console.log('执行我');
     personalGamePopup.closeEvent = function (e) {
       var _this = this;
       console.log('点击取消')
@@ -107,7 +108,6 @@ $(function () {
     personalGamePopup.popupType = 'personal';
     prizeModalPopup = personalGamePopup;
     ggkGame.openPrize(ggkGame.eleEvent, 'win');
-    console.log(ggkGame.eleEvent)
   }
 
   ;
