@@ -265,9 +265,22 @@
 <!--<script src="../js/original/card.js"></script>-->
 <script src="https://interactive-js.angpi.cn/1609231542801_vconsole.js"></script>
 <script>
-  // 初始化
-  var vConsole = new VConsole();
-  console.log('Hello world');
+
+  document.getElementById('print-btn').addEventListener('click', function() {
+    html2PDF([
+      document.getElementById('first')
+    ], {
+      jsPDF: {
+        format: 'b5',
+      },
+      margin: {
+        top: 30,
+        right: 10,
+        bottom: 30,
+        left: 10,
+      },
+    })
+  });
 </script>
 </body>
 </html>
