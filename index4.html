@@ -3,192 +3,178 @@
 <head>
   <meta charset="UTF-8">
   <meta https-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+  <meta name="viewport"
+        content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <!-- 链接标题 [[link_title]] -->
-  <title>取件福利大放送</title>
-  <!-- 互动类型 [[interactive_type]] -->
-  <script>var gameType="dzp_26",gameConfig={kefu:true};</script>
+  <title></title>
+  <script>var gameType="hot_dog_01",gameConfig={kefu:true};</script>
   <!-- 图片方式页面打开统计 -->
   <script>;var lrtool={url2json:function(a){var b=a.substr(a.indexOf('?')).substr(1),paramsArr=b.split("&"),paramJson={};if(b!=''){for(var i=0;i<paramsArr.length;i++){var c=paramsArr[i].split("=");c[1]==undefined?paramJson[c[0]]='':paramJson[c[0]]=c[1]}};return paramJson},getCookie:function(a){var b,reg=new RegExp("(^| )"+a+"=([^;]*)(;|$)");if(b=document.cookie.match(reg)){return unescape(b[2])}else{return null}}};var responseHeaderData={getFromHeader:false,req:''};!function(){var u=navigator.userAgent,ua={ios:!!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/),uc:u.indexOf('UCBrowser')>-1,quark:u.indexOf('Quark')>-1,baidu:u.indexOf('Baidu')>-1},urlParams=lrtool.url2json(window.location.href),istrans=urlParams.serverCookie!=undefined,url='//api.interactive.lzdata.com.cn/landingPageStatus',interactiveType=gameType,adSpaceCode=urlParams.adSpaceCode,platLogRequestId='',backInteractiveType=urlParams.backInteractiveType==undefined?null:urlParams.backInteractiveType,sitename=lrtool.getCookie('apicookie_'+adSpaceCode);platLogRequestId=lrtool.getCookie('platLogRequestId');if(istrans){if(ua.ios&&(ua.uc||ua.quark||ua.baidu)){var a=new XMLHttpRequest();a.open('GET',document.location,false);a.send(null);responseHeaderData.getFromHeader=true;responseHeaderData.req=a;platLogRequestId=a.getResponseHeader('platLogRequestId')};sitename=urlParams.serverCookie};var b=url+"?adSpaceCode="+adSpaceCode+'&platLogRequestId='+platLogRequestId+'&interactiveType='+interactiveType+'&sitename='+sitename+'&backInteractiveType='+backInteractiveType;new Image().src=b}();;</script>
-  <link rel="stylesheet" href="https://interactive-css.angpi.cn/1608604752877_dzp05.css">
+  <link rel="stylesheet" href="https://interactive-css.angpi.cn/1608605063352_hot_dog01.css">
   <style>
-      /* 游戏页面背景色 [[game_background_color]] */
-      #T098[theme-name=longpage]{background-color:#b61405;}
-      /* 游戏次数字体颜色 [[times_font_color]] */
-      #T098 .T098_main .T098_jointime{color:#fff;}
-      /* 大转盘开始按钮（游戏开始前） [[pointer_start]] */
-      #T098 .T098_main .T098_panel .T098_start{background-image:url(https://interactive-oss.angpi.cn/1593401585205_p15-start-btn.png);}
-      /* 大转盘开始按钮（点击后） [[pointer_run]] */
-      #T098 .T098_main .T098_panel .T098_start.run{background-image:url(https://interactive-oss.angpi.cn/1593401585205_p15-start-btn.png);}
-      /* 大转盘开始按钮（置灰不可用） [[pointer_disabled]] */
-      #T098 .T098_main .T098_panel .T098_start.disabled{background-image:url(https://interactive-oss.angpi.cn/1593401609049_p15-disable-btn.png);}
-      /* 大转盘开始按钮旁手指 [[pointer_hand]] */
-      #T098 .T098_main .T098_panel .T098_start .hand{background-image:url(https://interactive-oss.angpi.cn/1593400640870_p15-hand.png);}
-      /* 大转盘上闪烁的点点 [[wheel_lump]] */
-      #T098 .T098_main .T098_panel .T098_wheel .T098_lump{background-image:url(https://interactive-oss.angpi.cn/1593400656755_p15-lump.png);}
-      /* 大转盘轮盘 [[wheel_core]] */
-      #T098 .T098_main .T098_panel .T098_wheel .T098_core{background-image:url(https://interactive-oss.angpi.cn/1593400668622_p15-core.png);}
-      /* 大转盘底座 [[wheel_base]] */
-      #T098 .T098_base{background-image:url(https://interactive-oss.angpi.cn/1593400682794_p15-wheelbase.png);}
-      /* 我的奖品图标 [[my_prize_icon]] */
-      #T098 .T098_banner .prize-record{background-image:url(https://interactive-oss.angpi.cn/1594621393487_icon-myPrize.png);}
+      /* 我的奖品 */
+      .prize-record{background-image: url(https://interactive-oss.angpi.cn/1600154559800_V023_award.png);}
   </style>
-  <!-- 自定义css [[diy_css]] -->
-  <style></style>
   <!-- 顶部附加js [[top_js]] -->
   <script></script>
 </head>
 <body>
-<div id="T098" theme-name="longpage">
-  <!-- 游戏背景图 [[main_background_image]] -->
-  <img class="T098_main_bg" src="https://interactive-oss.angpi.cn/1597314398967_bg.jpg"/>
-  <div class="T098_banner">
-    <div class="T098_rule"></div>
-    <div class="prize-record my-prize"></div>
-  </div>
-  <div class="T098_main">
-    <div class="T098_panel_box">
-      <div class="T098_panel">
-        <div class="T098_start">
-          <div class="hand"></div>
+<div class="tac-app">
+  <!-- 默认有热狗版本 -->
+  <div id="V023" data-version="002">
+    <div class="V023_wrap">
+      <!--主体区-->
+      <div class="V023_main">
+        <div class="V023_part_01">
+          <div class="rule rule-modal" statis-name="Rule_root"></div>
+          <div class="V023_btn_start start_00"></div>
+          <div class="guide"></div>
         </div>
-        <div class="T098_wheel">
-          <div class="T098_core">
-            <div class="core-box">
-              <div class="prize">
-                <div class="prize-dialog">
-                  <!-- 奖品1 （谢谢参与） [[prize_image_1]] -->
-                  <img src="https://interactive-oss.angpi.cn/1593400513453_p15-1.png">
-                </div>
+        <div class="V023_part_02">
+          <div class="cover">
+            <div class="clicktip"></div>
+          </div>
+          <div class="guide"></div>
+          <div class="crashtip" style="display: none;"></div>
+          <div class="V023_top">
+            <div class="V023_pass_group">
+              <ul>
+                <li class="V023_pass active">1</li>
+                <li class="V023_pass">2</li>
+                <li class="V023_pass">3</li>
+              </ul>
+            </div>
+            <div class="countdown">10</div>
+          </div>
+          <div class="wheel">
+            <div class="V023_panel roteinit rotate00">
+              <div class="panel"></div>
+              <div class="panel_li">
+                <ul class="bulletsli"></ul>
               </div>
-              <div class="prize">
-                <div class="prize-dialog">
-                  <!-- 奖品2 （幸运福袋） [[prize_image_2]] -->
-                  <img src="https://interactive-oss.angpi.cn/1593400525926_p15-2.png">
+              <div class="broke_panel">
+                <div class="outer_l">
+                  <div class="panel_l"></div>
                 </div>
-              </div>
-              <div class="prize">
-                <div class="prize-dialog">
-                  <!-- 奖品3 [[prize_image_3]] -->
-                  <img src="https://interactive-oss.angpi.cn/1594349399521_p18-3.png">
+                <div class="outer_r">
+                  <div class="panel_r"></div>
                 </div>
-              </div>
-              <div class="prize">
-                <div class="prize-dialog">
-                  <!-- 奖品4 [[prize_image_4]] -->
-                  <img src="https://interactive-oss.angpi.cn/1593686246922_p17-4.png">
-                </div>
-              </div>
-              <div class="prize">
-                <div class="prize-dialog">
-                  <!-- 奖品5 [[prize_image_5]] -->
-                  <img src="https://interactive-oss.angpi.cn/1594105670455_p18-5.png">
-                </div>
-              </div>
-              <div class="prize">
-                <div class="prize-dialog">
-                  <!-- 奖品6 [[prize_image_6]] -->
-                  <img src="https://interactive-oss.angpi.cn/1594260667441_p18-6.png">
-                </div>
+                <ul>
+                  <li class="brkstick"></li>
+                  <li class="brkstick"></li>
+                  <li class="brkstick"></li>
+                  <li class="brkstick"></li>
+                  <li class="brkstick"></li>
+                  <li class="brkstick"></li>
+                  <li class="brkstick"></li>
+                  <li class="brkstick"></li>
+                  <li class="brkstick"></li>
+                  <li class="brkstick"></li>
+                </ul>
               </div>
             </div>
+            <div class="passnum pass_01"></div>
           </div>
-          <div class="T098_lump"></div>
+          <div class="game_tip"></div>
+          <div class="game_opts">
+            <div class="game_time"> 热狗x<span>2</span></div>
+            <div class="game_start" statis-name="Voke_play" data-play-num="0" data-play-name="开始按钮"
+                 data-activityid="16734" statis-click-disabled="true"></div>
+            <div class="clickarea" statis-name="Voke_play" data-play-num="0" data-play-name="开始按钮" data-activityid="16734"
+                 statis-click-disabled="true"></div>
+            <div class="hot_dog"></div>
+          </div>
         </div>
-      </div>
-      <div class="T098_base">
-        <div class="T098_jointime">今日剩余免费&nbsp;<span></span>&nbsp;次</div>
+        <div class="V023_part_03" >
+          <div class="game_continue"></div>
+          <div class="game_award"></div>
+          <div class="clickNone" style="display:none;" statis-name="Voke_play" data-play-num="0" data-play-name="开始按钮"
+               statis-click-disabled="true"></div>
+        </div>
       </div>
     </div>
   </div>
   <!-- 备案信息 [[records_info]] -->
-  <div class="index_disclaimer">所有奖品（包含所有卡券）均需要到指定门店线下领取使用<br>本活动由展鸿主办（详见规则）&nbsp;&nbsp;&nbsp;&nbsp;此页面不含任何爱奇艺会员奖品<br>版权所有：北京展鸿软通科技股份有限公司&nbsp;&nbsp;&nbsp;&nbsp;京ICP备11048084</div>
-  <div id="CActRule" class="hide">
-    <div class="CActRule_box">
-      <div class="CActRule_top_bg"></div>
-      <div class="CActRule_main">
-        <div class="gameRuleContent">
-          <div class="rule_main_text rule_text">
+  <div class="index_disclaimer">
+    <span class="btn_open">按钮</span>*奖品与活动和设备生产商Apple Inc.公司无关</div>
+  <div id="tqq-rule-modal" class="rulemodal">
+    <div class="rule_body">
+      <div class="rule_content">
+        <div class="rule_wrapper">
+          <p>
             <!-- 活动规则 [[active_rule]] -->
-            活动说明:<br>
-            参加活动即有机会获得幸运奖~每天抽奖机会8次免费。此活动为概率中奖，奖品数量有限，祝好运！<br>
-            惊喜一：贵宾卡<br>
-            惊喜二：4G流量包<br>
-            惊喜三：无门槛优惠券<br>
-            惊喜四：特权体验卡<br>
-            惊喜五：幸运福袋<br>
-            －－－－－－－－－－－－－－－－<br>
-            重要声明：<br>
-            1.所有奖品将在活动结束后5-10个工作日在线下指定门店发放领取使用，请耐心等待。<br>
-            2.优惠券类奖品需在线下指定门店兑换实体卡。<br>
-            3.请兑换后仔细阅读使用流程，如有疑问，可直接联系客服专线。<br>
-            4.通过非法途径获得奖品的，主办方有权不提供奖品。<br>
-            5.领取地址：北京市朝阳区十里河德元九和大厦510<br>
-            6.如若有奖品涉及配送，可能需自理保价业务和快递费用<br>
-            －－－－－－－－－－－－－－－－<br>
-            中奖概率说明：<br>
-            •贵宾卡 共50份，中奖概率0.001%；<br>
-            •4G流量包 共500份，中奖概率0.005%；<br>
-            •无门槛优惠券 共500份，中奖概率0.005%；<br>
-            •特权体验卡 共500份，中奖概率0.005%；<br>
-            •幸运福袋 共10000份，中奖概率0.02%。
-          </div>
+            【参与方式】<br>
+            疯狂套好礼<br>
+            【活动规则】<br>
+            点击开始，每用户24小时内最多点击8次，累计进度及卡片次日0点清空。当奖品区域进度条集满时获奖，本活动为概率中奖，祝好运。<br>
+            【活动奖品】<br>
+            惊喜一：5000元购机金<br>
+            惊喜二：100元红包<br>
+            惊喜三：50元红包<br>
+            惊喜四：10元红包<br>
+            【特殊说明】<br>
+            在活动中获得道具、奖品后，如退出活动，可能导致道具或奖品丢失，请在获得道具、奖品后及时兑换或领取，避免损失。<br>
+            ------------------------<br>
+            活动说明<br>
+            1.页面中展示的参与次数，为同一用户每天的参与次数；用户依据页面提示参与活动后，有机会获得相应礼品。参与活动用户的设备不同，参与活动的具体操作步骤请以进入活动页面时的实时展示为准。<br>
+            参与活动后，中奖的用户应在活动页面、奖品详情页面所提示的时间内领奖，逾期未领，即视为放弃。<br>
+            2.领奖后，用户可以通过点击“我的奖品”或相似字样、图标，查看已领取的奖品及使用规则。<br>
+            3.请认真阅读优惠券、兑换券的使用规则，并按照优惠券、兑换券详情页面的提示操作。<br>
+            4.实物类奖品将在中奖后的30个工作日内发货，请注意查收；话费、红包等虚拟奖品将在中奖后的72小时内充值进用户填写的账号。敬请认真、准确填写领取账号，因个人原因填写错误，导致充值失败的，将不给予补发。<br>
+            6.因不可抗力、技术故障等原因，我们有权相应调整或终止活动，而无需向用户进行赔偿或补偿。<br>
+            7.活动期间内，用户存在作弊等违法违规行为的，将被撤销抽奖资格、奖品使用资格，收回已获得的权益。<br>
+            8.对活动规则、奖品使用规则、奖品领取等有疑问的，请在工作日9:00-18:00，按照如下方式联系客服：<br>
+            客服电话：4000011320<br>
+            ------------------------<br>
+            惊喜一：5000元iPhone购机金共10份，中奖概率为0.01%；<br>
+            惊喜二：100元红包共20份，中奖概率为0.02%；<br>
+            惊喜三：50元红包共30份，中奖概率为0.03%；<br>
+            惊喜四：10元红包共120份，中奖概率为0.12%；<br>
+            以上奖品，每人每天限领取1次。<br>
+          </p>
         </div>
       </div>
-      <div class="CActRule_close">
-        <span class="iconfont"></span>
-      </div>
+      <div class="rule_close"></div>
     </div>
   </div>
-  <div id="D017" class="hide" css-name="full_shade_flex">
-    <div class="D017_body" statis-name="Dialog_body">
-      <div class="D017_halo"></div>
-      <div class="D017_light" css-name="animate_circle"></div>
-      <div class="D017_bg"></div>
-      <img class="D017_img" id="D017_img">
-      <div class="D017_word" id="D017_name" css-name="R_ticket_word_1"></div>
-      <div class="D017_accept" id="D017_takeBtn"></div>
-      <div class="D017_line"></div>
-      <div class="D017_packets"></div>
-      <div class="D017_close" id="D017_closeBtn" css-name="R_close_2"></div>
-    </div>
-  </div>
-  <!--svg-->
-  <div id="demoCanvas" class="incentive-animate"></div>
 </div>
-<div class="T098_background"></div>
-<div class="incentive-container"></div>
-<!-- 宝箱开启动效 -->
-<div class="incentive-bg incentiveBgBtn">
-  <div class="incentive-bg-top"></div>
-  <div class="incentive-bg-bottom">
-    <div class="incentive-bg-container" id="style-second">
-      <div class="container">
-        <div class="incentive-stage">
-          <div class="incentive-light"></div>
-          <div class="incentive-title1"></div>
-          <div class="incentive-title2"></div>
-          <div class="incentive-box-close">
-            <div class="incentive-key-wrapper">
-              <div class="incentive-key"></div>
-            </div>
-          </div>
-          <div class="incentive-box-open"></div>
-          <div class="incentive-shing"></div>
-          <div class="incentive-prize1"></div>
+<!--我的奖品-->
+<div class="prize-record my-prize"></div>
+<!--未中奖-->
+<div class="thanksmodal">
+  <span class="thanks-modal-close"><i class="modal-close"></i></span>
+  <div class="thanks-body">
+    <div class="thanks-btn-b">再来一次</div>
+  </div>
+</div>
+<!-- 弹窗 -->
+<div class="showprizemodal">
+  <div class="ringMoney-container">
+    <div class="ringMoney-close pclose"></div>
+    <div class="ringMoney-box">
+      <div class="ringMoney-light"></div>
+      <div class="ringMoney-dialog">
+        <div class="ringMoney-shine"></div>
+        <div class="ringMoney-title"></div>
+        <div class="ringMoney-text">获得惊喜礼包一个</div>
+        <div class="coupon">
+          <img class="logandgo pimg">
         </div>
+        <div class="name-wrap">
+          <span class="name pname"></span>
+        </div>
+        <div class="ringMoney-coin"></div>
+        <div class="ringMoney-color"></div>
+        <div class="ringMoney-btn pbtn"></div>
       </div>
     </div>
   </div>
 </div>
 <script src="https://interactive-js.angpi.cn/1597804968352_jquery.min.js"></script>
 <script src="https://interactive-js.angpi.cn/1610455585298_commonTools.js"></script>
-<!-- 底部附加js [[bottom_js]] -->
 <script></script>
-<script src="https://interactive-js.angpi.cn/1598507771177_svga.min.js"></script>
-<script src="https://interactive-js.angpi.cn/1610530084220_dzp04.js"></script>
+<script src="https://interactive-js.angpi.cn/1610531076135_hot_dog01.js"></script>
 <script src="https://interactive-js.angpi.cn/1609231542801_vconsole.js"></script>
 <script>
   // 初始化

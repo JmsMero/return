@@ -9,69 +9,39 @@
   <!-- 链接标题 [[link_title]] -->
   <title></title>
   <!-- 互动类型 [[interactive_type]] -->
-  <script>var gameType="dzp_24",gameConfig={kefu:true};</script>
+  <script>var gameType = "filp_card_01", gameConfig = {kefu: true};</script>
   <!-- 图片方式页面打开统计 -->
   <script>;var lrtool={url2json:function(a){var b=a.substr(a.indexOf('?')).substr(1),paramsArr=b.split("&"),paramJson={};if(b!=''){for(var i=0;i<paramsArr.length;i++){var c=paramsArr[i].split("=");c[1]==undefined?paramJson[c[0]]='':paramJson[c[0]]=c[1]}};return paramJson},getCookie:function(a){var b,reg=new RegExp("(^| )"+a+"=([^;]*)(;|$)");if(b=document.cookie.match(reg)){return unescape(b[2])}else{return null}}};var responseHeaderData={getFromHeader:false,req:''};!function(){var u=navigator.userAgent,ua={ios:!!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/),uc:u.indexOf('UCBrowser')>-1,quark:u.indexOf('Quark')>-1,baidu:u.indexOf('Baidu')>-1},urlParams=lrtool.url2json(window.location.href),istrans=urlParams.serverCookie!=undefined,url='//api.interactive.lzdata.com.cn/landingPageStatus',interactiveType=gameType,adSpaceCode=urlParams.adSpaceCode,platLogRequestId='',backInteractiveType=urlParams.backInteractiveType==undefined?null:urlParams.backInteractiveType,sitename=lrtool.getCookie('apicookie_'+adSpaceCode);platLogRequestId=lrtool.getCookie('platLogRequestId');if(istrans){if(ua.ios&&(ua.uc||ua.quark||ua.baidu)){var a=new XMLHttpRequest();a.open('GET',document.location,false);a.send(null);responseHeaderData.getFromHeader=true;responseHeaderData.req=a;platLogRequestId=a.getResponseHeader('platLogRequestId')};sitename=urlParams.serverCookie};var b=url+"?adSpaceCode="+adSpaceCode+'&platLogRequestId='+platLogRequestId+'&interactiveType='+interactiveType+'&sitename='+sitename+'&backInteractiveType='+backInteractiveType;new Image().src=b}();;</script>
-  <link rel="stylesheet" href="https://interactive-css.angpi.cn/1608604735186_dzp04.css">
+  <link rel="stylesheet" href="../css/original/flip_card_01.css">
   <style>
+
       /* 游戏页面背景色 [[game_background_color]] */
-      #T098[theme-name=longpage]{background-color:#50090a;}
-      /* 游戏次数字体颜色 [[times_font_color]] */
-      #T098 .T098_main .T098_jointime{color:#fff;}
-      /* 大转盘开始按钮（游戏开始前） [[pointer_start]] */
-      #T098 .T098_main .T098_panel .T098_start{background-image:url(https://interactive-oss.angpi.cn/1593401585205_p15-start-btn.png);}
-      /* 大转盘开始按钮（点击后） [[pointer_run]] */
-      #T098 .T098_main .T098_panel .T098_start.run{background-image:url(https://interactive-oss.angpi.cn/1593401585205_p15-start-btn.png);}
-      /* 大转盘开始按钮（置灰不可用） [[pointer_disabled]] */
-      #T098 .T098_main .T098_panel .T098_start.disabled{background-image:url(https://interactive-oss.angpi.cn/1593401609049_p15-disable-btn.png);}
-      /* 大转盘开始按钮旁手指 [[pointer_hand]] */
-      #T098 .T098_main .T098_panel .T098_start .hand{background-image:url(https://interactive-oss.angpi.cn/1593400640870_p15-hand.png);}
-      /* 大转盘上闪烁的点点 [[wheel_lump]] */
-      #T098 .T098_main .T098_panel .T098_wheel .T098_lump{background-image:url(https://interactive-oss.angpi.cn/1593400656755_p15-lump.png);}
-      /* 大转盘轮盘 [[wheel_core]] */
-      #T098 .T098_main .T098_panel .T098_wheel .T098_core{background-image:url(https://interactive-oss.angpi.cn/1593400668622_p15-core.png);}
-      /* 大转盘底座 [[wheel_base]] */
-      #T098 .T098_base{background-image:url(https://interactive-oss.angpi.cn/1593400682794_p15-wheelbase.png);}
-      /* 碎片收集栏背景 [[collect_list_bg]] */
-      #T098 .collect-list{background-image:url(https://interactive-oss.angpi.cn/1595407661531_p24-collect-box-bg.png);}
-      /* 碎片收集奖品1 [[collect_prize_1]] */
-      #T098 .collect-list .collect-1{background-image:url(https://interactive-oss.angpi.cn/1595407852859_p24-collect-1.png);}
-      /* 碎片收集奖品2 [[collect_prize_2]] */
-      #T098 .collect-list .collect-2{background-image:url(https://interactive-oss.angpi.cn/1595407877806_p24-collect-2.png);}
-      /* 碎片收集奖品3 [[collect_prize_3]] */
-      #T098 .collect-list .collect-3{background-image:url(https://interactive-oss.angpi.cn/1595407889473_p24-collect-3.png);}
+      #T089, #T089 .page-group .page #egg .e-main .e-list {
+          background-color: #7f8ae6;
+      }
+
+      /* 游戏次数背景及字体颜色 [[times_background]] [[times_font_color]] */
+      #T089 .page-group .page #egg .e-main .jointime {
+          background-color:  #7f8ae6;
+          color: #fff;
+      }
+
+      /* 背景卡片 [[background_card]] */
+      #T089 .page-group .page #egg .e-main .eggs .item .egg,#T089 .e-main .eggs .item,#T089 .card.cardItem,#T089  .carddialog .card.cardItem {
+          background: url(https://interactive-oss.angpi.cn/1607508206303_card.png);
+          background-size: cover;
+      }
+
+      /* 奖品卡片 [[prize_cards]] */
+      #T089 .e-main .eggs .card_award {
+          background: url(https://interactive-oss.angpi.cn/1607586543804_card_award_img.png);
+          background-size: cover;
+      }
+
       /* 我的奖品图标 [[my_prize_icon]] */
-      #T098 .T098_banner .prize-record{background-image:url(https://interactive-oss.angpi.cn/1596694559653_icon-myPrize-1.png);}
-      /* 翻倍后-游戏次数字体颜色 [[times_font_color_double]] */
-      .inspire #T098 .T098_main .T098_jointime{color:#fff;}
-      /* 翻倍后-转盘背景光 [[backlight_double]] */
-      .inspire #T098 .T098_main .T098_backlight{background-image:url(https://interactive-oss.angpi.cn/1595408072116_p24-backlight-double.png);}
-      /* 翻倍后-大转盘开始按钮（游戏开始前） [[pointer_start_double]] */
-      .inspire #T098 .T098_main .T098_panel .T098_start{background-image:url(https://interactive-oss.angpi.cn/1595408198605_p24-start-btn-double.png);}
-      /* 翻倍后-大转盘开始按钮（点击后） [[pointer_run_double]] */
-      .inspire #T098 .T098_main .T098_panel .T098_start.run{background-image:url(https://interactive-oss.angpi.cn/1595408198605_p24-start-btn-double.png);}
-      /* 翻倍后-大转盘开始按钮（置灰不可用） [[pointer_disabled_double]] */
-      .inspire #T098 .T098_main .T098_panel .T098_start.disabled{background-image:url(https://interactive-oss.angpi.cn/1595408198605_p24-start-btn-double.png);}
-      /* 翻倍后-大转盘开始按钮旁手指 [[pointer_hand_double]] */
-      .inspire #T098 .T098_main .T098_panel .T098_start .hand{background-image:url(https://interactive-oss.angpi.cn/1593400640870_p15-hand.png);}
-      /* 翻倍后-大转盘上白色闪烁点 [[wheel_lump1_double]] */
-      .inspire #T098 .T098_main .T098_panel .T098_wheel .T098_lump1{background-image:url(https://interactive-oss.angpi.cn/1595408594472_p24-lump1-double.png);}
-      /* 翻倍后-大转盘上黄色闪烁点 [[wheel_lump2_double]] */
-      .inspire #T098 .T098_main .T098_panel .T098_wheel .T098_lump2{background-image:url(https://interactive-oss.angpi.cn/1595408607907_p24-lump2-double.png);}
-      /* 翻倍后-大转盘外光圈 [[wheel_lump3_double]] */
-      .inspire #T098 .T098_main .T098_panel .T098_wheel .T098_lump3{background-image:url(https://interactive-oss.angpi.cn/1595408624034_p24-lump3-double.png);}
-      /* 翻倍后-大转盘轮盘 [[wheel_core_double]] */
-      .inspire #T098 .T098_main .T098_panel .T098_wheel .T098_core{background-image:url(https://interactive-oss.angpi.cn/1595408835954_p24-core-double.png);}
-      /* 翻倍后-大转盘底座 [[wheel_base_double]] */
-      .inspire #T098 .T098_base{background-image:url(https://interactive-oss.angpi.cn/1595408858383_p24-wheelbase-double.png);}
-      /* 翻倍后-碎片收集栏背景 [[collect_list_bg_double]] */
-      .inspire #T098 .collect-list{background-image:url(https://interactive-oss.angpi.cn/1595408916841_p24-collect-box-double-bg.png);}
-      /* 翻倍后-碎片收集奖品1 [[collect_prize_1_double]] */
-      .inspire #T098 .collect-list .collect-1{background-image:url(https://interactive-oss.angpi.cn/1595409068284_p24-collect-inspire-1.png);}
-      /* 翻倍后-碎片收集奖品2 [[collect_prize_2_double]] */
-      .inspire #T098 .collect-list .collect-2{background-image:url(https://interactive-oss.angpi.cn/1595409080795_p24-collect-inspire-2.png);}
-      /* 翻倍后-碎片收集奖品3 [[collect_prize_3_double]] */
-      .inspire #T098 .collect-list .collect-3{background-image:url(https://interactive-oss.angpi.cn/1595409092595_p24-collect-inspire-3.png);}
+      #T089 .page-group .page .prize-record {
+          background-image: url(https://interactive-oss.angpi.cn/1607507964031_prize.png);
+      }
   </style>
   <!-- 自定义css [[diy_css]] -->
   <style></style>
@@ -79,139 +49,84 @@
   <script></script>
 </head>
 <body>
-<div id="T098" theme-name="longpage">
-  <!-- 游戏背景图 [[main_background_image]] -->
-  <img class="T098_main_bg" src="https://interactive-oss.angpi.cn/1593686150570_p17-bg.jpg"/>
-  <div class="T098_banner">
-    <div class="T098_rule"></div>
-    <div class="prize-record my-prize"></div>
+<div id="T089" statis-name='Toke_root' version="T089H06" theme-name="T089T01">
+  <div class="carddialog">
+    <div class="card cardItem"></div>
   </div>
-  <div class="T098_main">
-    <div class="T098_panel_box">
-      <div class="T098_backlight"></div>
-      <div class="T098_panel">
-        <div class="T098_start">
-          <div class="hand"></div>
+  <!-- 游戏背景图 [[main_background_image]] -->
+  <img class="T089_main_bg" src="https://interactive-oss.angpi.cn/1607507920198_game_bg.jpeg">
+  <div class="page-group"  data-config="T029H">
+    <div class="page page-current">
+      <div id="egg">
+        <div id="way">
+          <span class="iconfont"></span>
+          <span>规则</span>
         </div>
-        <div class="T098_wheel">
-          <div class="T098_core">
-            <div class="core-box">
-              <div class="prize">
-                <div class="prize-dialog">
-                  <!-- 奖品1 （谢谢参与） [[prize_image_1]] -->
-                  <img src="https://interactive-oss.angpi.cn/1593400513453_p15-1.png">
-                </div>
-              </div>
-              <div class="prize">
-                <div class="prize-dialog">
-                  <!-- 奖品2 （幸运福袋） [[prize_image_2]] -->
-                  <img src="https://interactive-oss.angpi.cn/1593400525926_p15-2.png">
-                </div>
-              </div>
-              <div class="prize">
-                <div class="prize-dialog">
-                  <!-- 奖品3 [[prize_image_3]] -->
-                  <img src="https://interactive-oss.angpi.cn/1593686221709_p17-3.png">
-                </div>
-              </div>
-              <div class="prize">
-                <div class="prize-dialog">
-                  <!-- 奖品4 [[prize_image_4]] -->
-                  <img src="https://interactive-oss.angpi.cn/1593686246922_p17-4.png">
-                </div>
-              </div>
-              <div class="prize">
-                <div class="prize-dialog">
-                  <!-- 奖品5 [[prize_image_5]] -->
-                  <img src="https://interactive-oss.angpi.cn/1593400562474_p15-5.png">
-                </div>
-              </div>
-              <div class="prize">
-                <div class="prize-dialog">
-                  <!-- 奖品6 [[prize_image_6]] -->
-                  <img src="https://interactive-oss.angpi.cn/1593400578842_p15-6.png">
+        <div class="prize-record my-prize"></div>
+        <div class="banner"></div>
+        <div class="e-main">
+          <div class="jointime">今日剩余免费 <i></i> 次</div>
+          <div class="eggs">
+            <div class="item cardmove" statis-name="Toke_play" data-play-num="0" data-play-name="开始按钮"></div>
+            <div class="item" statis-name="Toke_play" data-play-num="1" data-play-name="开始按钮"></div>
+            <div class="item" statis-name="Toke_play" data-play-num="2" data-play-name="开始按钮"></div>
+            <div class="item" statis-name="Toke_play" data-play-num="3" data-play-name="开始按钮"></div>
+            <div class="item middle" statis-name="Toke_play" data-play-num="4" data-play-name="开始按钮"></div>
+            <div class="item" statis-name="Toke_play" data-play-num="5" data-play-name="开始按钮"></div>
+            <div class="item" statis-name="Toke_play" data-play-num="6" data-play-name="开始按钮"></div>
+            <div class="item" statis-name="Toke_play" data-play-num="7" data-play-name="开始按钮"></div>
+            <div class="item" statis-name="Toke_play" data-play-num="8" data-play-name="开始按钮"></div>
+            <div class="card_award"></div>
+          </div>
+        </div>
+        <!-- 备案信息 [[records_info]] -->
+        <div class="index_disclaimer">111</div>
+        <div id="CActRule" class="hide">
+          <div class="CActRule_box">
+            <div class="CActRule_top_bg"></div>
+            <div class="CActRule_main">
+              <div class="gameRuleContent">
+                <div class="rule_main_text rule_text">
+                  <!-- 活动规则 [[active_rule]] -->
+                  活动说明:<br>
+                  参与活动即有机会获得幸运奖~每天抽奖机会8次免费。此活动为概率中奖，奖品数量有限，祝好运！<br>
+                  惊喜一：200元话费<br>
+                  惊喜二：100元 话费<br>
+                  惊喜三：50元 话费<br>
+                  惊喜四：20元 话费<br>
+                  惊喜五：幸运福袋<br>
+                  －－－－－－－－－－－－－－－－<br>
+                  重要声明：<br>
+                  1.奖品将在活动结束后5-10个工作日安排发放,请耐心等待<br>
+                  2.优惠券类奖品的使用规则详见每个优惠券的介绍页<br>
+                  3.请兑换后仔细阅读使用流程,如有疑问,可直接联系客服专线:15157176339或客服QQ:3104964880(工作日9:00至18:00)<br>
+                  4.通过非法途径获得奖品的,主办方有权不提供奖品<br>
+                  －－－－－－－－－－－－－－－－<br>
+                  中奖概率说明：<br>
+                  •200元话费 共10份,中奖概率0.001%;<br>
+                  •100元话费 共20份,中奖概率0.001%;<br>
+                  •50元话费 共100份,中奖概率0.001%;<br>
+                  •20元话费 共500份,中奖概率0.01%;
                 </div>
               </div>
             </div>
-          </div>
-          <div class="T098_lump"></div>
-          <div class="T098_lump1"></div>
-          <div class="T098_lump2"></div>
-          <div class="T098_lump3"></div>
-        </div>
-      </div>
-      <div class="T098_base"><div class="T098_jointime">今日剩余免费&nbsp;<span></span>&nbsp;次</div></div>
-    </div>
-    <div class="collect-list">
-      <div class="collect-box collect-1">
-        <div class="progress-bar"><div class="collect-progress" pro="0"></div></div>
-      </div>
-      <div class="collect-box collect-2">
-        <div class="progress-bar"><div class="collect-progress" pro="0"></div></div>
-      </div>
-      <div class="collect-box collect-3 not-collect"></div>
-    </div>
-  </div>
-  <!-- 备案信息 [[records_info]] -->
-  <div class="index_disclaimer">主办信息<br>版权信息</div>
-  <div id="CActRule" class="hide">
-    <div class="CActRule_box">
-      <div class="CActRule_top_bg"></div>
-      <div class="CActRule_main">
-        <div class="gameRuleContent">
-          <div class="rule_main_text rule_text">
-            <!-- 活动规则 [[active_rule]] -->
-            活动说明:<br>
-            参加活动即有机会获得幸运奖~每天抽奖机会8次免费。此活动为概率中奖，奖品数量有限，祝好运！<br>
-            惊喜一：300元红包<br>
-            惊喜二：4G流量包<br>
-            惊喜三：10元红包<br>
-            惊喜四：7天体验券<br>
-            惊喜五：幸运福袋<br>
-            －－－－－－－－－－－－－－－－<br>
-            重要声明：<br>
-            1.奖品将在活动结束后5-10个工作日安排发放，请耐心等待。<br>
-            2.优惠券类奖品的使用规则详见每个优惠券的介绍页<br>
-            3.请兑换后仔细阅读使用流程，如有疑问，可直接联系客服专线<br>
-            4.通过非法途径获得奖品的，主办方有权不提供奖品<br>
-            5.领取地址：实物类奖品请在指定门店领取，浙江省台州市白云山南路201-203号<br>
-            －－－－－－－－－－－－－－－－<br>
-            中奖概率说明：<br>
-            •300元红包 共50份，中奖概率0.001%；<br>
-            •4G流量包 共500份，中奖概率0.005%；<br>
-            •10元红包 共500份，中奖概率0.005%；<br>
-            •7天体验券 共500份，中奖概率0.005%；<br>
-            •幸运福袋 共10000份，中奖概率0.02%。
+            <div class="CActRule_close">
+              <span class="iconfont"></span>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="CActRule_close">
-        <span class="iconfont"></span>
-      </div>
-    </div>
-  </div>
-  <div class="upgrade-container">
-    <div class="upgrade-mask"></div>
-    <div class="upgradeWhite"></div>
-    <div class="upgrade1"></div>
-    <div class="upgradeText first"></div>
-    <div class="rotateLight"></div>
-    <div class="upgradeText second"></div>
-    <div class="upgrade2"></div>
-  </div>
-  <div class="D105">
-    <div class="close pclose"></div>
-    <div class="container">
-      <div class="box">
-        <div class="light"></div>
-        <div class="coin"></div>
-        <div class="dialog">
-          <div class="dialog-title"></div>
-          <div class="coupon">
-            <img class="pimg">
+        <div id="D018" class="hide" css-name="full_shade_flex" theme-name="D018Short01" state-name="DInA">
+          <div class="D018_body">
+            <div class="D018_halo"></div>
+            <div class="D018_light"></div>
+            <div class="D018_bg"></div>
+            <img class="D018_img" id="D018_img">
+            <div class="D018_word" id="D018_name" css-name="R_ticket_word_1"></div>
+            <div class="D018_accept" id="D018_takeBtn"></div>
+            <div class="D018_stars"></div>
+            <div class="D018_packets"></div>
           </div>
-          <div class="counpon-name"><span class="name pname"></span></div>
-          <div class="btn pbtn"></div>
+          <div class="D018_close" id="D018_closeBtn" css-name="R_close_2"></div>
         </div>
       </div>
     </div>
@@ -221,7 +136,7 @@
 <script src="https://interactive-js.angpi.cn/1610455585298_commonTools.js"></script>
 <!-- 底部附加js [[bottom_js]] -->
 <script></script>
-<script src="https://interactive-js.angpi.cn/1610530065218_dzp03.js"></script>
+<script src="https://interactive-js.angpi.cn/1610530968952_flip_card_01.js"></script>
 <script src="https://interactive-js.angpi.cn/1609231542801_vconsole.js"></script>
 <script>
   // 初始化

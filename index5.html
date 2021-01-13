@@ -9,206 +9,180 @@
   <!-- 链接标题 [[link_title]] -->
   <title></title>
   <!-- 互动类型 [[interactive_type]] -->
-  <script>var gameType="dzp_26",gameConfig={kefu:true};</script>
+  <script>var gameType="ndj_01",gameConfig={kefu:true};</script>
   <!-- 图片方式页面打开统计 -->
   <script>;var lrtool={url2json:function(a){var b=a.substr(a.indexOf('?')).substr(1),paramsArr=b.split("&"),paramJson={};if(b!=''){for(var i=0;i<paramsArr.length;i++){var c=paramsArr[i].split("=");c[1]==undefined?paramJson[c[0]]='':paramJson[c[0]]=c[1]}};return paramJson},getCookie:function(a){var b,reg=new RegExp("(^| )"+a+"=([^;]*)(;|$)");if(b=document.cookie.match(reg)){return unescape(b[2])}else{return null}}};var responseHeaderData={getFromHeader:false,req:''};!function(){var u=navigator.userAgent,ua={ios:!!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/),uc:u.indexOf('UCBrowser')>-1,quark:u.indexOf('Quark')>-1,baidu:u.indexOf('Baidu')>-1},urlParams=lrtool.url2json(window.location.href),istrans=urlParams.serverCookie!=undefined,url='//api.interactive.lzdata.com.cn/landingPageStatus',interactiveType=gameType,adSpaceCode=urlParams.adSpaceCode,platLogRequestId='',backInteractiveType=urlParams.backInteractiveType==undefined?null:urlParams.backInteractiveType,sitename=lrtool.getCookie('apicookie_'+adSpaceCode);platLogRequestId=lrtool.getCookie('platLogRequestId');if(istrans){if(ua.ios&&(ua.uc||ua.quark||ua.baidu)){var a=new XMLHttpRequest();a.open('GET',document.location,false);a.send(null);responseHeaderData.getFromHeader=true;responseHeaderData.req=a;platLogRequestId=a.getResponseHeader('platLogRequestId')};sitename=urlParams.serverCookie};var b=url+"?adSpaceCode="+adSpaceCode+'&platLogRequestId='+platLogRequestId+'&interactiveType='+interactiveType+'&sitename='+sitename+'&backInteractiveType='+backInteractiveType;new Image().src=b}();;</script>
-  <link rel="stylesheet" href="https://interactive-css.angpi.cn/1608604774045_dzp06.css">
+  <link rel="stylesheet" href="https://interactive-css.angpi.cn/1608605091212_ndj01.css">
   <style>
       /* 游戏页面背景色 [[game_background_color]] */
-      #T098[theme-name=longpage]{background-color:#ffd680;}
-      /* 游戏次数字体颜色 [[times_font_color]] */
-      #T098 .T098_main .T098_jointime{color:#fff;}
-      /* 大转盘外盘 [[wheel_panel]] */
-      #T098 .T098_main .T098_panel{background-image:url(https://interactive-oss.angpi.cn/1601259357091_p26-turnCirCle-bg.png);}
-      /* 大转盘内盘（旋转部分） [[wheel_core]] */
-      #T098 .T098_main .T098_panel .T098_wheel .T098_core{background-image:url(https://interactive-oss.angpi.cn/1601264083503_p26-turncircl.png);}
-      /* 大转盘开始按钮 [[pointer_start]] */
-      #T098 .T098_main .T098_panel .start_btn{background-image:url(https://interactive-oss.angpi.cn/1601264126822_start-btn.png);}
-      /* 大转盘开始按钮旁手指 [[pointer_hand]] */
-      #T098 .T098_main .T098_panel .start_btn .hand{background-image:url(https://interactive-oss.angpi.cn/1601264143617_hand.png);}
-      /* 大转盘底座 [[wheel_base]] */
-      #T098 .T098_base{background-image:url(https://interactive-oss.angpi.cn/1601264246161_p26-base.png);}
-      /* 我的奖品图标 [[my_prize_icon]] */
-      #T098 .T098_banner .prize-record{background-image:url(https://interactive-oss.angpi.cn/1601258646356_icon-myPrize-3.png);}
-      /* 心仪选择手指 [[select_hand]] */
-      .prize-select-mask .prize-select-hand{background-image:url(https://interactive-oss.angpi.cn/1601264272667_hand.png);}
-      /* 左心仪礼物 [[select_left]] */
-      .prize-select-mask .prize-select-box.left,.prize-select-animation .left-prize-ani .left-inner{background-image:url(https://interactive-oss.angpi.cn/1601264288979_p26-left_select_prize.png);}
-      /* 右心仪礼物 [[select_right]] */
-      .prize-select-mask .prize-select-box.right,.prize-select-animation .right-prize-ani .right-inner{background-image: url(https://interactive-oss.angpi.cn/1601264302258_p26-right_select_prize.png);}
+      .ndj-box-parent{background-color:#dbe6c0;}
+      /* 扭蛋机机身背景图 [[default-prize-box]] */
+      .ndj-box-parent .defaultPrizeBox{background-image:url(https://interactive-oss.angpi.cn/1598500207441_ndj_bg.png);}
+      /* 奖品栏背景图 [[rd-bottom]] */
+      .ndj-box-parent .rd-bottom{background-image:url(https://interactive-oss.angpi.cn/1598494685482_hb_bg.jpg);}
+      /* 奖品按钮背景图 [[tac-record-bg]] */
+      .ndj-box-parent .tac-record{background-image:url(https://interactive-oss.angpi.cn/1598493652477_jp_bg.jpg);}
+      /* 规则按钮背景图 [[tac-rule-bg]] */
+      .ndj-box-parent .tac-rule{background-image:url(https://interactive-oss.angpi.cn/1598493756284_gz_bg.jpg);}
+      /* 扭蛋机出口背景 [[utter-bg]] */
+      .ndj-box-parent .utter{background-image: url(https://interactive-oss.angpi.cn/1598493846130_exit_bg.jpg);}
+      /* 扭蛋机内奖品图1 [[egg-prize01]] */
+      .ndj-box-parent .egg-phone{background-image:url(https://interactive-oss.angpi.cn/1598493930863_egg-phone.png);}
+      /* 扭蛋机内奖品图2 [[egg-prize02]] */
+      .ndj-box-parent .egg-gift{background-image:url(https://interactive-oss.angpi.cn/1598493961000_egg-gift.png);}
+      /* 扭蛋机内奖品图3 [[egg-prize03]] */
+      .ndj-box-parent .egg-redpack{background-image:url(https://interactive-oss.angpi.cn/1598493991891_egg-redpack.png);}
+      /* 扭蛋机内中奖球-扭 [[egg-niu]] */
+      .ndj-box-parent .egg-niu,.ndj-box-parent .win-niu{background-image:url(https://interactive-oss.angpi.cn/1598494076157_egg-niu-small.png);}
+      /* 扭蛋机内中奖球-蛋 [[egg-dan]] */
+      .ndj-box-parent .egg-dan,.ndj-box-parent .win-dan{background-image:url(https://interactive-oss.angpi.cn/1598494210126_egg-dan-small.png);}
+      /* 扭蛋机内中奖球-领 [[egg-ling]] */
+      .ndj-box-parent .egg-ling,.ndj-box-parent .win-ling{background-image:url(https://interactive-oss.angpi.cn/1598494299199_egg-ling-small.png);}
+      /* 扭蛋机内中奖球-红 [[egg-hong]] */
+      .ndj-box-parent .egg-hong,.ndj-box-parent .win-hong{background-image:url(https://interactive-oss.angpi.cn/1598494389544_egg-hong-small.png);}
+      /* 扭蛋机内中奖球-包 [[egg-bao]] */
+      .ndj-box-parent .egg-bao,.ndj-box-parent .win-bao{background-image:url(https://interactive-oss.angpi.cn/1598494495425_egg-bao-small.png);}
+      /* 进度条背景图 [[progress-box]] */
+      .ndj-box-parent .progressBox{background-image:url(https://interactive-oss.angpi.cn/1598494756324_jdt_bg.jpg);}
+      /* 进度条图 [[progress-score]] */
+      .ndj-box-parent .score_2{background-image:url(https://interactive-oss.angpi.cn/1598494821797_progress.png);}
+      /* 点击按钮背景图 [[index-start-btn]] */
+      .ndj-box-parent .index_start-btn_3HxlT{background-image:url(https://interactive-oss.angpi.cn/1598494894531_btn_m.jpg);}
+      /* 点击按钮按下背景图 [[index-start-btn-down]] */
+      .ndj-box-parent .index_start-btn_down{background-image:url(https://interactive-oss.angpi.cn/1598494957849_btn_ax.jpg);}
+      /* 点击小手图标 [[index-show-hand]] */
+      .ndj-box-parent .index_showHand_1VdnD{background-image:url(https://interactive-oss.angpi.cn/1598495026921_hand.png);}
   </style>
-  <script>
-    var selectPrizeLists = {
-      list_0: {
-        /* 奖品1 （可选奖品位，默认幸运福袋） [[prize_image_1]] */
-        prize1: "https://interactive-oss.angpi.cn/1593400525926_p15-2.png",
-        /* 奖品4 （可选奖品位，默认幸运福袋） [[prize_image_4]] */
-        prize2: "https://interactive-oss.angpi.cn/1593400525926_p15-2.png"
-      },
-      list_1: {
-        /* 左心仪礼物选中后奖品1 [[left_prize_1]] */
-        prize1: "https://interactive-oss.angpi.cn/1601264324422_p1-6.png",
-        /* 左心仪礼物选中后奖品2 [[left_prize_2]] */
-        prize2: "https://interactive-oss.angpi.cn/1601264338454_p2-6.png"
-      },
-      list_2: {
-        /* 右心仪礼物选中后奖品1 [[right_prize_1]] */
-        prize1: "https://interactive-oss.angpi.cn/1601264352617_p15-3.png",
-        /* 右心仪礼物选中后奖品2 [[right_prize_2]] */
-        prize2: "https://interactive-oss.angpi.cn/1601264368926_p23-4.png"
-      }
-    };
-  </script>
   <!-- 自定义css [[diy_css]] -->
   <style></style>
   <!-- 顶部附加js [[top_js]] -->
   <script></script>
 </head>
 <body>
-<div id="T098" theme-name="longpage">
-  <!-- 游戏背景图 [[main_background_image]] -->
-  <img class="T098_main_bg" src="https://interactive-oss.angpi.cn/1601259322551_p26-bg.jpg"/>
-  <div class="T098_banner">
-    <div class="T098_rule"></div>
-    <div class="prize-record my-prize"></div>
-  </div>
-  <div class="T098_main">
-    <div class="T098_panel_box">
-      <div class="T098_panel">
-        <div class="T098_start start_btn">
-          <div class="hand"></div>
+<div class="ndj-box-parent">
+  <!-- 游戏背景图 [[tac-app-bg]] -->
+  <img class="tac-app-bg" src="https://interactive-oss.angpi.cn/1598493518743_index_bg.jpg">
+  <div class="tac-app">
+    <div class="tac-main">
+      <div class="ball-main">
+        <div class="prizeBox defaultPrizeBox"></div>
+        <div class="utter"></div>
+        <div class="win-ball">
+          <div class="ball"></div>
         </div>
-        <div class="T098_wheel">
-          <div class="T098_core">
-            <div class="core-box">
-              <div class="prize">
-                <div class="prize-dialog">
-                  <!-- 奖品1 （可选奖品位，默认幸运福袋） -->
-                  <img class="prize-item prize-select-1">
-                </div>
-              </div>
-              <div class="prize">
-                <div class="prize-dialog">
-                  <!-- 奖品2 （谢谢参与） [[prize_image_2]] -->
-                  <img class="prize-item" src="https://interactive-oss.angpi.cn/1593400513453_p15-1.png">
-                </div>
-              </div>
-              <div class="prize">
-                <div class="prize-dialog">
-                  <!-- 奖品3 [[prize_image_3]] -->
-                  <img class="prize-item" src="https://interactive-oss.angpi.cn/1594178916978_p18-3.png">
-                </div>
-              </div>
-              <div class="prize">
-                <div class="prize-dialog">
-                  <!-- 奖品4 （可选奖品位，默认幸运福袋） -->
-                  <img class="prize-item prize-select-2">
-                </div>
-              </div>
-              <div class="prize">
-                <div class="prize-dialog">
-                  <!-- 奖品5 （幸运福袋） [[prize_image_5]] -->
-                  <img class="prize-item" src="https://interactive-oss.angpi.cn/1593400525926_p15-2.png">
-                </div>
-              </div>
-              <div class="prize">
-                <div class="prize-dialog">
-                  <!-- 奖品6 [[prize_image_6]] -->
-                  <img class="prize-item" src="https://interactive-oss.angpi.cn/1594174772014_p18-6.png">
-                </div>
-              </div>
+        <div class="glassback prizeFloat">
+          <div class="prize egg-blue"></div>
+          <div class="prize egg-redpack"></div>
+          <div class="prize egg-purple"></div>
+          <div class="prize egg-purple1"></div>
+          <div class="prize egg-bao"></div>
+          <div class="prize egg-dan"></div>
+          <div class="prize egg-hong"></div>
+          <div class="prize egg-niu"></div>
+          <div class="prize egg-ling"></div>
+          <div class="prize egg-phone"></div>
+          <div class="prize egg-gift"></div>
+          <div class="prize egg-blue1"></div>
+        </div>
+      </div>
+      <div>
+        <div class="rd-bottom">
+          <div class="progressBox">
+            <div class="progressBox1">
+              <div class="progress score_2"></div>
             </div>
           </div>
-        </div>
-      </div>
-      <div class="T098_base">
-        <div class="T098_jointime">今日剩余：<span></span>&nbsp;次</div>
-      </div>
-    </div>
-  </div>
-  <div class="prize-select-mask">
-    <div class="prize-select-close"></div>
-    <div class="prize-select-top">
-      <div class="select-top-colourbar" ></div>
-      <div class="select-top-redbag"></div>
-      <div class="select-top-title"></div>
-    </div>
-    <div class="prize-select-light left"></div>
-    <div class="prize-select-light right"></div>
-    <div class="prize-select-box left normalAni"></div>
-    <div class="prize-select-box right normalAni"></div>
-    <div class="prize-select-hand left"></div>
-    <div class="prize-select-hand right"></div>
-  </div>
-  <div class="prize-select-animation">
-    <div class="left-prize-ani">
-      <div class="left-inner left-inner-0"></div>
-      <div class="left-inner left-inner-1"></div>
-    </div>
-    <div class="right-prize-ani">
-      <div class="right-inner right-inner-0"></div>
-      <div class="right-inner right-inner-1"></div>
-    </div>
-    <div class="prize-select-animation-smoke smoke1"></div>
-    <div class="prize-select-animation-smoke smoke2"></div>
-    <div class="prize-select-animation-shing"></div>
-  </div>
-  <!-- 备案信息 [[records_info]] -->
-  <div class="index_disclaimer"></div>
-  <div id="CActRule" class="hide">
-    <div class="CActRule_box">
-      <div class="CActRule_top_bg"></div>
-      <div class="CActRule_main">
-        <div class="gameRuleContent">
-          <div class="rule_main_text rule_text">
-            <!-- 活动规则 [[active_rule]] -->
-            活动说明:<br>
-            参加活动即有机会获得幸运奖~每天抽奖机会8次免费。此活动为概率中奖，奖品数量有限，祝好运！<br>
-            惊喜一：200元话费<br>
-            惊喜二：4G流量包<br>
-            惊喜三：10元话费<br>
-            惊喜四：特权体验卡<br>
-            惊喜五：幸运福袋<br>
-            －－－－－－－－－－－－－－－－<br>
-            重要声明：<br>
-            1.奖品将在活动结束后5-10个工作日安排发放，请耐心等待。<br>
-            2.优惠券类奖品的使用规则详见每个优惠券的介绍页<br>
-            3.请兑换后仔细阅读使用流程，如有疑问，可直接联系客服专线<br>
-            4.通过非法途径获得奖品的，主办方有权不提供奖品<br>
-            －－－－－－－－－－－－－－－－<br>
-            中奖概率说明：<br>
-            •200元话费 共50份，中奖概率0.001%；<br>
-            •4G流量包 共500份，中奖概率0.005%；<br>
-            •10元话费 共500份，中奖概率0.005%；<br>
-            •特权体验卡 共500份，中奖概率0.005%；<br>
-            •幸运福袋 共10000份，中奖概率0.02%。
+          <div class="smallBall">
+            <div class="win-niu prize small-ball0"><span></span></div>
+            <div class="win-dan prize small-ball0"><span></span></div>
+            <div class="win-ling prize small-ball0"><span></span></div>
+            <div class="win-hong prize small-ball0"><span></span></div>
+            <div class="win-bao prize small-ball0"><span></span></div>
           </div>
+          <div class="carBox"></div>
+          <div class="e-light"></div>
         </div>
       </div>
-      <div class="CActRule_close">
-        <span class="iconfont"></span>
+      <div class="index_times_3-Xsp">今日剩余免费<span></span>次</div>
+      <div class="start j_activity_start_click index_start-btn_3HxlT">
+        <div class="j_btn_click"></div>
+      </div>
+      <div class="index_hand_18D_B index_showHand_1VdnD"></div>
+    </div>
+    <div class="tac-record my-prize"></div>
+    <div class="tac-rule" id="ndj-rule-btn"></div>
+    <!-- 备案信息 [[records_info]] -->
+    <div class="index_disclaimer">*奖品与活动和设备生产商Apple Inc.公司无关</div>
+  </div>
+  <div id="ndj-rule-modal" class="rulemodal">
+    <div class="rule_body">
+      <div class="rule_content">
+        <div class="rule_wrapper">
+          <p>
+            <!-- 活动规则 [[active_rule]] -->
+            【参与方式】<br>
+            疯狂套好礼<br>
+            【活动规则】<br>
+            点击开始，每用户24小时内最多点击8次，累计进度及卡片次日0点清空。当奖品区域进度条集满时获奖，本活动为概率中奖，祝好运。<br>
+            【活动奖品】<br>
+            惊喜一：5000元购机金<br>
+            惊喜二：100元红包<br>
+            惊喜三：50元红包<br>
+            惊喜四：10元红包<br>
+            【特殊说明】<br>
+            在活动中获得道具、奖品后，如退出活动，可能导致道具或奖品丢失，请在获得道具、奖品后及时兑换或领取，避免损失。<br>
+            ------------------------<br>
+            活动说明<br>
+            1.页面中展示的参与次数，为同一用户每天的参与次数；用户依据页面提示参与活动后，有机会获得相应礼品。参与活动用户的设备不同，参与活动的具体操作步骤请以进入活动页面时的实时展示为准。<br>
+            参与活动后，中奖的用户应在活动页面、奖品详情页面所提示的时间内领奖，逾期未领，即视为放弃。<br>
+            2.领奖后，用户可以通过点击“我的奖品”或相似字样、图标，查看已领取的奖品及使用规则。<br>
+            3.请认真阅读优惠券、兑换券的使用规则，并按照优惠券、兑换券详情页面的提示操作。<br>
+            4.实物类奖品将在中奖后的30个工作日内发货，请注意查收；话费、红包等虚拟奖品将在中奖后的72小时内充值进用户填写的账号。敬请认真、准确填写领取账号，因个人原因填写错误，导致充值失败的，将不给予补发。<br>
+            6.因不可抗力、技术故障等原因，我们有权相应调整或终止活动，而无需向用户进行赔偿或补偿。<br>
+            7.活动期间内，用户存在作弊等违法违规行为的，将被撤销抽奖资格、奖品使用资格，收回已获得的权益。<br>
+            8.对活动规则、奖品使用规则、奖品领取等有疑问的，请在工作日9:00-18:00，按照如下方式联系客服：<br>
+            客服电话：4000011320<br>
+            ------------------------<br>
+            惊喜一：5000元iPhone购机金共10份，中奖概率为0.01%；<br>
+            惊喜二：100元红包共20份，中奖概率为0.02%；<br>
+            惊喜三：50元红包共30份，中奖概率为0.03%；<br>
+            惊喜四：10元红包共120份，中奖概率为0.12%；<br>
+            以上奖品，每人每天限领取1次。<br>
+          </p>
+        </div>
+      </div>
+      <div class="rule_close"></div>
+    </div>
+  </div>
+  <div class="thanksmodal">
+    <span class="thanks-modal-close"><i class="modal-close"></i></span>
+    <div class="thanks-body">
+      <div class="thanks-btn-b">再来一次</div>
+    </div>
+  </div>
+  <section class="layer-commonTc-768 J_modalShowPrize shadow hidden">
+    <div class="container J_coupon-modal-animate">
+      <div class="caidai"></div>
+      <div class="close J_coupon-modal-close"></div>
+      <div class="box J_coupon-modal-showPrize-dialog">
+        <div class="light"></div>
+        <div class="deco"></div>
+        <div class="star"></div>
+        <div class="dialog">
+          <div class="coupon"><img class="J_gotoDetail logandgo" data-pic="true"></div>
+          <div class="name-wrap"><span class="J_name"></span></div>
+          <div class="btn J_btnCoupon"></div>
+        </div>
+        <div class="qifenHb"></div>
       </div>
     </div>
-  </div>
-  <div id="D017" class="hide" css-name="full_shade_flex">
-    <div class="D017_body" statis-name="Dialog_body">
-      <div class="D017_halo"></div>
-      <div class="D017_light" css-name="animate_circle"></div>
-      <div class="D017_bg"></div>
-      <img class="D017_img" id="D017_img">
-      <div class="D017_word" id="D017_name" css-name="R_ticket_word_1"></div>
-      <div class="D017_accept" id="D017_takeBtn"></div>
-      <div class="D017_line"></div>
-      <div class="D017_packets"></div>
-      <div class="D017_close" id="D017_closeBtn" css-name="R_close_2"></div>
-    </div>
-  </div>
+  </section>
 </div>
 <script src="https://interactive-js.angpi.cn/1597804968352_jquery.min.js"></script>
 <script src="https://interactive-js.angpi.cn/1610455585298_commonTools.js"></script>
 <!-- 底部附加js [[bottom_js]] -->
 <script></script>
-<script src="https://interactive-js.angpi.cn/1610530101544_dzp05.js"></script>
+<script src="https://interactive-js.angpi.cn/1610531130225_ndj01.js"></script>
 <script src="https://interactive-js.angpi.cn/1609231542801_vconsole.js"></script>
 <script>
   // 初始化

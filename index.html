@@ -9,29 +9,38 @@
   <!-- 链接标题 [[link_title]] -->
   <title></title>
   <!-- 互动类型 [[interactive_type]] -->
-  <script>var gameType="dzp_01",gameConfig={kefu:true};</script>
+  <script>var gameType="egg_01",gameConfig={kefu:true};</script>
   <!-- 图片方式页面打开统计 -->
   <script>;var lrtool={url2json:function(a){var b=a.substr(a.indexOf('?')).substr(1),paramsArr=b.split("&"),paramJson={};if(b!=''){for(var i=0;i<paramsArr.length;i++){var c=paramsArr[i].split("=");c[1]==undefined?paramJson[c[0]]='':paramJson[c[0]]=c[1]}};return paramJson},getCookie:function(a){var b,reg=new RegExp("(^| )"+a+"=([^;]*)(;|$)");if(b=document.cookie.match(reg)){return unescape(b[2])}else{return null}}};var responseHeaderData={getFromHeader:false,req:''};!function(){var u=navigator.userAgent,ua={ios:!!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/),uc:u.indexOf('UCBrowser')>-1,quark:u.indexOf('Quark')>-1,baidu:u.indexOf('Baidu')>-1},urlParams=lrtool.url2json(window.location.href),istrans=urlParams.serverCookie!=undefined,url='//api.interactive.lzdata.com.cn/landingPageStatus',interactiveType=gameType,adSpaceCode=urlParams.adSpaceCode,platLogRequestId='',backInteractiveType=urlParams.backInteractiveType==undefined?null:urlParams.backInteractiveType,sitename=lrtool.getCookie('apicookie_'+adSpaceCode);platLogRequestId=lrtool.getCookie('platLogRequestId');if(istrans){if(ua.ios&&(ua.uc||ua.quark||ua.baidu)){var a=new XMLHttpRequest();a.open('GET',document.location,false);a.send(null);responseHeaderData.getFromHeader=true;responseHeaderData.req=a;platLogRequestId=a.getResponseHeader('platLogRequestId')};sitename=urlParams.serverCookie};var b=url+"?adSpaceCode="+adSpaceCode+'&platLogRequestId='+platLogRequestId+'&interactiveType='+interactiveType+'&sitename='+sitename+'&backInteractiveType='+backInteractiveType;new Image().src=b}();;</script>
-  <link rel="stylesheet" href="https://interactive-css.angpi.cn/1608604657283_dzp01.css">
+  <link rel="stylesheet" href="https://interactive-css.angpi.cn/1608604906203_egg01.css">
   <style>
       /* 游戏页面背景色 [[game_background_color]] */
-      #T098[theme-name=longpage]{background-color:#270166;}
+      #T089,#T089 .page-group .page #egg .e-main .e-list{background-color:#f97658;}
       /* 游戏次数背景及字体颜色 [[times_background]] [[times_font_color]] */
-      #T098 .T098_main .T098_jointime{background-color:#4024be;color:#fff;}
-      /* 大转盘开始按钮（游戏开始前） [[pointer_start]] */
-      #T098 .T098_main .T098_panel .T098_start{background-image:url(https://interactive-oss.angpi.cn/1591603022208_1589274852984_18741a5d-05a7-4fd6-8b47-9bcb3541948c.png);}
-      /* 大转盘开始按钮（点击后） [[pointer_run]] */
-      #T098 .T098_main .T098_panel .T098_start.run{background-image:url(https://interactive-oss.angpi.cn/1591603022399_1589274901401_55c2b77c-0ca2-4011-88d3-525f98deb00d.png);}
-      /* 大转盘开始按钮（置灰不可用） [[pointer_disabled]] */
-      #T098 .T098_main .T098_panel .T098_start.disabled{background-image:url(https://interactive-oss.angpi.cn/1591603022590_1589274962847_5f4dd582-c666-442e-b674-baacfd9835f2.png);}
-      /* 大转盘开始按钮旁手指 [[pointer_hand]] */
-      #T098 .T098_main .T098_panel .T098_start .hand{background-image:url(https://interactive-oss.angpi.cn/1591603022784_1589275016271_hand.png);}
-      /* 大转盘上闪烁的点点 [[wheel_lump]] */
-      #T098 .T098_main .T098_panel .T098_wheel .T098_lump{background-image:url(https://interactive-oss.angpi.cn/1591603022965_1589275284917_956def4c-bd0e-4fa3-a769-6971745a94b0.png);}
-      /* 大转盘轮盘 [[wheel_core]] */
-      #T098 .T098_main .T098_panel .T098_wheel .T098_core{background-image:url(https://interactive-oss.angpi.cn/1591603023146_1589275331355_e9d71806-781c-49e5-bc91-a55787ef7944.png);}
+      #T089 .page-group .page #egg .e-main .jointime{background-color:#fda691;color:#fff;}
+      /* 未砸开金蛋图片 [[egg_default]] */
+      #T089 .page-group .page #egg .e-main .eggs .item .egg{background-image:url(https://interactive-oss.angpi.cn/1591603661512_1589275549362_d3d651d4-dbf8-4356-b98c-259b6ac2bd94.png);}
+      /* 砸开有奖金蛋图片 [[egg_start]] */
+      #T089 .page-group .page #egg .e-main .eggs .item .eggstart{background-image:url(https://interactive-oss.angpi.cn/1591603661716_1589275595633_cfce8f0b-2c83-4943-a569-b9b7e3922ade.png);}
+      /* 已砸开金蛋图片 [[egg_end]] */
+      #T089 .page-group .page #egg .e-main .eggs .item .eggend{background-image:url(https://interactive-oss.angpi.cn/1591603661936_1589275653856_b3d9e614-6af7-4ed4-82c7-0d2f69bef33f.png);}
+      /* 锤子图 [[egg_hammer]] */
+      #T089 .page-group .page #egg .e-main .eggs .item .hammer_tip,
+      #T089[theme-name=T089T01] .page-group .page #egg .e-main .eggs .item .hammer_egg{background-image:url(https://interactive-oss.angpi.cn/1591603659479_1589276391265_7b4c8014-d751-4a99-b123-11215ed6b7d4.png);}
+      /* 奖品栏左侧奖品标签 [[prize_list_header]] */
+      #T089 .page-group .page #egg .e-main .e-list #awardlist .award_header{background-image:url(https://interactive-oss.angpi.cn/1591603662133_1589275678726_0150bc86-a6d3-43fb-b5f6-e470e818b5cb.png);}
+      /* 奖品1-图 [[prize_image_1]] */
+      #T089 .page-group .page #egg .e-main .e-list .award_list .awardImg1{background-image:url(https://interactive-oss.angpi.cn/1591857556567_a93a0bdc-e7ef-4d9f-b813-830e113b7cc1.png);}
+      /* 奖品2-图 [[prize_image_2]] */
+      #T089 .page-group .page #egg .e-main .e-list .award_list .awardImg2{background-image:url(https://interactive-oss.angpi.cn/1591857589645_b80d76e5-270f-478d-8939-2e5c50501dfa.png);}
+      /* 奖品3-图 [[prize_image_3]] */
+      #T089 .page-group .page #egg .e-main .e-list .award_list .awardImg3{background-image:url(https://interactive-oss.angpi.cn/1591857600147_b65b8261-9367-47e2-a0b6-8dbf60ad22e9.png);}
+      /* 奖品4-图 [[prize_image_4]] */
+      #T089 .page-group .page #egg .e-main .e-list .award_list .awardImg4{background-image:url(https://interactive-oss.angpi.cn/1591857612796_8ea1b5e4-f86a-4666-9c04-cdd7a163fa05.png);}
+      /* 奖品5-图 [[prize_image_5]] */
+      #T089 .page-group .page #egg .e-main .e-list .award_list .awardImg5{background-image:url(https://interactive-oss.angpi.cn/1591857625244_04b00ee5-a1cc-45b8-9ebf-bc600763cf2.png);}
       /* 我的奖品图标 [[my_prize_icon]] */
-      #T098 .T098_banner .prize-record{background-image:url(https://interactive-oss.angpi.cn/1596694559653_icon-myPrize-1.png);}
+      #T089 .page-group .page .prize-record{background-image:url(https://interactive-oss.angpi.cn/1596694559653_icon-myPrize-1.png);}
   </style>
   <!-- 自定义css [[diy_css]] -->
   <style></style>
@@ -39,111 +48,181 @@
   <script></script>
 </head>
 <body>
-<div id="T098" theme-name="longpage">
+<div id="T089" statis-name='Toke_root' version="T089H06" theme-name="T089T01">
   <!-- 游戏背景图 [[main_background_image]] -->
-  <img class="T098_main_bg" src="https://interactive-oss.angpi.cn/1591784517912_bab1dd13-5068-48d2-8afa-eca8af2172412.jpg"/>
-  <div class="T098_banner">
-    <div class="T098_rule"></div>
-    <div class="prize-record my-prize"></div>
-  </div>
-  <div class="T098_main">
-    <div class="T098_jointime">今日剩余免费&nbsp;<span></span>&nbsp;次</div>
-    <div class="T098_panel">
-      <div class="T098_start">
-        <div class="hand"></div>
-      </div>
-      <div class="T098_wheel">
-        <div class="T098_core">
-          <div class="core-box">
-            <div class="prize">
-              <div class="prize-dialog">
-                <!-- 奖品1 （谢谢参与） [[prize_image_1]] -->
-                <img src="https://interactive-oss.angpi.cn/1591603023660_1589276725269_p1-1.png">
-              </div>
+  <img class="T089_main_bg" src="https://interactive-oss.angpi.cn/1598509935572_egg01-bg.jpg">
+  <div class="page-group">
+    <div class="page page-current">
+      <div id="egg">
+        <div id="way">
+          <span class="iconfont"></span>
+          <span>规则</span>
+        </div>
+        <div class="prize-record my-prize"></div>
+        <div class="banner"></div>
+        <div class="e-main">
+          <div class="jointime">今日剩余免费 <i></i> 次</div>
+          <div class="eggs">
+            <div class="item" data-play-num='0'>
+              <div class="hammer_tip"></div>
+              <div class="hammer_egg"></div>
+              <div class="egg_opacity"></div>
+              <button class="egg egg1 eggready"></button>
+              <button class="egg egg1 eggstart isshow"></button>
+              <button class="egg egg1 eggend hide"></button>
             </div>
-            <div class="prize">
-              <div class="prize-dialog">
-                <!-- 奖品2 （幸运福袋） [[prize_image_2]] -->
-                <img src="https://interactive-oss.angpi.cn/1591603023869_1589276747865_p1-2.png">
-              </div>
+            <div class="item" data-play-num='1'>
+              <div class="hammer_tip"></div>
+              <div class="hammer_egg"></div>
+              <div class="egg_opacity"></div>
+              <button class="egg egg2 eggready"></button>
+              <button class="egg egg2 eggstart isshow"></button>
+              <button class="egg egg2 eggend hide"></button>
             </div>
-            <div class="prize">
-              <div class="prize-dialog">
-                <!-- 奖品3 [[prize_image_3]] -->
-                <img src="https://interactive-oss.angpi.cn/1591603024097_1589276797008_p1-3.png">
-              </div>
+            <div class="item" data-play-num='2'>
+              <div class="hammer_tip"></div>
+              <div class="hammer_egg"></div>
+              <div class="egg_opacity"></div>
+              <button class="egg egg3 eggready"></button>
+              <button class="egg egg3 eggstart isshow"></button>
+              <button class="egg egg3 eggend hide"></button>
             </div>
-            <div class="prize">
-              <div class="prize-dialog">
-                <!-- 奖品4 [[prize_image_4]] -->
-                <img src="https://interactive-oss.angpi.cn/1591603024316_1589276812548_p1-4.png">
-              </div>
+            <div class="item" data-play-num='3'>
+              <div class="hammer_tip"></div>
+              <div class="hammer_egg"></div>
+              <div class="egg_opacity"></div>
+              <button class="egg egg4 eggready"></button>
+              <button class="egg egg4 eggstart isshow"></button>
+              <button class="egg egg4 eggend hide"></button>
             </div>
-            <div class="prize">
-              <div class="prize-dialog">
-                <!-- 奖品5 [[prize_image_5]] -->
-                <img src="https://interactive-oss.angpi.cn/1591603024540_1589798759237_p1-5.png">
-              </div>
+            <div class="item" data-play-num='4'>
+              <div class="hammer_tip"></div>
+              <div class="hammer_egg"></div>
+              <div class="egg_opacity"></div>
+              <button class="egg egg5 eggready"></button>
+              <button class="egg egg5 eggstart isshow"></button>
+              <button class="egg egg5 eggend hide"></button>
             </div>
-            <div class="prize">
-              <div class="prize-dialog">
-                <!-- 奖品6 [[prize_image_6]] -->
-                <img src="https://interactive-oss.angpi.cn/1591603024764_1589276850341_p1-6.png">
+            <div class="item" data-play-num='5'>
+              <div class="hammer_tip"></div>
+              <div class="hammer_egg"></div>
+              <div class="egg_opacity"></div>
+              <button class="egg egg6 eggready"></button>
+              <button class="egg egg6 eggstart isshow"></button>
+              <button class="egg eggend egg6 hide"></button>
+            </div>
+            <div class="item" data-play-num='6'>
+              <div class="hammer_tip"></div>
+              <div class="hammer_egg"></div>
+              <div class="egg_opacity"></div>
+              <button class="egg egg7 eggready"></button>
+              <button class="egg egg7 eggstart isshow"></button>
+              <button class="egg egg7 eggend hide"></button>
+            </div>
+            <div class="item" data-play-num='7'>
+              <div class="hammer_tip"></div>
+              <div class="hammer_egg"></div>
+              <div class="egg_opacity"></div>
+              <button class="egg egg8 eggready"></button>
+              <button class="egg egg8 eggstart isshow"></button>
+              <button class="egg egg8 eggend hide"></button>
+            </div>
+            <div class="item" data-play-num='8'>
+              <div class="hammer_tip"></div>
+              <div class="hammer_egg"></div>
+              <div class="egg_opacity"></div>
+              <button class="egg egg9 eggready"></button>
+              <button class="egg egg9 eggstart isshow"></button>
+              <button class="egg egg9 eggend hide"></button>
+            </div>
+          </div>
+          <div class="e-list">
+            <div id="awardlist">
+              <div class="award_header"></div>
+              <div class="award_list">
+                <div class="bxm-container">
+                  <div class="bxm-wrapper">
+                    <div class="bxm-slide flex swiper-slide-active">
+                      <div class="awardImg awardImg1"></div>
+                      <!-- 奖品1-名称 [[prize_name_1]] -->
+                      <div class="awardName">200元话费</div>
+                    </div>
+                    <div class="bxm-slide flex swiper-slide-active">
+                      <div class="awardImg awardImg2"></div>
+                      <!-- 奖品2-名称 [[prize_name_2]] -->
+                      <div class="awardName">100元话费</div>
+                    </div>
+                    <div class="bxm-slide flex swiper-slide-active">
+                      <div class="awardImg awardImg3"></div>
+                      <!-- 奖品3-名称 [[prize_name_3]] -->
+                      <div class="awardName">50元话费</div>
+                    </div>
+                    <div class="bxm-slide flex swiper-slide-active">
+                      <div class="awardImg awardImg4"></div>
+                      <!-- 奖品4-名称 [[prize_name_4]] -->
+                      <div class="awardName">20元话费</div>
+                    </div>
+                    <div class="bxm-slide flex swiper-slide-active">
+                      <div class="awardImg awardImg5"></div>
+                      <!-- 奖品5-名称 [[prize_name_5]] -->
+                      <div class="awardName">幸运福袋</div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="T098_lump"></div>
-      </div>
-    </div>
-  </div>
-  <!-- 备案信息 [[records_info]] -->
-  <div class="index_disclaimer"></div>
-  <div id="CActRule" class="hide">
-    <div class="CActRule_box">
-      <div class="CActRule_top_bg"></div>
-      <div class="CActRule_main">
-        <div class="gameRuleContent">
-          <div class="rule_main_text rule_text">
-            <!-- 活动规则 [[active_rule]] -->
-            活动说明:<br>
-            参加活动即有机会获得幸运奖~每天抽奖机会8次免费。此活动为概率中奖，奖品数量有限，祝好运！<br>
-            惊喜一：iPhone XS<br>
-            惊喜二：华为Mate 30<br>
-            惊喜三：任天堂游戏机<br>
-            惊喜四：30元会员代金券<br>
-            惊喜五：幸运福袋<br>
-            －－－－－－－－－－－－－－－－<br>
-            重要声明：<br>
-            1.奖品将在活动结束后5-10个工作日安排发放，请耐心等待。<br>
-            2.优惠券类奖品的使用规则详见每个优惠券的介绍页<br>
-            3.请兑换后仔细阅读使用流程，如有疑问，可直接联系客服专线<br>
-            4.通过非法途径获得奖品的，主办方有权不提供奖品<br>
-            －－－－－－－－－－－－－－－－<br>
-            中奖概率说明：<br>
-            •iPhone XS手机共5份，中奖概率0.001%；<br>
-            •华为Mate 30共50份，中奖概率0.002%；<br>
-            •任天堂游戏机共20份，中奖概率0.001%；<br>
-            •30元会员代金券共500份，中奖概率0.005%；
+        <!-- 备案信息 [[records_info]] -->
+        <div class="index_disclaimer"></div>
+        <div id="CActRule" class="hide">
+          <div class="CActRule_box">
+            <div class="CActRule_top_bg"></div>
+            <div class="CActRule_main">
+              <div class="gameRuleContent">
+                <div class="rule_main_text rule_text">
+                  <!-- 活动规则 [[active_rule]] -->
+                  活动说明:<br>
+                  参与活动即有机会获得幸运奖~每天抽奖机会8次免费。此活动为概率中奖，奖品数量有限，祝好运！<br>
+                  惊喜一：200元话费<br>
+                  惊喜二：100元 话费<br>
+                  惊喜三：50元 话费<br>
+                  惊喜四：20元 话费<br>
+                  惊喜五：幸运福袋<br>
+                  －－－－－－－－－－－－－－－－<br>
+                  重要声明：<br>
+                  1.奖品将在活动结束后5-10个工作日安排发放,请耐心等待<br>
+                  2.优惠券类奖品的使用规则详见每个优惠券的介绍页<br>
+                  3.请兑换后仔细阅读使用流程,如有疑问,可直接联系客服专线:15157176339或客服QQ:3104964880(工作日9:00至18:00)<br>
+                  4.通过非法途径获得奖品的,主办方有权不提供奖品<br>
+                  －－－－－－－－－－－－－－－－<br>
+                  中奖概率说明：<br>
+                  •200元话费 共10份,中奖概率0.001%;<br>
+                  •100元话费 共20份,中奖概率0.001%;<br>
+                  •50元话费 共100份,中奖概率0.001%;<br>
+                  •20元话费 共500份,中奖概率0.01%;
+                </div>
+              </div>
+            </div>
+            <div class="CActRule_close">
+              <span class="iconfont"></span>
+            </div>
           </div>
         </div>
+        <div id="D018" class="hide" css-name="full_shade_flex" theme-name="D018Short01" state-name="DInA">
+          <div class="D018_body">
+            <div class="D018_halo"></div>
+            <div class="D018_light"></div>
+            <div class="D018_bg"></div>
+            <img class="D018_img" id="D018_img">
+            <div class="D018_word" id="D018_name" css-name="R_ticket_word_1"></div>
+            <div class="D018_accept" id="D018_takeBtn"></div>
+            <div class="D018_stars"></div>
+            <div class="D018_packets"></div>
+          </div>
+          <div class="D018_close" id="D018_closeBtn" css-name="R_close_2"></div>
+        </div>
       </div>
-      <div class="CActRule_close">
-        <span class="iconfont"></span>
-      </div>
-    </div>
-  </div>
-  <div id="D017" class="hide" css-name="full_shade_flex">
-    <div class="D017_body" statis-name="Dialog_body">
-      <div class="D017_halo"></div>
-      <div class="D017_light" css-name="animate_circle"></div>
-      <div class="D017_bg"></div>
-      <img class="D017_img" id="D017_img">
-      <div class="D017_word" id="D017_name" css-name="R_ticket_word_1"></div>
-      <div class="D017_accept" id="D017_takeBtn"></div>
-      <div class="D017_line"></div>
-      <div class="D017_packets"></div>
-      <div class="D017_close" id="D017_closeBtn" css-name="R_close_2"></div>
     </div>
   </div>
 </div>
@@ -151,7 +230,7 @@
 <script src="https://interactive-js.angpi.cn/1610455585298_commonTools.js"></script>
 <!-- 底部附加js [[bottom_js]] -->
 <script></script>
-<script src="https://interactive-js.angpi.cn/1610529972778_dzp01.js"></script>
+<script src="https://interactive-js.angpi.cn/1610530746547_egg01.js"></script>
 <script src="https://interactive-js.angpi.cn/1609231542801_vconsole.js"></script>
 <script>
   // 初始化
