@@ -6,158 +6,111 @@
   <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <!-- 链接标题 [[link_title]] -->
-  <title></title>
-  <!-- 互动类型 [[interactive_type]] -->
-  <script>var gameType="ggk_01",gameConfig={kefu:true};</script>
-  <!-- 图片方式页面打开统计 -->
-  <script>;var lrtool={url2json:function(a){var b=a.substr(a.indexOf('?')).substr(1),paramsArr=b.split("&"),paramJson={};if(b!=''){for(var i=0;i<paramsArr.length;i++){var c=paramsArr[i].split("=");c[1]==undefined?paramJson[c[0]]='':paramJson[c[0]]=c[1]}};return paramJson},getCookie:function(a){var b,reg=new RegExp("(^| )"+a+"=([^;]*)(;|$)");if(b=document.cookie.match(reg)){return unescape(b[2])}else{return null}}};var responseHeaderData={getFromHeader:false,req:''};!function(){var u=navigator.userAgent,ua={ios:!!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/),uc:u.indexOf('UCBrowser')>-1,quark:u.indexOf('Quark')>-1,baidu:u.indexOf('Baidu')>-1},urlParams=lrtool.url2json(window.location.href),istrans=urlParams.serverCookie!=undefined,url='//api.interactive.lzdata.com.cn/landingPageStatus',interactiveType=gameType,adSpaceCode=urlParams.adSpaceCode,platLogRequestId='',backInteractiveType=urlParams.backInteractiveType==undefined?null:urlParams.backInteractiveType,sitename=lrtool.getCookie('apicookie_'+adSpaceCode);platLogRequestId=lrtool.getCookie('platLogRequestId');if(istrans){if(ua.ios&&(ua.uc||ua.quark||ua.baidu)){var a=new XMLHttpRequest();a.open('GET',document.location,false);a.send(null);responseHeaderData.getFromHeader=true;responseHeaderData.req=a;platLogRequestId=a.getResponseHeader('platLogRequestId')};sitename=urlParams.serverCookie};var b=url+"?adSpaceCode="+adSpaceCode+'&platLogRequestId='+platLogRequestId+'&interactiveType='+interactiveType+'&sitename='+sitename+'&backInteractiveType='+backInteractiveType;new Image().src=b}();;</script>
-  <link rel="stylesheet" href="https://interactive-css.angpi.cn/1608604988154_ggk01.css">
-  <style>
-      /* 游戏页面背景色 [[game_background_color]] */
-      .tac-app{background-color:#ffd606;}
-      /* 刮板背景 [[core_background_image]] */
-      .core{background-image:url(https://interactive-oss.angpi.cn/1591604301017_1590147926594_eeba0264-sdcc612p6a.png);}
-      /* 刮卡指引手 [[core_hand]] */
-      .hand{background-image:url(https://interactive-oss.angpi.cn/1591604301259_1590147941134_293f410392d90fb81c47.png);}
-      /* 奖品1 [[prize_image_1]] */
-      .prize-image-1{background-image:url(https://interactive-oss.angpi.cn/1591604301457_1590408248403_p1-1.png);}
-      /* 奖品2 [[prize_image_2]] */
-      .prize-image-2{background-image:url(https://interactive-oss.angpi.cn/1591604301670_1590408260677_p1-2.png);}
-      /* 奖品3 [[prize_image_3]] */
-      .prize-image-3{background-image:url(https://interactive-oss.angpi.cn/1591604301937_1590408279696_p1-3.png);}
-      /* 奖品4 [[prize_image_4]] */
-      .prize-image-4{background-image:url(https://interactive-oss.angpi.cn/1591604302171_1590408297089_p1-4.png);}
-      /* 奖品5 [[prize_image_5]] */
-      .prize-image-5{background-image:url(https://interactive-oss.angpi.cn/1591604302371_1590408316016_p1-5.png);}
-      /* 我的奖品图标 [[my_prize_icon]] */
-      .prize-record{background-image:url(https://interactive-oss.angpi.cn/1596694559653_icon-myPrize-1.png);}
-  </style>
-  <!-- 自定义css [[diy_css]] -->
-  <style></style>
-  <!-- 顶部附加js [[top_js]] -->
-  <script></script>
+  <title>专属弹窗预览示例</title>
+  <script> var gameType="personalPopupView"; </script>
+  <link rel="stylesheet" href="https://interactive-css.angpi.cn/1597913417346_personalPopupView.css">
+  <script src="https://interactive-js.angpi.cn/1597804968352_jquery.min.js"></script>
+
+  <script>
+    function loadScript (url, callback){
+      var script = document.createElement ("script")
+      script.type = "text/javascript";
+      if (script.readyState){
+        script.onreadystatechange = function(){
+          if (script.readyState == "loaded" || script.readyState == "complete"){
+            script.onreadystatechange = null;
+            callback();
+          }
+        };
+      } else {
+        script.onload = function(){
+          callback();
+        };
+      }
+      script.src = url;
+      document.querySelector('.specialWinPopup').appendChild(script);
+    }
+  </script>
+  <script src="https://interactive-js.angpi.cn/1597826638114_subGlobalCommon.js"></script>
+  <script>
+    function setPersonalGamePopup() {
+      window.onload = function() {
+        setTimeout(function() {
+          setPersonalGamePopupView();
+        }, 200);
+      };
+    };
+  </script>
 </head>
 <body>
-<div class="tac-app">
-  <!-- 游戏背景图 [[main_background_image]] -->
-  <img class="tac-app-bg" src="https://interactive-oss.angpi.cn/1591604300618_1590407647114_ggk_01_bg.jpg">
-  <div class="tac-main">
-    <div class="style-main">
-      <div class="core">
-        <div class="hand"></div>
-        <div class="result-show">
-          <div class="star-left"></div>
-          <div class="star-right"></div>
-          <div class="result-redBag"></div>
+<div class="tac-app" style="background-image:url(https://interactive-oss.angpi.cn/1593571975325_game_example.png);">
+  <p class="example-tip">专属弹窗预览示例</p>
+
+  <div class="show-personalPopup-tip"><p class="tip-p-1">点击红包</p><p class="tip-p-2">打开专属弹窗</p></div>
+  <span class="show-personalPopup-btn"></span>
+</div>
+
+<div class="personalPopup-box" style="display:none;">
+
+  <!-- 此处放专属弹窗代码 -->
+
+  <div class="specialWinPopup">
+    <link rel="stylesheet" href="https://interactive-css.angpi.cn/1603184671881_specialPopupType-06.css">
+    <div class="type-06 mask" style="display: block;">
+      <div class="tc-container">
+        <div class="tc-box">
+          <div class="tc-light" style="background-image:url(https://interactive-oss.angpi.cn/1598338871237_bg-light.png);"></div>
+          <div class="tc-prize">
+            <img class="tc-prize-reminders" src="https://interactive-oss.angpi.cn/1598338994288_unicom-zj.png" alt="">
+            <div class="tc-game-box">
+              <div class="container container1">
+                <div class="flip1 flip-box">
+                  <div class="front">
+                    <img src="https://interactive-oss.angpi.cn/1598339793260_mr-winning.png" alt="">
+                  </div>
+                  <div class="back">
+                    <img class="not-winning1" src="https://interactive-oss.angpi.cn/1598339811899_not-winning.png" alt="">
+                    <img class="winning-img1" src="https://interactive-oss.angpi.cn/1598339826320_winning-img.png" alt="">
+                  </div>
+                </div>
+              </div>
+              <div class="container container2">
+                <div class="flip2 flip-box">
+                  <div class="front1">
+                    <img src="https://interactive-oss.angpi.cn/1598339793260_mr-winning.png" alt="">
+                  </div>
+                  <div class="back">
+                    <img class="not-winning2" src="https://interactive-oss.angpi.cn/1598339811899_not-winning.png" alt="">
+                    <img class="winning-img2" src="https://interactive-oss.angpi.cn/1598339826320_winning-img.png" alt="">
+                  </div>
+                </div>
+              </div>
+              <div class="container container3">
+                <div class="flip3 flip-box">
+                  <div class="front2">
+                    <img src="https://interactive-oss.angpi.cn/1598339793260_mr-winning.png" alt="">
+                  </div>
+                  <div class="back">
+                    <img class="not-winning3" src="https://interactive-oss.angpi.cn/1598339811899_not-winning.png" alt="">
+                    <img class="winning-img3" src="https://interactive-oss.angpi.cn/1598339826320_winning-img.png" alt="">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tc-close tc-close-btn" style="background-image:url(https://interactive-oss.angpi.cn/1595920624939_type-02-close.png);"></div>
         </div>
-        <!-- 刮板被刮图 [[card_background_image]] -->
-        <img class="card_bg" src="https://interactive-oss.angpi.cn/1598339119700_card.png">
-        <canvas id="card_canvas" class="card" width="630"height="404"></canvas>
-        <div class="boom"></div>
-      </div>
-      <div class="times">今日剩余: <span>1</span> 次</div>
-    </div>
-    <div class="prizeContainer">
-      <div class="PrizeList_main">
-        <div class="PrizeList_wrapper">
-          <ul class="PrizeList_ul">
-            <li class="PrizeList_li"><div class="prize prize-image-1"></div></li>
-            <li class="PrizeList_li"><div class="prize prize-image-2"></div></li>
-            <li class="PrizeList_li"><div class="prize prize-image-3"></div></li>
-            <li class="PrizeList_li"><div class="prize prize-image-4"></div></li>
-            <li class="PrizeList_li"><div class="prize prize-image-5"></div></li>
-          </ul>
-        </div>
-      </div>
-      <div class="prize-tag"></div>
-    </div>
-  </div>
-  <div class="index_adtip"></div>
-  <div class="prize-record my-prize"></div>
-  <div id="ggk-rule-btn" class="tac-rule"></div>
-  <!-- 备案信息 [[records_info]] -->
-  <div class="index_disclaimer">具体奖品领取事宜，见规则详情 <div class="tc-02-btn">点我</div></div>
-</div>
-<div id="ggk-rule-modal" class="rulemodal">
-  <div class="rule_body">
-    <div class="rule_content">
-      <div class="rule_wrapper">
-        <p>
-          <!-- 活动规则 [[active_rule]] -->
-          活动说明：<br>
-          参加活动即有机会获得幸运奖~每天抽奖机会8次免费。此活动为概率中奖，奖品数量有限，祝好运！<br>
-          惊喜一：华为Mate 30<br>
-          惊喜二：锦鲤卡<br>
-          惊喜三：骑士卡<br>
-          惊喜四：幸运福袋<br>
-          ------------------------<br>
-          重要声明：<br>
-          1.奖品将在活动结束后5-10个工作日安排发放，请耐心等待。<br>
-          2.优惠券类奖品的使用规则详见每个优惠券的介绍页<br>
-          3.请兑换后仔细阅读使用流程，如有疑问，可直接联系客服专线<br>
-          4.通过非法途径获得奖品的，主办方有权不提供奖品<br>
-          ------------------------<br>
-          中奖概率说明：<br>
-          华为Mate 30共50份，中奖概率0.001%；<br>
-          锦鲤卡共200份，中奖概率0.005%；<br>
-          骑士卡共200份，中奖概率0.005%；<br>
-          幸运福袋共500份，中奖概率0.01%。<br>
-        </p>
       </div>
     </div>
-    <div class="rule_close"></div>
+    <script>
+      loadScript("https://interactive-js.angpi.cn/1600161305237_specialPopupType-06.js", function () {
+        setPersonalGamePopup();
+      });
+    </script>
   </div>
+
 </div>
-<div class="errormodal">
-  <div class="error_close"></div>
-  <div class="error_body">
-    <div class="error_banner"></div>
-    <div class="error_title">系统开小差啦</div><div class="error_tip"></div>
-    <div class="error_btn">好的</div>
-  </div>
-</div>
-<div class="thanksmodal">
-  <span class="thanks-modal-close"><i class="modal-close"></i></span>
-  <div class="thanks-body">
-    <div class="thanks-btn-b">再来一次</div>
-  </div>
-</div>
-<section class="layer-105 showprizemodal">
-  <div class="close pclose"></div>
-  <div class="container">
-    <div class="box">
-      <div class="light"></div>
-      <div class="caidai"></div>
-      <div class="dialog">
-        <div class="dialog-title"></div>
-        <div class="couponLight couponLight1"></div>
-        <div class="couponLight couponLight2"></div>
-        <div class="coupon"><img class="pimg"></div>
-        <div class="counpon-name"><span class="name pname">平安110万保障免费领取</span></div>
-        <div class="btn pbtn"></div>
-      </div>
-    </div>
-  </div>
-</section>
-<div class="recommendmodal">
-  <div class="caidaisprites"></div>
-  <div class="recommend-modal-dialog">
-    <span class="recommend-modal-close"><i class="close"></i></span>
-    <div class="recommend-body"></div>
-  </div>
-</div>
-<script src="https://interactive-js.angpi.cn/1597804968352_jquery.min.js"></script>
-<script src="https://interactive-js.angpi.cn/1610430908774_index.js"></script>
-<!-- 底部附加js [[bottom_js]] -->
-<script></script>
-<script src="https://interactive-js.angpi.cn/1610431130614_xback.js"></script>
-<!--<script src="./xback.js"></script>-->
-<script src="https://interactive-js.angpi.cn/1609231542801_vconsole.js"></script>
-<script>
-  // 初始化
-  var vConsole = new VConsole();
-  console.log('Hello world');
-</script>
+
+<script src="https://interactive-js.angpi.cn/1597913486326_personalPopupView.js"></script>
 </body>
 </html>
