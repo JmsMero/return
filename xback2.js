@@ -1,6 +1,11 @@
 "use strict";
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+;
 $(function () {
+  var _gameTool$setGameSate;
+
   // 游戏名称
   var gameName = gameType; // 中奖奖品信息
 
@@ -44,6 +49,17 @@ $(function () {
     $('.thanksmodal').show();
   }
 
+  ; // 显示关闭广告提醒弹窗
+
+  function receiveTipsPopupShow(data) {
+    gameTool.closeIntercept.show(data); // 点击取消按钮显示集奖第二个动画及翻倍模式
+
+    $('.receiveTipsPopup #receiveCloseBtn').click(function () {
+      collectPrize.showShake();
+      switchGameDoubleModel();
+    });
+  }
+
   ; // 点击弹窗关闭按钮计数
 
   function clickPopupCloseCount() {
@@ -51,23 +67,88 @@ $(function () {
     gameTool.setGameSatesCookie(gameState);
   }
 
+  ; // 弹窗样式升级
+
+  function zpUpgrade() {
+    $('.bg_spots').css('display', 'block');
+    $('.core-tc-light').css('display', 'block');
+    $('.D105').addClass('inspire-D');
+    localGamePopup.doubleModel = true;
+  }
+
+  ; // 游戏切换到翻倍模式
+
+  function switchGameDoubleModel(direct) {
+    function directOpen() {
+      $('body').addClass('inspire');
+      zpUpgrade();
+      ggkGame.replaceCanvas();
+    }
+
+    ;
+
+    function animationOpen() {
+      $('.upgrade-container').show();
+      zpUpgrade();
+      ggkGame.replaceCanvas();
+      setTimeout(function () {
+        $('body').addClass('inspire');
+      }, 1200);
+      setTimeout(function () {
+        $('.upgrade-container').hide();
+      }, 2000);
+    }
+
+    ;
+
+    if (gameState.gameDouble) {
+      if (direct != undefined) {
+        directOpen();
+        return;
+      }
+
+      ;
+
+      if (gameState.backBtn && gameState.getAD == 1 || !gameState.backBtn && gameState.getAD == 2) {
+        animationOpen();
+      } else {
+        directOpen();
+      }
+
+      ;
+    }
+
+    ;
+  }
+
   ; // 启用专属弹窗方法
 
   function setPersonalGamePopup() {
-    console.log('执行我');
+    personalGamePopup.openAfter = function () {
+      // 显示集奖
+      setTimeout(function () {
+        collectPrize.autoCollect(1);
+      }, 600);
+    };
+
     personalGamePopup.closeEvent = function (e) {
       var _this = this;
-      console.log('点击取消')
+
       ggkGame.reset();
       clickPopupCloseCount();
-      prizeModalPopup = localGamePopup; // 第二次点击关闭按钮或返回键发券，显示关闭广告提醒弹窗
+      prizeModalPopup = localGamePopup;
+      collectPrize.showShake(); // 第二次点击关闭按钮或返回键发券，显示关闭广告提醒弹窗
 
       if (gameState.colsePopup == 2 || awardInfo.getEvent == 'back') {
         gameTool.closeIntercept.show(awardInfo);
+        $('.receiveTipsPopup #receiveCloseBtn').click(function () {
+          // 非关闭提醒弹窗下显示集奖第二个动画及翻倍模式切换
+          switchGameDoubleModel();
+        });
 
         _this.close();
       } else {
-        // 非关闭广告提醒弹窗下执行关闭动画
+        // 非第一次执行关闭动画
         this.closeAnimation({
           myPrize: $('.my-prize'),
           popupMask: $('.specialWinPopup .mask'),
@@ -91,12 +172,13 @@ $(function () {
           event: awardInfo.getEvent + '_receive_coupon'
         },
         success: function success(data) {
-          ggkGame.reset();
           gameTool.loading.show();
+          ggkGame.reset();
 
           _this.close();
 
           prizeModalPopup = localGamePopup;
+          switchGameDoubleModel(true);
           window.location.href = awardInfo.link;
         },
         error: function error(x, t, e) {
@@ -115,36 +197,55 @@ $(function () {
 
   var localGamePopup = new gameTool.GamePopup({
     popupType: 'local',
-    $ele: $('.showprizemodal'),
-    $closeBtn: $('.showprizemodal .pclose'),
-    $jumpBtn: $('.showprizemodal .pbtn'),
+    doubleModel: false,
+    // 是否为翻倍弹窗
+    $ele: $('.D105'),
+    $closeBtn: $('.D105 .pclose'),
+    $jumpBtn: $('.D105 .pbtn'),
     open: function open(awardData) {
       this.awardData = awardData;
-      $('.showprizemodal .pimg').attr('src', this.awardData.img);
-      $('.showprizemodal .pname').text(this.awardData.name);
-      this.$ele.show();
+      $('.D105 .pimg').attr('src', this.awardData.img);
+      $('.D105 .pname').text(this.awardData.name); // 添加翻倍弹窗样式
+
+      if (this.doubleModel) {
+        this.$ele.addClass('inspire-D');
+      } else {
+        this.$ele.removeClass('inspire-D');
+      }
+
+      ;
+      this.$ele.show(); // 显示集奖
+
+      setTimeout(function () {
+        collectPrize.autoCollect(1);
+      }, 600);
     },
     close: function close() {
       ggkGame.reset();
       this.$ele.hide();
-      $('.showprizemodal .pimg').attr('src', '');
-      $('.showprizemodal .pname').text('');
+      $('.D105 .pimg').attr('src', '');
+      $('.D105 .pname').text('');
     },
     closeClick: function closeClick(e) {
       var _this = this;
 
-      clickPopupCloseCount(); // 第二次点击关闭按钮或返回键发券，显示关闭广告提醒弹窗
+      clickPopupCloseCount();
+      collectPrize.showShake(); // 第二次点击关闭按钮或返回键发券，显示关闭广告提醒弹窗
 
       if (gameState.colsePopup == 2 || this.awardData.getEvent == 'back') {
-        gameTool.closeIntercept.show(this.awardData);
+        receiveTipsPopupShow(this.awardData);
+        $('.receiveTipsPopup #receiveCloseBtn').click(function () {
+          // 非关闭提醒弹窗下显示集奖第二个动画及翻倍模式切换
+          switchGameDoubleModel();
+        });
 
         _this.close();
       } else {
-        // 非关闭广告提醒弹窗下执行关闭动画
+        // 非第一次执行关闭动画
         this.closeAnimation({
           myPrize: $('.my-prize'),
-          popupMask: $('.showprizemodal'),
-          popupBody: $('.showprizemodal .container'),
+          popupMask: $('.D105'),
+          popupBody: $('.D105 .container'),
           before: function before() {},
           end: function end() {
             _this.close();
@@ -167,6 +268,7 @@ $(function () {
 
           _this.close();
 
+          switchGameDoubleModel(true);
           window.location.href = _this.awardData.link;
         },
         error: function error(x, t, e) {
@@ -176,7 +278,102 @@ $(function () {
     }
   }); // 默认启用本地中奖弹窗
 
-  var prizeModalPopup = localGamePopup; // 初始化返回发券展示形式
+  var prizeModalPopup = localGamePopup; // 集碎片
+
+  var collectPrize = {
+    $prizeEle: $(),
+    setPrizeEle: function setPrizeEle(prizeNum) {
+      return this.$prizeEle = $('.collect-list .collect-' + prizeNum);
+    },
+    claerPrizeEle: function claerPrizeEle() {
+      this.$prizeEle = $();
+    },
+    getPrizeCount: function getPrizeCount(prizeNum) {
+      if (prizeNum == undefined) {
+        return parseInt(this.$prizeEle.find('.collect-progress').attr('pro'));
+      } else {
+        return parseInt($('.collect-list .collect-' + prizeNum + ' .collect-progress').attr('pro'));
+      }
+
+      ;
+    },
+    setPrizeCount: function setPrizeCount(count, prizeNum) {
+      if (prizeNum == undefined) {
+        this.$prizeEle.find('.collect-progress').attr('pro', count);
+      } else {
+        $('.collect-list .collect-' + prizeNum + ' .collect-progress').attr('pro', count);
+      }
+
+      ;
+    },
+    showlight: function showlight() {
+      this.$prizeEle.addClass('light');
+    },
+    hideLight: function hideLight() {
+      this.$prizeEle.removeClass('light');
+    },
+    shake: function shake() {
+      var _this = this;
+
+      this.$prizeEle.addClass('shake');
+      setTimeout(function () {
+        _this.$prizeEle.removeClass('shake');
+
+        _this.claerPrizeEle();
+      }, 1000);
+    },
+    showShake: function showShake() {
+      this.hideLight();
+
+      var _this = this;
+
+      setTimeout(function () {
+        _this.shake();
+      }, 400);
+    },
+    collect: function collect(addend, prizeNum) {
+      var _this = this;
+
+      if (typeof addend == 'number' && typeof prizeNum == 'number') {
+        this.setPrizeEle(prizeNum);
+        var prizeCount = this.getPrizeCount() + addend;
+        this.showlight();
+        setTimeout(function () {
+          gameState.collect['p' + prizeNum] = prizeCount;
+          gameTool.setGameSatesCookie(gameState);
+
+          _this.setPrizeCount(prizeCount);
+        }, 900);
+      }
+
+      ;
+    },
+    autoCollect: function autoCollect(addend) {
+      var prize1 = this.getPrizeCount(1),
+        prize2 = this.getPrizeCount(2);
+      var prizeNum = 0;
+
+      if (prize1 <= 3 && prize2 <= 3) {
+        prizeNum = pubTool.randomNumBoth(1, 2);
+      } else {
+        if (Math.abs(prize1 - prize2) > 1) {
+          prize1 > prize2 ? prizeNum = 2 : prizeNum = 1;
+        } else {
+          prizeNum = pubTool.randomNumBoth(1, 2);
+        }
+
+        ;
+      }
+
+      ;
+
+      if (typeof addend == 'number') {
+        this.collect(addend, prizeNum);
+      }
+
+      ;
+    }
+  }; // 初始化返回发券展示形式
 
   var returnDisplayForm = {
     popupState: 'unload'
@@ -196,6 +393,8 @@ $(function () {
 
           if (data.code == "000000") {
             gameState.getAD += 1;
+            gameState.gameDouble = true;
+            gameState.backBtn = true;
             gameTool.setGameSatesCookie(gameState);
             awardInfo.img = data.data.materialLink;
             awardInfo.link = data.data.adLink;
@@ -207,6 +406,7 @@ $(function () {
               $('.specialWinPopup').remove();
               $('body').append(data.data.adExclusivePop);
             } else {
+              localGamePopup.doubleModel = true;
               personalReturnPopup.tempData.popupType = 'local';
               prizeModalPopup = localGamePopup;
             }
@@ -307,11 +507,17 @@ $(function () {
   gameRequest.setGameType(gameName);
   gameRequest.initData(); // 初始获取游戏状态值
 
-  gameTool.getGameSatesCookie() == null ? gameTool.setGameSatesCookie({
+  gameTool.getGameSatesCookie() == null ? gameTool.setGameSatesCookie((_gameTool$setGameSate = {
     times: 8,
     colsePopup: 0,
-    getAD: 0
-  }) : '';
+    getAD: 0,
+    collect: {
+      p1: 0,
+      p2: 0
+    },
+    gameDouble: false,
+    backBtn: false
+  }, _defineProperty(_gameTool$setGameSate, "getAD", 0), _defineProperty(_gameTool$setGameSate, "isDynamicEffect", true), _gameTool$setGameSate)) : '';
   var gameState = gameTool.getGameSatesCookie(); // 统计页面打开
 
   gameRequest.clickRedBagNum(); // 客服按钮初始化
@@ -388,9 +594,14 @@ $(function () {
 
   $('#ggk-rule-modal .rule_close').click(function () {
     $("#ggk-rule-modal").hide();
-  }); // 游戏初始化
+  }); // 初始化集奖状态
 
-  ggkGame.init(); // 初始化中奖状态
+  collectPrize.setPrizeCount(gameState.collect.p1, 1);
+  collectPrize.setPrizeCount(gameState.collect.p2, 2); // 初始化游戏的翻倍模式
+
+  switchGameDoubleModel(); // 游戏初始化
+
+  ggkGame.init(gameState.gameDouble); // 初始化中奖状态
 
   var isPrize = false; // 按下或触摸刮卡区域事件
 
@@ -416,36 +627,30 @@ $(function () {
         event: 'interacvite_game_type'
       },
       success: function success(data) {
-        isPrize = true;
-        $('.specialWinPopup').remove();
-        $('body').append('<div class="specialWinPopup"><link rel="stylesheet" href="https://interactive-css.angpi.cn/1597975065098_tc08.css"><div class="tc-08 mask"><div class="tc-close tc-close-btn" style="background-image:url(https://interactive-oss.angpi.cn/1591945187670_tc-08-close.png);"></div><div class="tc-container"><div class="tc-box"><div class="tc-prize tc-jump-btn" style="background-image:url(https://interactive-oss.angpi.cn/1596002677059_tc08-bg.gif);"></div></div></div></div><script>    gameRequest.loadScript("https://interactive-js.angpi.cn/1597975172841_tc08.js", function(){      setPersonalGamePopup()    });</script></div>');
-        // $('.tc-close').click(function (){
-        //   $('.tc-08').hide()
-        // })
-        // $('.tc-02-btn').click(function (){
-        //   $('.tc-08').show()
-        // })
-        // if (data.code == '000000') {
-        //   gameState.getAD += 1;
-        //   gameTool.setGameSatesCookie(gameState);
-        //   awardInfo.img = data.data.materialLink;
-        //   awardInfo.link = data.data.adLink;
-        //   awardInfo.name = data.data.materialDesc;
-        //   awardInfo.getEvent = 'interacvite';
-        //   isPrize = true;
-        //
-        //   if (data.data.adExclusivePop != undefined && data.data.adExclusivePop.indexOf('specialWinPopup') > -1) {
-        //     ggkGame.eleEvent = e;
-        //     $('.specialWinPopup').remove();
-        //     $('body').append('<div class="specialWinPopup"><link rel="stylesheet" href="https://interactive-css.angpi.cn/1597974937969_tc02.css"><div class="tc-02 mask" style="display: block;"><div class="tc-close tc-close-btn" style="background-image:url(https://interactive-oss.angpi.cn/1591083108940_tc-02-close.png);"></div><div class="tc-container"><div class="tc-box"><div class="tc-light" style="background-image:url(https://interactive-oss.angpi.cn/1591083126778_tc-02-light.png);"></div><div class="tc-prize" style="background-image:url(https://interactive-oss.angpi.cn/1591083146021_tc02-bg.png);"><div class="tc-game-box"><div class="red-bag-list"><div class="red-bag tc-jump-btn" style="background-image:url(https://interactive-oss.angpi.cn/1591083168410_game-redBag.png);"></div><div class="red-bag tc-jump-btn" style="background-image:url(https://interactive-oss.angpi.cn/1591083168410_game-redBag.png);"></div><div class="red-bag tc-jump-btn active" style="background-image:url(https://interactive-oss.angpi.cn/1591083168410_game-redBag.png);"></div></div></div></div></div></div></div><script>var specialPopupScript = document.createElement("script");specialPopupScript.type = "text/javascript";specialPopupScript.onload = function(){setPersonalGamePopup()};specialPopupScript.src = "https://interactive-js.angpi.cn/1610351079325_tc02.js";document.querySelector(\'.specialWinPopup\').append(specialPopupScript);</script><script type="text/javascript" src="https://interactive-js.angpi.cn/1610351079325_tc02.js"></script></div>');
-        //   } else {
-        //     prizeModalPopup = localGamePopup;
-        //     ggkGame.openPrize(e, 'win');
-        //   }
-        // } else {
-        //   isPrize = false;
-        //   ggkGame.openPrize(e, 'no');
-        // }
+        if (data.code == '000000') {
+          gameState.getAD += 1;
+          gameState.getAD >= 2 ? gameState.gameDouble = true : "";
+          gameTool.setGameSatesCookie(gameState);
+          awardInfo.img = data.data.materialLink;
+          awardInfo.link = data.data.adLink;
+          awardInfo.name = data.data.materialDesc;
+          awardInfo.getEvent = 'interacvite';
+          isPrize = true;
+
+          if (data.data.adExclusivePop != undefined && data.data.adExclusivePop.indexOf('specialWinPopup') > -1) {
+            ggkGame.eleEvent = e;
+            $('.specialWinPopup').remove();
+            $('body').append(data.data.adExclusivePop);
+          } else {
+            prizeModalPopup = localGamePopup;
+            ggkGame.openPrize(e, 'win');
+          }
+
+          ;
+        } else {
+          isPrize = false;
+          ggkGame.openPrize(e, 'no');
+        }
 
         ;
       },
@@ -484,6 +689,7 @@ var ggkGame = {
   ctx: null,
   coverImg: new Image(),
   cardBg: $('.card_bg')[0],
+  cardBgUpgrade: $('.card_bg_upgrade')[0],
   coverColor: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAnYAAAGUAQMAAACC/v2uAAAABlBMVEUAAADU09LtLwEHAAAAAXRSTlMAQObYZgAAAIlJREFUeNrtzLENAAAEADCJ/2/mAiaTtAc0gEXWHZ/P5/P5fD6fz+fz+Xw+n8/n8/l8Pp/P5/P5fD6fz+fz+Xw+n8/n8/l8Pp/P5/P5fD6fz+fz+Xw+n8/n8/l8Pp/P5/P5fD6fz+fz+Xw+n8/n8/l8Pp/P5/P5fD6fz+fz+Xw+n8/n8/m+fMCkAU2SGpGQIMjgAAAAAElFTkSuQmCC',
   showAllPercent: 35,
   radius: 45,
@@ -499,7 +705,7 @@ var ggkGame = {
   prizeResult: null,
   canStart: true,
   // 初始化游戏对象和事件
-  init: function init() {
+  init: function init(isUpgrade) {
     $('.hand').show();
 
     var _this = this;
@@ -514,6 +720,7 @@ var ggkGame = {
 
       _this.ctx.globalCompositeOperation = 'destination-out';
       $(_this.cardBg).hide();
+      $(_this.cardBgUpgrade).hide();
     };
 
     this.coverImg.onerror = function () {
@@ -522,7 +729,14 @@ var ggkGame = {
     };
 
     this.coverImg.crossOrigin = "anonymous";
-    this.coverImg.src = this.cardBg.src;
+
+    if (isUpgrade) {
+      this.coverImg.src = this.cardBgUpgrade.src;
+    } else {
+      this.coverImg.src = this.cardBg.src;
+    }
+
+    ;
     this.addEvent(); // AnimationFrame 兼容
 
     if (!Date.now) Date.now = function () {
@@ -600,6 +814,22 @@ var ggkGame = {
     this.ctx.globalCompositeOperation = "source-over";
     this.ctx.drawImage(this.coverImg, 0, 0);
     this.ctx.globalCompositeOperation = 'destination-out';
+  },
+  // 重画canvas
+  replaceCanvas: function replaceCanvas() {
+    $('.hand').show();
+    $('.result-show').removeClass('jump').show();
+    $(this.canvas).removeClass('hide');
+    $('.core .boom').hide();
+    clearTimeout(this.autoId);
+    this.cancelAutoScratch();
+    this.done = false;
+    this.firstdown = true;
+    this.isAuto = false;
+    this.scratchEnd = false;
+    this.prizeResult = null;
+    this.canStart = true;
+    this.init(true);
   },
   // 按下事件
   eventDown: function eventDown(e) {
@@ -695,13 +925,9 @@ var ggkGame = {
   // 绘制刮过区域
   guka: function guka(x, y) {
     var _this = this;
-
     _this.ctx.beginPath();
-
     _this.ctx.arc(x * _this.pixelRatio, y * _this.pixelRatio, _this.radius * _this.pixelRatio, 0, Math.PI * 2);
-
     _this.ctx.fill();
-
     _this.ctx.closePath();
   },
   // 进行刮卡操作及计算

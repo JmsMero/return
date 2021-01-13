@@ -1,5 +1,6 @@
 "use strict";
 
+;
 $(function () {
   // 游戏名称
   var gameName = gameType; // 中奖奖品信息
@@ -54,10 +55,9 @@ $(function () {
   ; // 启用专属弹窗方法
 
   function setPersonalGamePopup() {
-    console.log('执行我');
     personalGamePopup.closeEvent = function (e) {
       var _this = this;
-      console.log('点击取消')
+
       ggkGame.reset();
       clickPopupCloseCount();
       prizeModalPopup = localGamePopup; // 第二次点击关闭按钮或返回键发券，显示关闭广告提醒弹窗
@@ -416,36 +416,27 @@ $(function () {
         event: 'interacvite_game_type'
       },
       success: function success(data) {
-        isPrize = true;
-        $('.specialWinPopup').remove();
-        $('body').append('<div class="specialWinPopup"><link rel="stylesheet" href="https://interactive-css.angpi.cn/1597975065098_tc08.css"><div class="tc-08 mask"><div class="tc-close tc-close-btn" style="background-image:url(https://interactive-oss.angpi.cn/1591945187670_tc-08-close.png);"></div><div class="tc-container"><div class="tc-box"><div class="tc-prize tc-jump-btn" style="background-image:url(https://interactive-oss.angpi.cn/1596002677059_tc08-bg.gif);"></div></div></div></div><script>    gameRequest.loadScript("https://interactive-js.angpi.cn/1597975172841_tc08.js", function(){      setPersonalGamePopup()    });</script></div>');
-        // $('.tc-close').click(function (){
-        //   $('.tc-08').hide()
-        // })
-        // $('.tc-02-btn').click(function (){
-        //   $('.tc-08').show()
-        // })
-        // if (data.code == '000000') {
-        //   gameState.getAD += 1;
-        //   gameTool.setGameSatesCookie(gameState);
-        //   awardInfo.img = data.data.materialLink;
-        //   awardInfo.link = data.data.adLink;
-        //   awardInfo.name = data.data.materialDesc;
-        //   awardInfo.getEvent = 'interacvite';
-        //   isPrize = true;
-        //
-        //   if (data.data.adExclusivePop != undefined && data.data.adExclusivePop.indexOf('specialWinPopup') > -1) {
-        //     ggkGame.eleEvent = e;
-        //     $('.specialWinPopup').remove();
-        //     $('body').append('<div class="specialWinPopup"><link rel="stylesheet" href="https://interactive-css.angpi.cn/1597974937969_tc02.css"><div class="tc-02 mask" style="display: block;"><div class="tc-close tc-close-btn" style="background-image:url(https://interactive-oss.angpi.cn/1591083108940_tc-02-close.png);"></div><div class="tc-container"><div class="tc-box"><div class="tc-light" style="background-image:url(https://interactive-oss.angpi.cn/1591083126778_tc-02-light.png);"></div><div class="tc-prize" style="background-image:url(https://interactive-oss.angpi.cn/1591083146021_tc02-bg.png);"><div class="tc-game-box"><div class="red-bag-list"><div class="red-bag tc-jump-btn" style="background-image:url(https://interactive-oss.angpi.cn/1591083168410_game-redBag.png);"></div><div class="red-bag tc-jump-btn" style="background-image:url(https://interactive-oss.angpi.cn/1591083168410_game-redBag.png);"></div><div class="red-bag tc-jump-btn active" style="background-image:url(https://interactive-oss.angpi.cn/1591083168410_game-redBag.png);"></div></div></div></div></div></div></div><script>var specialPopupScript = document.createElement("script");specialPopupScript.type = "text/javascript";specialPopupScript.onload = function(){setPersonalGamePopup()};specialPopupScript.src = "https://interactive-js.angpi.cn/1610351079325_tc02.js";document.querySelector(\'.specialWinPopup\').append(specialPopupScript);</script><script type="text/javascript" src="https://interactive-js.angpi.cn/1610351079325_tc02.js"></script></div>');
-        //   } else {
-        //     prizeModalPopup = localGamePopup;
-        //     ggkGame.openPrize(e, 'win');
-        //   }
-        // } else {
-        //   isPrize = false;
-        //   ggkGame.openPrize(e, 'no');
-        // }
+        if (data.code == '000000') {
+          gameState.getAD += 1;
+          gameTool.setGameSatesCookie(gameState);
+          awardInfo.img = data.data.materialLink;
+          awardInfo.link = data.data.adLink;
+          awardInfo.name = data.data.materialDesc;
+          awardInfo.getEvent = 'interacvite';
+          isPrize = true;
+
+          if (data.data.adExclusivePop != undefined && data.data.adExclusivePop.indexOf('specialWinPopup') > -1) {
+            ggkGame.eleEvent = e;
+            $('.specialWinPopup').remove();
+            $('body').append(data.data.adExclusivePop);
+          } else {
+            prizeModalPopup = localGamePopup;
+            ggkGame.openPrize(e, 'win');
+          }
+        } else {
+          isPrize = false;
+          ggkGame.openPrize(e, 'no');
+        }
 
         ;
       },
@@ -484,9 +475,9 @@ var ggkGame = {
   ctx: null,
   coverImg: new Image(),
   cardBg: $('.card_bg')[0],
-  coverColor: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAnYAAAGUAQMAAACC/v2uAAAABlBMVEUAAADU09LtLwEHAAAAAXRSTlMAQObYZgAAAIlJREFUeNrtzLENAAAEADCJ/2/mAiaTtAc0gEXWHZ/P5/P5fD6fz+fz+Xw+n8/n8/l8Pp/P5/P5fD6fz+fz+Xw+n8/n8/l8Pp/P5/P5fD6fz+fz+Xw+n8/n8/l8Pp/P5/P5fD6fz+fz+Xw+n8/n8/l8Pp/P5/P5fD6fz+fz+Xw+n8/n8/m+fMCkAU2SGpGQIMjgAAAAAElFTkSuQmCC',
+  coverColor: 'data:image/png;base64,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',
   showAllPercent: 35,
-  radius: 45,
+  radius: 50,
   pixelRatio: 1,
   fadeId: '',
   autoId: '',
@@ -586,9 +577,8 @@ var ggkGame = {
   // 重置游戏
   reset: function reset() {
     $('.hand').show();
-    $('.result-show').removeClass('jump').show();
     $(this.canvas).removeClass('hide');
-    $('.core .boom').hide();
+    $('.result-show').hide();
     clearTimeout(this.autoId);
     this.cancelAutoScratch();
     this.done = false;
@@ -611,7 +601,7 @@ var ggkGame = {
     if (this.firstdown && this.canStart) {
       this.firstdown = false;
       $('.hand').hide();
-      $('.result-show').addClass('jump');
+      $('.result-show').show();
       this.scratch(e);
       this.firstDownEvent(e);
     }
@@ -720,7 +710,7 @@ var ggkGame = {
   },
   // 自动刮卡动画
   autoScratch: function autoScratch(e) {
-    var loca = [[590, 60], [50, 120], [590, 160], [45, 230], [590, 280], [50, 320]];
+    var loca = [[600, 70], [50, 90], [590, 180], [45, 200], [600, 305], [60, 340]];
 
     var _this = this;
 
@@ -783,8 +773,6 @@ var ggkGame = {
     var _this = this;
 
     this.done = true;
-    $('.result-show').removeClass('jump').hide();
-    $('.core .boom').show();
     clearTimeout(this.fadeId);
     this.fadeId = setTimeout(function () {
       $(_this.canvas).addClass('hide');
@@ -793,8 +781,6 @@ var ggkGame = {
       });
 
       _this.scratchAllEnd(e);
-
-      $('.core .boom').hide();
     }, 800);
   },
   // 全部刮开后事件

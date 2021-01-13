@@ -2,192 +2,272 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>test</title>
-  <link rel="stylesheet" href="https://interactive-css.angpi.cn/1608860093625_bootstrap.min.css">
+  <meta https-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <!-- 链接标题 [[link_title]] -->
+  <title></title>
+  <!-- 互动类型 [[interactive_type]] -->
+  <script>var gameType="sign_in_01",gameConfig={kefu:true};</script>
+  <!-- 图片方式页面打开统计 -->
+  <script>;var lrtool={url2json:function(a){var b=a.substr(a.indexOf('?')).substr(1),paramsArr=b.split("&"),paramJson={};if(b!=''){for(var i=0;i<paramsArr.length;i++){var c=paramsArr[i].split("=");c[1]==undefined?paramJson[c[0]]='':paramJson[c[0]]=c[1]}};return paramJson},getCookie:function(a){var b,reg=new RegExp("(^| )"+a+"=([^;]*)(;|$)");if(b=document.cookie.match(reg)){return unescape(b[2])}else{return null}}};var responseHeaderData={getFromHeader:false,req:''};!function(){var u=navigator.userAgent,ua={ios:!!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/),uc:u.indexOf('UCBrowser')>-1,quark:u.indexOf('Quark')>-1,baidu:u.indexOf('Baidu')>-1},urlParams=lrtool.url2json(window.location.href),istrans=urlParams.serverCookie!=undefined,url='//api.interactive.lzdata.com.cn/landingPageStatus',interactiveType=gameType,adSpaceCode=urlParams.adSpaceCode,platLogRequestId='',backInteractiveType=urlParams.backInteractiveType==undefined?null:urlParams.backInteractiveType,sitename=lrtool.getCookie('apicookie_'+adSpaceCode);platLogRequestId=lrtool.getCookie('platLogRequestId');if(istrans){if(ua.ios&&(ua.uc||ua.quark||ua.baidu)){var a=new XMLHttpRequest();a.open('GET',document.location,false);a.send(null);responseHeaderData.getFromHeader=true;responseHeaderData.req=a;platLogRequestId=a.getResponseHeader('platLogRequestId')};sitename=urlParams.serverCookie};var b=url+"?adSpaceCode="+adSpaceCode+'&platLogRequestId='+platLogRequestId+'&interactiveType='+interactiveType+'&sitename='+sitename+'&backInteractiveType='+backInteractiveType;new Image().src=b}();;</script>
+  <link rel="stylesheet" href="https://interactive-css.angpi.cn/1609991441584_signIn01.css">
   <style>
-      .media-statement-table{
-          width: 100%;
-          border-left: 1px solid #808080;
-          border-top: 1px solid #808080;
-      }
-      .media-statement-table .ms-title{
-          padding: 20px 0 ;
-          text-align: center;
-          font-size: 24px;
-          color: #B2B2B2;
-          border-right: 1px solid #808080;
-          border-bottom: 1px solid #808080;
-      }
-      .media-statement-table .ms-table-row{
-          display: flex;
-      }
-      .media-statement-table .ms-table-row span{
-          color: #FF3C3C;
-      }
-      .media-statement-table .ms-table-row div{
-          height: 35px;
-          line-height: 35px;
-          border-right: 1px solid #808080;
-          border-bottom: 1px solid #808080;
-          font-size: 16px;
-      }
-      .media-statement-table  div.ms-instructions{
-          width: 100%;
-          height: 226px;
-          border-right: 1px solid #808080;
-          border-bottom: 1px solid #808080;
-          padding: 15px 32px;
-      }
-      .media-statement-table .ms-table-row input{
-          width: 100%;
-          height: 100%;
-          border: 0;
-      }
-      .media-statement-table .blank-space{
-          height: 16px;
-          border-right: 1px solid #808080;
-          border-bottom: 1px solid #808080;
-      }
-      .ms-instructions{
-          position: relative;
-      }
-      .ms-instructions h6{
-          font-size: 16px;
-          color: #313131;
-          font-weight: bold;
-          margin-bottom: 16px;
-      }
-      .ms-instructions ol{
-          font-size: 16px;
-          color: #313131;
-      }
-      .ms-instructions ol span{
-          display: inline-block;
-          width: 21px;
-      }
-      .ms-instructions ol li{
-          margin-bottom: 6px;
-      }
-      .ms-instructions p{
-          position: absolute;
-          bottom: 20px;
-          right: 280px;
-      }
-      .media-statement-content .media-statement-btn{
-          text-align: center;
-          margin-top: 20px;
-      }
-      .media-statement-content .media-statement-btn button{
-          width: 159px;
-          height: 42px;
-          border-radius: 4px;
-          font-size: 18px;
-      }
-      .media-statement-content .media-statement-btn button:first-child{
-          color: #fff;
-          background: #4672FF;
-          border: 1px solid #4672FF;
-          margin-right: 22px;
-      }
-      .media-statement-content .media-statement-btn button:nth-child(2){
-          background: #FFFFFF;
-          border: 1px solid #B3B3B3;
-      }
-      .ms-20-row{
-          width: 20%;
-          text-align: center;
-      }
-      .ms-30-row{
-          width: 30%;
-          padding-left: 29px;
-      }
-      .ms-80-row{
-          width: 80%;
-          padding-left: 29px;
-      }
-      .put-ash{
-          background-color: #F5F5F5;
-          color: #B3B3B3;
-      }
+      /* 游戏页面背景色 [[game_background_color]] */
+      .tac-app{background-color: #fb864f;}
+      /* 我的奖品图标 [[my_prize_icon]] */
+      .prize-record{background-image:url(https://interactive-oss.angpi.cn/1596694559653_icon-myPrize-1.png);}
+      /* 底部banner弹窗 [[random_red_envelopes]] */
+      .random_red_envelopes{background-image: url(https://interactive-oss.angpi.cn/1608196299605_red_envelopes.png);}
+      /* 转盘背景图 [[big_wheel_core]] */
+      .big_wheel_case .T098_core{background-image: url(https://interactive-oss.angpi.cn/1591603006840_1591348964407_shipin_pan.png);}
+      /* 转盘底座背景图 [[big_wheel_base]] */
+      .big_wheel_case .T098_base{background-image: url(https://interactive-oss.angpi.cn/1591603007193_1591348985833_shipin_panzuo.png);}
+      /* 转盘游戏按钮 [[big_wheel_start]] */
+      .big_wheel_case .T098_start{background-image: url(https://interactive-oss.angpi.cn/1591603005622_1591348821339_shipin_start_btn.png);}
+      /* 转盘游戏banner [[big_wheel_header]] */
+      .big_wheel_case .T098_start_header{background-image: url(https://interactive-oss.angpi.cn/1608543946559_1608543902577.jpg);}
+      /* 签到成功图片 [[first_day]] */
+      .first_day{background-image: url(https://interactive-oss.angpi.cn/1608281997717_first_day.png);}
+      /* 签到按钮 [[sign_immediately]] */
+      .sign_calendar .sign_immediately{background-image: url(https://interactive-oss.angpi.cn/1608187108049_present_btn.png);}
+      /* 签到完成按钮 [[sign_ban]] */
+      .sign_calendar .sign_immediately.sign_ban{background-image: url(https://interactive-oss.angpi.cn/1608188222486_present_btn_forbid.png);}
+      /*刮卡底图1 [[scratch_reproduction1]] */
+      .m-ui-scratch-box1{background-image: url(https://interactive-oss.angpi.cn/1608362440764_ggk_bg1.gif);}
+      /*刮卡底图2 [[scratch_reproduction2]] */
+      .m-ui-scratch-box2{background-image: url(https://interactive-oss.angpi.cn/1608362440764_ggk_bg1.gif);}
+      /*刮卡底图3 [[scratch_reproduction3]] */
+      .m-ui-scratch-box3{background-image: url(https://interactive-oss.angpi.cn/1608362440764_ggk_bg1.gif);}
+      /*刮卡底图4 [[scratch_reproduction4]] */
+      .m-ui-scratch-box4{background-image: url(https://interactive-oss.angpi.cn/1608362440764_ggk_bg1.gif);}
+      /*刮卡底图5 [[scratch_reproduction5]] */
+      .m-ui-scratch-box5{background-image: url(https://interactive-oss.angpi.cn/1608362440764_ggk_bg1.gif);}
+      /*刮卡涂层 [[sign_guide]] */
+      .sign_guide{background-image:url(https://interactive-oss.angpi.cn/1608258290951_ggk_default.gif);}
+      /*底部导航按钮 [[random_red_envelopes_btn]] */
+      .random_red_envelopes_btn{background-image: url(https://interactive-oss.angpi.cn/1608197352047_receive.png);}
   </style>
-  <script src="https://interactive-js.angpi.cn/1608860161948_jspdf.umd.min.js"></script>
-  <script src="https://interactive-js.angpi.cn/1608860114600_html2canvas.min.js"></script>
+  <!-- 自定义css [[diy_css]] -->
+  <style></style>
+  <!-- 顶部附加js [[top_js]] -->
+  <script></script>
 </head>
 <body>
-<button id="print-btn" class="btn btn-success m-5">生成PDF</button>
-
-<div id="page" style="width: 1000px;color: black;background: white;">
-  <!--1st-->
-  <div id="first">
-    <div class="media-statement-table">
-      <div class="ms-title put-ash">北京天卓科技有限公司&北京展鸿软通科技股份有限公司何合作结算单</div>
-      <div class="ms-table-row put-ash">
-        <div class="ms-20-row">媒体名称</div>
-        <div class="ms-30-row">北京天卓科技有限公司</div>
-        <div class="ms-20-row">提现金额</div>
-        <div class="ms-30-row">¥45,673.00</div>
+<div class="tac-app">
+  <!-- 游戏背景图 [[main_background_image]] -->
+  <img class="tac-app-bg" src="https://interactive-oss.angpi.cn/1608176129501_sign_in_bg.jpg">
+  <div class="index_adtip"></div>
+  <div class="tac-main">
+    <div class="sign_header">
+      <div class="sign_calendar">
+        <div class="first_day"></div>
+        <div class="every_day"></div>
+        <div class="sign_immediately sign_linear"></div>
       </div>
-      <div class="ms-table-row put-ash">
-        <div class="ms-20-row">结算周期</div>
-        <div class="ms-80-row">2020.11</div>
+    </div>
+    <!-- 游戏背景图 [[ggk_card_bg]] -->
+    <img class="tc-ggk-card-bg tc-ggk-card-bg1" src="https://interactive-oss.angpi.cn/1608258310330_ggk_bg2.png" style="display: none;">
+    <div class="sign_content">
+      <div class="m-ui-scratch-box m-ui-scratch-box1">
+        <div class="si-game-box m-ui-scratch-father01">
+          <div class="tc-ggk">
+            <canvas class="tc-ggk-card tc-ggk-card1" width="531" height="173"></canvas>
+            <div class="tc-ggk-guide tc-ggk-guide1 sign_guide"></div>
+          </div>
+        </div>
+        <div class="m-ui-scratch-btn m-ui-scratch-btn01"></div>
       </div>
-      <div class="blank-space"></div>
-      <div class="ms-table-row">
-        <div class="ms-20-row">联系人<span>*</span></div>
-        <div class="ms-30-row"><input type="text" placeholder="请输入媒体主联系人"></div>
-        <div class="ms-20-row">联系电话<span>*</span></div>
-        <div class="ms-30-row"><input type="text" placeholder="请输入媒体主电话"></div>
+    </div>
+    <div class="sign_content">
+      <div class="m-ui-scratch-box m-ui-scratch-box2">
+        <div class="tc-game-box m-ui-scratch-father02">
+          <div class="tc-ggk">
+            <canvas class="tc-ggk-card tc-ggk-card2" width="531" height="173"></canvas>
+            <div class="tc-ggk-guide tc-ggk-guide2 sign_guide"></div>
+          </div>
+        </div>
+        <div class="m-ui-scratch-btn m-ui-scratch-btn02"></div>
       </div>
-      <div class="ms-table-row">
-        <div class="ms-20-row">寄件人地址<span>*</span></div>
-        <div class="ms-80-row"><input type="text" placeholder="请输入寄件地址,需要回寄结算单,请填写并核准后回寄信息"></div>
+    </div>
+    <div class="sign_content">
+      <div class="m-ui-scratch-box m-ui-scratch-box3">
+        <div class="tc-game-box m-ui-scratch-father03">
+          <div class="tc-ggk">
+            <canvas class="tc-ggk-card tc-ggk-card3" width="531" height="173"></canvas>
+            <div class="tc-ggk-guide tc-ggk-guide3 sign_guide"></div>
+          </div>
+        </div>
+        <div class="m-ui-scratch-btn m-ui-scratch-btn03"></div>
       </div>
-      <div class="ms-table-row">
-        <div class="ms-20-row">银行卡号<span>*</span></div>
-        <div class="ms-30-row"><input type="text" placeholder="请输入银行卡号"></div>
-        <div class="ms-20-row">开户名称<span>*</span></div>
-        <div class="ms-30-row"><input type="text" placeholder="请输入银行卡号"></div>
+    </div>
+    <div class="sign_content">
+      <div class="m-ui-scratch-box m-ui-scratch-box4">
+        <div class="tc-game-box m-ui-scratch-father04">
+          <div class="tc-ggk">
+            <canvas class="tc-ggk-card tc-ggk-card4" width="531" height="173"></canvas>
+            <div class="tc-ggk-guide tc-ggk-guide4 sign_guide"></div>
+          </div>
+        </div>
+        <div class="m-ui-scratch-btn m-ui-scratch-btn04"></div>
       </div>
-      <div class="ms-table-row">
-        <div class="ms-20-row">开户银行<span>*</span></div>
-        <div class="ms-80-row"><input type="text" placeholder="请输入开户银行名称"></div>
+    </div>
+    <div class="sign_content">
+      <div class="m-ui-scratch-box m-ui-scratch-box5">
+        <div class="tc-game-box m-ui-scratch-father05">
+          <div class="tc-ggk">
+            <canvas class="tc-ggk-card tc-ggk-card5" width="531" height="173"></canvas>
+            <div class="tc-ggk-guide tc-ggk-guide5 sign_guide"></div>
+          </div>
+        </div>
+        <div class="m-ui-scratch-btn m-ui-scratch-btn05"></div>
       </div>
-      <div class="ms-instructions">
-        <h6>说明</h6>
-        <ol>
-          <li><span>1、</span>此结算单不包括结算周期以外发生的款项，如有错漏，请与我司业务负责人联系。</li>
-          <li><span>2、</span>收到此结算单核对无误后请及时盖章并回传。（可以以扫描件形式发送给我司相关业务负责人）</li>
-          <li><span>3、</span>以上数据如有错误请在五天内告知，以便更在，否则当确认伦。<br>&nbsp;&nbsp;&nbsp;&nbsp;以上信息，请尽快核对，感谢贵司一直以来的支持和惠顾！</li>
-        </ol>
+    </div>
+    <div class="random_red_envelopes">
+      <div class="random_red_envelopes_btn"></div>
+    </div>
+  </div>
+  <div class="prize-record my-prize"></div>
+  <div id="ggk-rule-btn" class="tac-rule"></div>
+  <!-- 备案信息 [[records_info]] -->
+  <div class="index_disclaimer">京ICP备18763453号</div>
+</div>
+<div id="ggk-rule-modal" class="rulemodal">
+  <div class="rule_body">
+    <div class="rule_content">
+      <div class="rule_wrapper">
         <p>
-          (签字/盖章）
-          <br>日期
+          <!-- 活动规则 [[active_rule]] -->
+          活动说明：<br>
+          参加活动即有机会获得幸运奖~每天抽奖机会8次免费。此活动为概率中奖，奖品数量有限，祝好运！<br>
+          惊喜一：华为Mate 30<br>
+          惊喜二：锦鲤卡<br>
+          惊喜三：骑士卡<br>
+          惊喜四：幸运福袋<br>
+          ------------------------<br>
+          重要声明：<br>
+          1.奖品将在活动结束后5-10个工作日安排发放，请耐心等待。<br>
+          2.优惠券类奖品的使用规则详见每个优惠券的介绍页<br>
+          3.请兑换后仔细阅读使用流程，如有疑问，可直接联系客服专线<br>
+          4.通过非法途径获得奖品的，主办方有权不提供奖品<br>
+          ------------------------<br>
+          中奖概率说明：<br>
+          华为Mate 30共50份，中奖概率0.001%；<br>
+          锦鲤卡共200份，中奖概率0.005%；<br>
+          骑士卡共200份，中奖概率0.005%；<br>
+          幸运福袋共500份，中奖概率0.01%。<br>
         </p>
       </div>
     </div>
+    <div class="rule_close"></div>
   </div>
 </div>
-
-<script src="https://interactive-js.angpi.cn/1608860135538_jspdf-html2canvas.min.js"></script>
+<div class="big_wheel">
+  <div class="big_wheel_case">
+    <div class="T098_start_header"></div>
+    <div class="T098_panel_box">
+      <div class="T098_panel">
+        <div class="T098_start"></div>
+        <div class="T098_wheel">
+          <div class="T098_core">
+            <div class="core-box">
+              <div class="prize">
+                <div class="prize-dialog">
+                  <!-- 奖品1 （谢谢参与） [[prize_image_1]] -->
+                  <img src="https://interactive-oss.angpi.cn/1591603007799_1591339961171_p9-1.png">
+                </div>
+              </div>
+              <div class="prize">
+                <div class="prize-dialog">
+                  <!-- 奖品2 （幸运福袋） [[prize_image_2]] -->
+                  <img src="https://interactive-oss.angpi.cn/1591603008004_1591339985196_p9-2.png">
+                </div>
+              </div>
+              <div class="prize">
+                <div class="prize-dialog">
+                  <!-- 奖品3 [[prize_image_3]] -->
+                  <img src="https://interactive-oss.angpi.cn/1591603008213_1591339999167_p9-3.png">
+                </div>
+              </div>
+              <div class="prize">
+                <div class="prize-dialog">
+                  <!-- 奖品4 [[prize_image_4]] -->
+                  <img src="https://interactive-oss.angpi.cn/1591603008407_1591340011212_p9-4.png">
+                </div>
+              </div>
+              <div class="prize">
+                <div class="prize-dialog">
+                  <!-- 奖品5 [[prize_image_5]] -->
+                  <img src="https://interactive-oss.angpi.cn/1591603008649_1591340026613_p9-5.png">
+                </div>
+              </div>
+              <div class="prize">
+                <div class="prize-dialog">
+                  <!-- 奖品6 [[prize_image_6]] -->
+                  <img src="https://interactive-oss.angpi.cn/1591603008863_1591340037962_p9-6.png">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="T098_lump"></div>
+        </div>
+      </div>
+      <div class="T098_base"><div class="T098_jointime">今日剩余免费&nbsp;<span>1</span>&nbsp;次</div></div>
+    </div>
+    <span class="recommend-modal-close"><i class="close"></i></span>
+  </div>
+</div>
+<div class="errormodal">
+  <div class="error_close"></div>
+  <div class="error_body">
+    <div class="error_banner"></div>
+    <div class="error_title">系统开小差啦</div><div class="error_tip"></div>
+    <div class="error_btn">好的</div>
+  </div>
+</div>
+<div class="thanksmodal">
+  <span class="thanks-modal-close"><i class="modal-close"></i></span>
+  <div class="thanks-body">
+    <div class="thanks-btn-b">再来一次</div>
+  </div>
+</div>
+<section class="layer-105 showprizemodal">
+  <div class="close pclose"></div>
+  <div class="container">
+    <div class="box">
+      <div class="light"></div>
+      <div class="caidai"></div>
+      <div class="dialog">
+        <div class="dialog-title"></div>
+        <div class="couponLight couponLight1"></div>
+        <div class="couponLight couponLight2"></div>
+        <div class="coupon"><img class="pimg"></div>
+        <div class="counpon-name"><span class="name pname">平安110万保障免费领取</span></div>
+        <div class="btn pbtn"></div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="recommendmodal">
+  <div class="caidaisprites"></div>
+  <div class="recommend-modal-dialog">
+    <span class="recommend-modal-close"><i class="close"></i></span>
+    <div class="recommend-body"></div>
+  </div>
+</div>
+<div class="ban_sliding"></div>
+<script src="https://interactive-js.angpi.cn/1597804968352_jquery.min.js"></script>
+<script src="https://interactive-js.angpi.cn/1610455585298_commonTools.js"></script>
+<!-- 底部附加js [[bottom_js]] -->
+<script></script>
+<script src="https://interactive-js.angpi.cn/1610533498606_signIn01.js"></script>
+<!--<script src="../js/original/card.js"></script>-->
+<script src="https://interactive-js.angpi.cn/1609231542801_vconsole.js"></script>
 <script>
-
-  document.getElementById('print-btn').addEventListener('click', function() {
-    html2PDF([
-      document.getElementById('first')
-    ], {
-      jsPDF: {
-        format: 'b5',
-      },
-      margin: {
-        top: 30,
-        right: 10,
-        bottom: 30,
-        left: 10,
-      },
-    })
-  });
+  // 初始化
+  var vConsole = new VConsole();
+  console.log('Hello world');
 </script>
 </body>
 </html>

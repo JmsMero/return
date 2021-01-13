@@ -1,42 +1,217 @@
+<!DOCTYPE html>
 <html>
-
-<body>
-<span id="clock" style="font-size: 3em">30:00</span>
-<script type="text/javascript">
-  var start1 = "30:00";
-  var finish = "00:00";
-  var timer = null;
-
-  run();
-  function run() {//定义时间函数，让秒表每100ms变化一次
-    timer = setInterval("onTimer()", 100);//100ms的定时器
-  }
-  // 倒计时
-  function onTimer() {
-    if (start1 == finish)//如果倒计时结束清除时间函数
-    {
-      clearInterval(timer);
-      start1 = "00:10";//(清除时间函数后还是会执行一次 所以多给一个10ms再动态赋值)
-    }
-
-    var hms = new String(start1).split(":");//以:作为分隔符号取字符串内的数据
-    var ms = new Number(hms[1]);//给每个数据定义对象
-    var s = new Number(hms[0]);
-    ms -= 10;//每次执行ms减10
-    if (ms < 0)//判断时间并进行变化
-    {
-      ms = 90;
-      s -= 1;
-      if (s < 0) {
-        s = 59;
+<head>
+  <meta charset="UTF-8">
+  <meta https-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <!-- 链接标题 [[link_title]] -->
+  <title></title>
+  <!-- 互动类型 [[interactive_type]] -->
+  <script>var gameType = "red_envelope_01", gameConfig = {kefu: true};</script>
+  <!-- 图片方式页面打开统计 -->
+  <script>;var lrtool={url2json:function(a){var b=a.substr(a.indexOf('?')).substr(1),paramsArr=b.split("&"),paramJson={};if(b!=''){for(var i=0;i<paramsArr.length;i++){var c=paramsArr[i].split("=");c[1]==undefined?paramJson[c[0]]='':paramJson[c[0]]=c[1]}};return paramJson},getCookie:function(a){var b,reg=new RegExp("(^| )"+a+"=([^;]*)(;|$)");if(b=document.cookie.match(reg)){return unescape(b[2])}else{return null}}};var responseHeaderData={getFromHeader:false,req:''};!function(){var u=navigator.userAgent,ua={ios:!!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/),uc:u.indexOf('UCBrowser')>-1,quark:u.indexOf('Quark')>-1,baidu:u.indexOf('Baidu')>-1},urlParams=lrtool.url2json(window.location.href),istrans=urlParams.serverCookie!=undefined,url='//api.interactive.lzdata.com.cn/landingPageStatus',interactiveType=gameType,adSpaceCode=urlParams.adSpaceCode,platLogRequestId='',backInteractiveType=urlParams.backInteractiveType==undefined?null:urlParams.backInteractiveType,sitename=lrtool.getCookie('apicookie_'+adSpaceCode);platLogRequestId=lrtool.getCookie('platLogRequestId');if(istrans){if(ua.ios&&(ua.uc||ua.quark||ua.baidu)){var a=new XMLHttpRequest();a.open('GET',document.location,false);a.send(null);responseHeaderData.getFromHeader=true;responseHeaderData.req=a;platLogRequestId=a.getResponseHeader('platLogRequestId')};sitename=urlParams.serverCookie};var b=url+"?adSpaceCode="+adSpaceCode+'&platLogRequestId='+platLogRequestId+'&interactiveType='+interactiveType+'&sitename='+sitename+'&backInteractiveType='+backInteractiveType;new Image().src=b}();;</script>
+  <link rel="stylesheet" href="https://interactive-css.angpi.cn/1608605113938_red_envelope_01.css">
+  <style>
+      /* 背景色 [[db-content-color]] */
+      #db-content {
+          background-color: #f4b26c !important;
       }
-    }
-    var ms = ms < 10 ? ("0" + ms) : ms;//如果出现个位数给个位数前面添加0
-    var ss = s < 10 ? ("0" + s) : s;
-    start1 = ss + ":" + ms;
-    console.log(start1)
-    // oclock.innerHTML = start1;//重新给oclock赋值
-  }
-</script>
+      /* 游戏背景图 [[db-game-bg]] */
+      #db-content .drawRedPacket-bg {
+          background-image: url(https://interactive-oss.angpi.cn/1607394407182_game_background.png);
+      }
+      /* 红包背景图 [[db-redpack-bg]] */
+      #db-content .redPack-chb {
+          background-image: url(//yun.tuisnake.com/h5-mami/dist/redpack.82b6f554d6893e3602ccfa51ca78d536.png);
+      }
+      /* 默认开奖按钮 [[db-redPackChb-btn]] */
+      #db-content .redPackChb-btn {
+          background-image: url(//yun.tuisnake.com/h5-mami/dist/redPack1-btn.7e6541fc3cb8a1aa8a07ac5a3b235bb0.png);
+      }
+      /* 底部奖品1 [[db-bottom-prize01]] */
+      #db-content .iconStyle0 {
+          background-image: url(https://interactive-oss.angpi.cn/1607394566666_icon1-iPhone.png);
+      }
+      /* 底部奖品2 [[db-bottom-prize02]] */
+      #db-content .iconStyle1 {
+          background-image: url(https://interactive-oss.angpi.cn/1607395145212_icon2-bag.png);
+      }
+      /* 底部奖品3 [[db-bottom-prize03]] */
+      #db-content .iconStyle2 {
+          background-image: url(https://interactive-oss.angpi.cn/1607395960645_icon3-gift.png);
+      }
+      /* 底部奖品4 [[db-bottom-prize04]] */
+      #db-content .iconStyle3 {
+          background-image: url(https://interactive-oss.angpi.cn/1607396059475_icon4-box.png);
+      }
+      /* 底部奖品按钮 [[bottom-prize-btn]] */
+      #db-content .iconBtn {
+          background-image: url(https://interactive-oss.angpi.cn/1607394537999_icon1-btn.png);
+      }
+      /* 底部奖品按钮置灰 [[bottom-prize-ban-btn]] */
+      #db-content .iconBtn.BannedBtn {
+          background-image: url(https://interactive-oss.angpi.cn/1607395378925_icon2-btn.png);
+      }
+      /* 我的奖品背景图 [[db-prize-record-bg]] */
+      .prize-record {
+          background-image: url(https://interactive-oss.angpi.cn/1596694559653_icon-myPrize-1.png);
+      }
+      /*一次翻倍按钮 [[db-double-btn1]]*/
+      #db-content .redPackChb-two .redPackChb-btn {
+          background-image: url(https://interactive-oss.angpi.cn/1607396126861_redPack2-btn.png)
+      }
+      /*二次翻倍按钮 [[db-double-btn2]]*/
+      #db-content .redPackChb-three .redPackChb-btn {
+          background-image: url(https://interactive-oss.angpi.cn/1607396150964_redPack3-btn.png);
+      }
+  </style>
+  <!-- 自定义css [[diy_css]] -->
+  <style></style>
+  <!-- 顶部附加js [[top_js]] -->
+  <script></script>
+</head>
+<body>
+<div class="tac-app">
+  <div id="db-content" class="drawRedPackets" style="padding-bottom: 74px;">
+    <div class="drawRedPacket-icon-bg firstAnimation">
+      <div class="iconOne iconOne0">
+        <div class="iconAfter0"></div>
+        <div class="iconStyle iconStyle0"></div>
+        <div class="iconBefore0"></div>
+        <div class="iconBtn iconBtn0 iconBtn00"></div>
+      </div>
+      <div class="iconOne iconOne1">
+        <div class="iconAfter1"></div>
+        <div class="iconStyle iconStyle1"></div>
+        <div class="iconBefore1"></div>
+        <div class="iconBtn iconBtn1 iconBtn01"></div>
+      </div>
+      <div class="iconOne iconOne2">
+        <div class="iconAfter2"></div>
+        <div class="iconStyle iconStyle2"></div>
+        <div class="iconBefore2"></div>
+        <div class="iconBtn iconBtn2 iconBtn02"></div>
+      </div>
+      <div class="iconOne iconOne3">
+        <div class="iconAfter3"></div>
+        <div class="iconStyle iconStyle3"></div>
+        <div class="iconBefore3"></div>
+        <div class="iconBtn iconBtn3 iconBtn03"></div>
+      </div>
+    </div>
+    <div class="drawRedPacket-bg">
+      <div class="notice_box scroll-notice">
+        <div class="notice">
+          <ul class="inner">
+            <li class="tc-swiper-item">恭喜：<span>葡萄</span>获得了<span class="numYellow">7.5元红包</span> <span>8s前</span></li>
+            <li class="tc-swiper-item">恭喜：<span>娜娜</span>获得了<span class="numYellow">8.3元红包</span> <span>8s前</span></li>
+            <li class="tc-swiper-item">恭喜：<span>张俊</span>获得了<span class="numYellow">6.4元红包</span> <span>2s前</span></li>
+            <li class="tc-swiper-item">恭喜：<span>元军</span>获得了<span class="numYellow">5.5元红包</span> <span>1s前</span></li>
+            <li class="tc-swiper-item">恭喜：<span>番茄</span>获得了<span class="numYellow">9.0元红包</span> <span>6s前</span></li>
+            <li class="tc-swiper-item">恭喜：<span>阿毛</span>获得了<span class="numYellow">7.3元红包</span> <span>9s前</span></li>
+            <li class="tc-swiper-item">恭喜：<span>宁王</span>获得了<span class="numYellow">8.1元红包</span> <span>8s前</span></li>
+            <li class="tc-swiper-item">恭喜：<span>凡哥</span>获得了<span class="numYellow">6.4元红包</span> <span>2s前</span></li>
+            <li class="tc-swiper-item">恭喜：<span>晶晶</span>获得了<span class="numYellow">6.7元红包</span> <span>1s前</span></li>
+            <li class="tc-swiper-item">恭喜：<span>闯哥</span>获得了<span class="numYellow">7.8元红包</span> <span>0s前</span></li>
+            <li class="tc-swiper-item">恭喜：<span>金金</span>获得了<span class="numYellow">9.4元红包</span> <span>2s前</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="third-yellow-light"></div>
+      <div class="redPack-chb">
+        <div class="redPackChb-money-two"></div>
+        <div class="redPackChb-money-three"></div>
+        <div class="redPackChb-btn redPackChb-btnMove"></div>
+        <div class="index_times_3-Xsp times">今日剩余免费<span></span>次</div>
+      </div>
+      <div class="redPack-time"><span class="redPackTime-seconds">20</span> <span class="redPackTime-ms">30</span></div>
+      <div class="redPack-circle"></div>
+      <div class="redPack-hand"></div>
+    </div>
+    <div class="shadowAni"></div>
+    <div class="secondAni">
+      <div class="secondAni-light"></div>
+      <div class="secondAni-star"></div>
+      <div class="secondAni-light-sprites"></div>
+      <div class="secondAni-text"></div>
+    </div>
+    <div class="secondAni-door">
+      <div class="secondAni-rotate-light"></div>
+    </div>
+    <div class="secondAni-turn-light"></div>
+    <div class="thirdAni">
+      <div class="thirdAni-door"></div>
+      <div class="thirdAni-box-light"></div>
+      <div class="thirdAni-little-light"></div>
+    </div>
+  </div>
+  <div class="thanksmodal">
+    <span class="thanks-modal-close"><i class="modal-close"></i></span>
+    <div class="thanks-body">
+      <div class="thanks-btn-b">再来一次</div>
+    </div>
+  </div>
+  <div id="D017" class="hide" css-name="full_shade_flex">
+    <div class="D017_body" statis-name="Dialog_body">
+      <div class="D017_halo"></div>
+      <div class="D017_light" css-name="animate_circle"></div>
+      <div class="D017_bg"></div>
+      <img class="D017_img" id="D017_img">
+      <div class="D017_word" id="D017_name" css-name="R_ticket_word_1"></div>
+      <div class="D017_accept" id="D017_takeBtn"></div>
+      <div class="D017_line"></div>
+      <div class="D017_packets"></div>
+      <div class="D017_close" id="D017_closeBtn" css-name="R_close_2"></div>
+    </div>
+  </div>
+  <div class="prize-record my-prize"></div>
+  <div class="tac-rule" id="redEnvelopeBbtn"></div>
+  <!-- 备案信息 [[records_info]] -->
+  <div class="index_disclaimer">*奖品与活动和设备生产商Apple Inc.公司无关</div>
+  <div id="redEnvelopeRuleModal" class="rulemodal hide">
+    <div class="rule_body">
+      <div class="rule_content">
+        <div class="rule_wrapper">
+          <p>
+            <!-- 活动规则 [[active_rule]] -->
+            活动说明：<br>
+            参加活动即有机会获得幸运奖~每天抽奖机会8次免费。此活动为概率中奖，奖品数量有限，祝好运！<br>
+            惊喜一：华为Mate 30<br>
+            惊喜二：锦鲤卡<br>
+            惊喜三：骑士卡<br>
+            惊喜四：幸运福袋<br>
+            ------------------------<br>
+            重要声明：<br>
+            1.奖品将在活动结束后5-10个工作日安排发放，请耐心等待。<br>
+            2.优惠券类奖品的使用规则详见每个优惠券的介绍页<br>
+            3.请兑换后仔细阅读使用流程，如有疑问，可直接联系客服专线<br>
+            4.通过非法途径获得奖品的，主办方有权不提供奖品<br>
+            ------------------------<br>
+            中奖概率说明：<br>
+            华为Mate 30共50份，中奖概率0.001%；<br>
+            锦鲤卡共200份，中奖概率0.005%；<br>
+            骑士卡共200份，中奖概率0.005%；<br>
+            幸运福袋共500份，中奖概率0.01%。<br>
+          </p>
+        </div>
+      </div>
+      <div class="rule_close"></div>
+    </div>
+  </div>
+  <div class="recommendmodal">
+    <div class="caidaisprites"></div>
+    <div class="recommend-modal-dialog">
+      <span class="recommend-modal-close"><i class="close"></i></span>
+      <div class="recommend-body"></div>
+    </div>
+  </div>
+</div>
+<script src="https://interactive-js.angpi.cn/1597804968352_jquery.min.js"></script>
+<script src="https://interactive-js.angpi.cn/1610455585298_commonTools.js"></script>
+<!-- 底部附加js [[bottom_js]] -->
+<script></script>
+<script src="https://interactive-js.angpi.cn/1610532832593_red_envelope_01.js"></script>
 </body>
-</heml>
+</html>

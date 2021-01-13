@@ -54,10 +54,10 @@ $(function () {
   ; // 启用专属弹窗方法
 
   function setPersonalGamePopup() {
-    console.log('执行我');
+    console.log('执行我')
     personalGamePopup.closeEvent = function (e) {
       var _this = this;
-      console.log('点击取消')
+
       ggkGame.reset();
       clickPopupCloseCount();
       prizeModalPopup = localGamePopup; // 第二次点击关闭按钮或返回键发券，显示关闭广告提醒弹窗
@@ -416,36 +416,27 @@ $(function () {
         event: 'interacvite_game_type'
       },
       success: function success(data) {
-        isPrize = true;
-        $('.specialWinPopup').remove();
-        $('body').append('<div class="specialWinPopup"><link rel="stylesheet" href="https://interactive-css.angpi.cn/1597975065098_tc08.css"><div class="tc-08 mask"><div class="tc-close tc-close-btn" style="background-image:url(https://interactive-oss.angpi.cn/1591945187670_tc-08-close.png);"></div><div class="tc-container"><div class="tc-box"><div class="tc-prize tc-jump-btn" style="background-image:url(https://interactive-oss.angpi.cn/1596002677059_tc08-bg.gif);"></div></div></div></div><script>    gameRequest.loadScript("https://interactive-js.angpi.cn/1597975172841_tc08.js", function(){      setPersonalGamePopup()    });</script></div>');
-        // $('.tc-close').click(function (){
-        //   $('.tc-08').hide()
-        // })
-        // $('.tc-02-btn').click(function (){
-        //   $('.tc-08').show()
-        // })
-        // if (data.code == '000000') {
-        //   gameState.getAD += 1;
-        //   gameTool.setGameSatesCookie(gameState);
-        //   awardInfo.img = data.data.materialLink;
-        //   awardInfo.link = data.data.adLink;
-        //   awardInfo.name = data.data.materialDesc;
-        //   awardInfo.getEvent = 'interacvite';
-        //   isPrize = true;
-        //
-        //   if (data.data.adExclusivePop != undefined && data.data.adExclusivePop.indexOf('specialWinPopup') > -1) {
-        //     ggkGame.eleEvent = e;
-        //     $('.specialWinPopup').remove();
-        //     $('body').append('<div class="specialWinPopup"><link rel="stylesheet" href="https://interactive-css.angpi.cn/1597974937969_tc02.css"><div class="tc-02 mask" style="display: block;"><div class="tc-close tc-close-btn" style="background-image:url(https://interactive-oss.angpi.cn/1591083108940_tc-02-close.png);"></div><div class="tc-container"><div class="tc-box"><div class="tc-light" style="background-image:url(https://interactive-oss.angpi.cn/1591083126778_tc-02-light.png);"></div><div class="tc-prize" style="background-image:url(https://interactive-oss.angpi.cn/1591083146021_tc02-bg.png);"><div class="tc-game-box"><div class="red-bag-list"><div class="red-bag tc-jump-btn" style="background-image:url(https://interactive-oss.angpi.cn/1591083168410_game-redBag.png);"></div><div class="red-bag tc-jump-btn" style="background-image:url(https://interactive-oss.angpi.cn/1591083168410_game-redBag.png);"></div><div class="red-bag tc-jump-btn active" style="background-image:url(https://interactive-oss.angpi.cn/1591083168410_game-redBag.png);"></div></div></div></div></div></div></div><script>var specialPopupScript = document.createElement("script");specialPopupScript.type = "text/javascript";specialPopupScript.onload = function(){setPersonalGamePopup()};specialPopupScript.src = "https://interactive-js.angpi.cn/1610351079325_tc02.js";document.querySelector(\'.specialWinPopup\').append(specialPopupScript);</script><script type="text/javascript" src="https://interactive-js.angpi.cn/1610351079325_tc02.js"></script></div>');
-        //   } else {
-        //     prizeModalPopup = localGamePopup;
-        //     ggkGame.openPrize(e, 'win');
-        //   }
-        // } else {
-        //   isPrize = false;
-        //   ggkGame.openPrize(e, 'no');
-        // }
+        if (data.code == '000000') {
+          gameState.getAD += 1;
+          gameTool.setGameSatesCookie(gameState);
+          awardInfo.img = data.data.materialLink;
+          awardInfo.link = data.data.adLink;
+          awardInfo.name = data.data.materialDesc;
+          awardInfo.getEvent = 'interacvite';
+          isPrize = true;
+
+          if (data.data.adExclusivePop != undefined && data.data.adExclusivePop.indexOf('specialWinPopup') > -1) {
+            ggkGame.eleEvent = e;
+            $('.specialWinPopup').remove();
+            $('body').append(data.data.adExclusivePop);
+          } else {
+            prizeModalPopup = localGamePopup;
+            ggkGame.openPrize(e, 'win');
+          }
+        } else {
+          isPrize = false;
+          ggkGame.openPrize(e, 'no');
+        }
 
         ;
       },
