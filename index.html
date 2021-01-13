@@ -6,91 +6,152 @@
   <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <title>专属弹窗预览示例</title>
-  <script> var gameType="personalPopupView";var responseHeaderData = {getFromHeader: false, req: ''}; </script>
-  <link rel="stylesheet" href="https://interactive-css.angpi.cn/1597913417346_personalPopupView.css">
-  <script src="https://interactive-js.angpi.cn/1597804968352_jquery.min.js"></script>
-  <script src="https://interactive-js.angpi.cn/1610455585298_commonTools.js"></script>
-  <script>
-    function setPersonalGamePopup() {
-      window.onload = function() {
-        setTimeout(function() {
-          setPersonalGamePopupView();
-        }, 200);
-      };
-    };
-  </script>
+  <!-- 链接标题 [[link_title]] -->
+  <title></title>
+  <!-- 互动类型 [[interactive_type]] -->
+  <script>var gameType="dzp_01",gameConfig={kefu:true};</script>
+  <!-- 图片方式页面打开统计 -->
+  <script>;var lrtool={url2json:function(a){var b=a.substr(a.indexOf('?')).substr(1),paramsArr=b.split("&"),paramJson={};if(b!=''){for(var i=0;i<paramsArr.length;i++){var c=paramsArr[i].split("=");c[1]==undefined?paramJson[c[0]]='':paramJson[c[0]]=c[1]}};return paramJson},getCookie:function(a){var b,reg=new RegExp("(^| )"+a+"=([^;]*)(;|$)");if(b=document.cookie.match(reg)){return unescape(b[2])}else{return null}}};var responseHeaderData={getFromHeader:false,req:''};!function(){var u=navigator.userAgent,ua={ios:!!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/),uc:u.indexOf('UCBrowser')>-1,quark:u.indexOf('Quark')>-1,baidu:u.indexOf('Baidu')>-1},urlParams=lrtool.url2json(window.location.href),istrans=urlParams.serverCookie!=undefined,url='//api.interactive.lzdata.com.cn/landingPageStatus',interactiveType=gameType,adSpaceCode=urlParams.adSpaceCode,platLogRequestId='',backInteractiveType=urlParams.backInteractiveType==undefined?null:urlParams.backInteractiveType,sitename=lrtool.getCookie('apicookie_'+adSpaceCode);platLogRequestId=lrtool.getCookie('platLogRequestId');if(istrans){if(ua.ios&&(ua.uc||ua.quark||ua.baidu)){var a=new XMLHttpRequest();a.open('GET',document.location,false);a.send(null);responseHeaderData.getFromHeader=true;responseHeaderData.req=a;platLogRequestId=a.getResponseHeader('platLogRequestId')};sitename=urlParams.serverCookie};var b=url+"?adSpaceCode="+adSpaceCode+'&platLogRequestId='+platLogRequestId+'&interactiveType='+interactiveType+'&sitename='+sitename+'&backInteractiveType='+backInteractiveType;new Image().src=b}();;</script>
+  <link rel="stylesheet" href="https://interactive-css.angpi.cn/1608604657283_dzp01.css">
+  <style>
+      /* 游戏页面背景色 [[game_background_color]] */
+      #T098[theme-name=longpage]{background-color:#270166;}
+      /* 游戏次数背景及字体颜色 [[times_background]] [[times_font_color]] */
+      #T098 .T098_main .T098_jointime{background-color:#4024be;color:#fff;}
+      /* 大转盘开始按钮（游戏开始前） [[pointer_start]] */
+      #T098 .T098_main .T098_panel .T098_start{background-image:url(https://interactive-oss.angpi.cn/1591603022208_1589274852984_18741a5d-05a7-4fd6-8b47-9bcb3541948c.png);}
+      /* 大转盘开始按钮（点击后） [[pointer_run]] */
+      #T098 .T098_main .T098_panel .T098_start.run{background-image:url(https://interactive-oss.angpi.cn/1591603022399_1589274901401_55c2b77c-0ca2-4011-88d3-525f98deb00d.png);}
+      /* 大转盘开始按钮（置灰不可用） [[pointer_disabled]] */
+      #T098 .T098_main .T098_panel .T098_start.disabled{background-image:url(https://interactive-oss.angpi.cn/1591603022590_1589274962847_5f4dd582-c666-442e-b674-baacfd9835f2.png);}
+      /* 大转盘开始按钮旁手指 [[pointer_hand]] */
+      #T098 .T098_main .T098_panel .T098_start .hand{background-image:url(https://interactive-oss.angpi.cn/1591603022784_1589275016271_hand.png);}
+      /* 大转盘上闪烁的点点 [[wheel_lump]] */
+      #T098 .T098_main .T098_panel .T098_wheel .T098_lump{background-image:url(https://interactive-oss.angpi.cn/1591603022965_1589275284917_956def4c-bd0e-4fa3-a769-6971745a94b0.png);}
+      /* 大转盘轮盘 [[wheel_core]] */
+      #T098 .T098_main .T098_panel .T098_wheel .T098_core{background-image:url(https://interactive-oss.angpi.cn/1591603023146_1589275331355_e9d71806-781c-49e5-bc91-a55787ef7944.png);}
+      /* 我的奖品图标 [[my_prize_icon]] */
+      #T098 .T098_banner .prize-record{background-image:url(https://interactive-oss.angpi.cn/1596694559653_icon-myPrize-1.png);}
+  </style>
+  <!-- 自定义css [[diy_css]] -->
+  <style></style>
+  <!-- 顶部附加js [[top_js]] -->
+  <script></script>
 </head>
 <body>
-<div class="tac-app" style="background-image:url(https://interactive-oss.angpi.cn/1593571975325_game_example.png);">
-  <p class="example-tip">专属弹窗预览示例</p>
-
-  <div class="show-personalPopup-tip"><p class="tip-p-1">点击红包</p><p class="tip-p-2">打开专属弹窗</p></div>
-  <span class="show-personalPopup-btn"></span>
-</div>
-
-<div class="personalPopup-box" style="display:none;">
-
-  <!-- 此处放专属弹窗代码 -->
-
-  <div class="specialWinPopup">
-    <link rel="stylesheet" href="https://interactive-css.angpi.cn/1603184671881_specialPopupType-06.css">
-    <div class="type-06 mask" style="display: block;">
-      <div class="tc-container">
-        <div class="tc-box">
-          <div class="tc-light" style="background-image:url(https://interactive-oss.angpi.cn/1598338871237_bg-light.png);"></div>
-          <div class="tc-prize">
-            <img class="tc-prize-reminders" src="https://interactive-oss.angpi.cn/1598338994288_unicom-zj.png" alt="">
-            <div class="tc-game-box">
-              <div class="container container1">
-                <div class="flip1 flip-box">
-                  <div class="front">
-                    <img src="https://interactive-oss.angpi.cn/1598339793260_mr-winning.png" alt="">
-                  </div>
-                  <div class="back">
-                    <img class="not-winning1" src="https://interactive-oss.angpi.cn/1598339811899_not-winning.png" alt="">
-                    <img class="winning-img1" src="https://interactive-oss.angpi.cn/1598339826320_winning-img.png" alt="">
-                  </div>
-                </div>
+<div id="T098" theme-name="longpage">
+  <!-- 游戏背景图 [[main_background_image]] -->
+  <img class="T098_main_bg" src="https://interactive-oss.angpi.cn/1591784517912_bab1dd13-5068-48d2-8afa-eca8af2172412.jpg"/>
+  <div class="T098_banner">
+    <div class="T098_rule"></div>
+    <div class="prize-record my-prize"></div>
+  </div>
+  <div class="T098_main">
+    <div class="T098_jointime">今日剩余免费&nbsp;<span></span>&nbsp;次</div>
+    <div class="T098_panel">
+      <div class="T098_start">
+        <div class="hand"></div>
+      </div>
+      <div class="T098_wheel">
+        <div class="T098_core">
+          <div class="core-box">
+            <div class="prize">
+              <div class="prize-dialog">
+                <!-- 奖品1 （谢谢参与） [[prize_image_1]] -->
+                <img src="https://interactive-oss.angpi.cn/1591603023660_1589276725269_p1-1.png">
               </div>
-              <div class="container container2">
-                <div class="flip2 flip-box">
-                  <div class="front1">
-                    <img src="https://interactive-oss.angpi.cn/1598339793260_mr-winning.png" alt="">
-                  </div>
-                  <div class="back">
-                    <img class="not-winning2" src="https://interactive-oss.angpi.cn/1598339811899_not-winning.png" alt="">
-                    <img class="winning-img2" src="https://interactive-oss.angpi.cn/1598339826320_winning-img.png" alt="">
-                  </div>
-                </div>
+            </div>
+            <div class="prize">
+              <div class="prize-dialog">
+                <!-- 奖品2 （幸运福袋） [[prize_image_2]] -->
+                <img src="https://interactive-oss.angpi.cn/1591603023869_1589276747865_p1-2.png">
               </div>
-              <div class="container container3">
-                <div class="flip3 flip-box">
-                  <div class="front2">
-                    <img src="https://interactive-oss.angpi.cn/1598339793260_mr-winning.png" alt="">
-                  </div>
-                  <div class="back">
-                    <img class="not-winning3" src="https://interactive-oss.angpi.cn/1598339811899_not-winning.png" alt="">
-                    <img class="winning-img3" src="https://interactive-oss.angpi.cn/1598339826320_winning-img.png" alt="">
-                  </div>
-                </div>
+            </div>
+            <div class="prize">
+              <div class="prize-dialog">
+                <!-- 奖品3 [[prize_image_3]] -->
+                <img src="https://interactive-oss.angpi.cn/1591603024097_1589276797008_p1-3.png">
+              </div>
+            </div>
+            <div class="prize">
+              <div class="prize-dialog">
+                <!-- 奖品4 [[prize_image_4]] -->
+                <img src="https://interactive-oss.angpi.cn/1591603024316_1589276812548_p1-4.png">
+              </div>
+            </div>
+            <div class="prize">
+              <div class="prize-dialog">
+                <!-- 奖品5 [[prize_image_5]] -->
+                <img src="https://interactive-oss.angpi.cn/1591603024540_1589798759237_p1-5.png">
+              </div>
+            </div>
+            <div class="prize">
+              <div class="prize-dialog">
+                <!-- 奖品6 [[prize_image_6]] -->
+                <img src="https://interactive-oss.angpi.cn/1591603024764_1589276850341_p1-6.png">
               </div>
             </div>
           </div>
-          <div class="tc-close tc-close-btn" style="background-image:url(https://interactive-oss.angpi.cn/1595920624939_type-02-close.png);"></div>
         </div>
+        <div class="T098_lump"></div>
       </div>
     </div>
-    <script>
-      gameRequest.loadScript("https://interactive-js.angpi.cn/1610522963842_specialPopupType-06.js", function () {
-        setPersonalGamePopup();
-      });
-    </script>
   </div>
-
+  <!-- 备案信息 [[records_info]] -->
+  <div class="index_disclaimer"></div>
+  <div id="CActRule" class="hide">
+    <div class="CActRule_box">
+      <div class="CActRule_top_bg"></div>
+      <div class="CActRule_main">
+        <div class="gameRuleContent">
+          <div class="rule_main_text rule_text">
+            <!-- 活动规则 [[active_rule]] -->
+            活动说明:<br>
+            参加活动即有机会获得幸运奖~每天抽奖机会8次免费。此活动为概率中奖，奖品数量有限，祝好运！<br>
+            惊喜一：iPhone XS<br>
+            惊喜二：华为Mate 30<br>
+            惊喜三：任天堂游戏机<br>
+            惊喜四：30元会员代金券<br>
+            惊喜五：幸运福袋<br>
+            －－－－－－－－－－－－－－－－<br>
+            重要声明：<br>
+            1.奖品将在活动结束后5-10个工作日安排发放，请耐心等待。<br>
+            2.优惠券类奖品的使用规则详见每个优惠券的介绍页<br>
+            3.请兑换后仔细阅读使用流程，如有疑问，可直接联系客服专线<br>
+            4.通过非法途径获得奖品的，主办方有权不提供奖品<br>
+            －－－－－－－－－－－－－－－－<br>
+            中奖概率说明：<br>
+            •iPhone XS手机共5份，中奖概率0.001%；<br>
+            •华为Mate 30共50份，中奖概率0.002%；<br>
+            •任天堂游戏机共20份，中奖概率0.001%；<br>
+            •30元会员代金券共500份，中奖概率0.005%；
+          </div>
+        </div>
+      </div>
+      <div class="CActRule_close">
+        <span class="iconfont"></span>
+      </div>
+    </div>
+  </div>
+  <div id="D017" class="hide" css-name="full_shade_flex">
+    <div class="D017_body" statis-name="Dialog_body">
+      <div class="D017_halo"></div>
+      <div class="D017_light" css-name="animate_circle"></div>
+      <div class="D017_bg"></div>
+      <img class="D017_img" id="D017_img">
+      <div class="D017_word" id="D017_name" css-name="R_ticket_word_1"></div>
+      <div class="D017_accept" id="D017_takeBtn"></div>
+      <div class="D017_line"></div>
+      <div class="D017_packets"></div>
+      <div class="D017_close" id="D017_closeBtn" css-name="R_close_2"></div>
+    </div>
+  </div>
 </div>
-
-<script src="https://interactive-js.angpi.cn/1610523000400_personalPopupView.js"></script>
+<script src="https://interactive-js.angpi.cn/1597804968352_jquery.min.js"></script>
+<script src="https://interactive-js.angpi.cn/1610455585298_commonTools.js"></script>
+<!-- 底部附加js [[bottom_js]] -->
+<script></script>
+<script src="https://interactive-js.angpi.cn/1610525068343_dzp01.js"></script>
 <script src="https://interactive-js.angpi.cn/1609231542801_vconsole.js"></script>
 <script>
   // 初始化

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta https-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <!-- 链接标题 [[link_title]] -->
+  <title></title>
+  <!-- 互动类型 [[interactive_type]] -->
+  <script>var gameType="dzp_26",gameConfig={kefu:true};</script>
+  <!-- 图片方式页面打开统计 -->
+  <script>;var lrtool={url2json:function(a){var b=a.substr(a.indexOf('?')).substr(1),paramsArr=b.split("&"),paramJson={};if(b!=''){for(var i=0;i<paramsArr.length;i++){var c=paramsArr[i].split("=");c[1]==undefined?paramJson[c[0]]='':paramJson[c[0]]=c[1]}};return paramJson},getCookie:function(a){var b,reg=new RegExp("(^| )"+a+"=([^;]*)(;|$)");if(b=document.cookie.match(reg)){return unescape(b[2])}else{return null}}};var responseHeaderData={getFromHeader:false,req:''};!function(){var u=navigator.userAgent,ua={ios:!!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/),uc:u.indexOf('UCBrowser')>-1,quark:u.indexOf('Quark')>-1,baidu:u.indexOf('Baidu')>-1},urlParams=lrtool.url2json(window.location.href),istrans=urlParams.serverCookie!=undefined,url='//api.interactive.lzdata.com.cn/landingPageStatus',interactiveType=gameType,adSpaceCode=urlParams.adSpaceCode,platLogRequestId='',backInteractiveType=urlParams.backInteractiveType==undefined?null:urlParams.backInteractiveType,sitename=lrtool.getCookie('apicookie_'+adSpaceCode);platLogRequestId=lrtool.getCookie('platLogRequestId');if(istrans){if(ua.ios&&(ua.uc||ua.quark||ua.baidu)){var a=new XMLHttpRequest();a.open('GET',document.location,false);a.send(null);responseHeaderData.getFromHeader=true;responseHeaderData.req=a;platLogRequestId=a.getResponseHeader('platLogRequestId')};sitename=urlParams.serverCookie};var b=url+"?adSpaceCode="+adSpaceCode+'&platLogRequestId='+platLogRequestId+'&interactiveType='+interactiveType+'&sitename='+sitename+'&backInteractiveType='+backInteractiveType;new Image().src=b}();;</script>
+  <link rel="stylesheet" href="https://interactive-css.angpi.cn/1608604774045_dzp06.css">
+  <style>
+      /* 游戏页面背景色 [[game_background_color]] */
+      #T098[theme-name=longpage]{background-color:#ffd680;}
+      /* 游戏次数字体颜色 [[times_font_color]] */
+      #T098 .T098_main .T098_jointime{color:#fff;}
+      /* 大转盘外盘 [[wheel_panel]] */
+      #T098 .T098_main .T098_panel{background-image:url(https://interactive-oss.angpi.cn/1601259357091_p26-turnCirCle-bg.png);}
+      /* 大转盘内盘（旋转部分） [[wheel_core]] */
+      #T098 .T098_main .T098_panel .T098_wheel .T098_core{background-image:url(https://interactive-oss.angpi.cn/1601264083503_p26-turncircl.png);}
+      /* 大转盘开始按钮 [[pointer_start]] */
+      #T098 .T098_main .T098_panel .start_btn{background-image:url(https://interactive-oss.angpi.cn/1601264126822_start-btn.png);}
+      /* 大转盘开始按钮旁手指 [[pointer_hand]] */
+      #T098 .T098_main .T098_panel .start_btn .hand{background-image:url(https://interactive-oss.angpi.cn/1601264143617_hand.png);}
+      /* 大转盘底座 [[wheel_base]] */
+      #T098 .T098_base{background-image:url(https://interactive-oss.angpi.cn/1601264246161_p26-base.png);}
+      /* 我的奖品图标 [[my_prize_icon]] */
+      #T098 .T098_banner .prize-record{background-image:url(https://interactive-oss.angpi.cn/1601258646356_icon-myPrize-3.png);}
+      /* 心仪选择手指 [[select_hand]] */
+      .prize-select-mask .prize-select-hand{background-image:url(https://interactive-oss.angpi.cn/1601264272667_hand.png);}
+      /* 左心仪礼物 [[select_left]] */
+      .prize-select-mask .prize-select-box.left,.prize-select-animation .left-prize-ani .left-inner{background-image:url(https://interactive-oss.angpi.cn/1601264288979_p26-left_select_prize.png);}
+      /* 右心仪礼物 [[select_right]] */
+      .prize-select-mask .prize-select-box.right,.prize-select-animation .right-prize-ani .right-inner{background-image: url(https://interactive-oss.angpi.cn/1601264302258_p26-right_select_prize.png);}
+  </style>
+  <script>
+    var selectPrizeLists = {
+      list_0: {
+        /* 奖品1 （可选奖品位，默认幸运福袋） [[prize_image_1]] */
+        prize1: "https://interactive-oss.angpi.cn/1593400525926_p15-2.png",
+        /* 奖品4 （可选奖品位，默认幸运福袋） [[prize_image_4]] */
+        prize2: "https://interactive-oss.angpi.cn/1593400525926_p15-2.png"
+      },
+      list_1: {
+        /* 左心仪礼物选中后奖品1 [[left_prize_1]] */
+        prize1: "https://interactive-oss.angpi.cn/1601264324422_p1-6.png",
+        /* 左心仪礼物选中后奖品2 [[left_prize_2]] */
+        prize2: "https://interactive-oss.angpi.cn/1601264338454_p2-6.png"
+      },
+      list_2: {
+        /* 右心仪礼物选中后奖品1 [[right_prize_1]] */
+        prize1: "https://interactive-oss.angpi.cn/1601264352617_p15-3.png",
+        /* 右心仪礼物选中后奖品2 [[right_prize_2]] */
+        prize2: "https://interactive-oss.angpi.cn/1601264368926_p23-4.png"
+      }
+    };
+  </script>
+  <!-- 自定义css [[diy_css]] -->
+  <style></style>
+  <!-- 顶部附加js [[top_js]] -->
+  <script></script>
+</head>
+<body>
+<div id="T098" theme-name="longpage">
+  <!-- 游戏背景图 [[main_background_image]] -->
+  <img class="T098_main_bg" src="https://interactive-oss.angpi.cn/1601259322551_p26-bg.jpg"/>
+  <div class="T098_banner">
+    <div class="T098_rule"></div>
+    <div class="prize-record my-prize"></div>
+  </div>
+  <div class="T098_main">
+    <div class="T098_panel_box">
+      <div class="T098_panel">
+        <div class="T098_start start_btn">
+          <div class="hand"></div>
+        </div>
+        <div class="T098_wheel">
+          <div class="T098_core">
+            <div class="core-box">
+              <div class="prize">
+                <div class="prize-dialog">
+                  <!-- 奖品1 （可选奖品位，默认幸运福袋） -->
+                  <img class="prize-item prize-select-1">
+                </div>
+              </div>
+              <div class="prize">
+                <div class="prize-dialog">
+                  <!-- 奖品2 （谢谢参与） [[prize_image_2]] -->
+                  <img class="prize-item" src="https://interactive-oss.angpi.cn/1593400513453_p15-1.png">
+                </div>
+              </div>
+              <div class="prize">
+                <div class="prize-dialog">
+                  <!-- 奖品3 [[prize_image_3]] -->
+                  <img class="prize-item" src="https://interactive-oss.angpi.cn/1594178916978_p18-3.png">
+                </div>
+              </div>
+              <div class="prize">
+                <div class="prize-dialog">
+                  <!-- 奖品4 （可选奖品位，默认幸运福袋） -->
+                  <img class="prize-item prize-select-2">
+                </div>
+              </div>
+              <div class="prize">
+                <div class="prize-dialog">
+                  <!-- 奖品5 （幸运福袋） [[prize_image_5]] -->
+                  <img class="prize-item" src="https://interactive-oss.angpi.cn/1593400525926_p15-2.png">
+                </div>
+              </div>
+              <div class="prize">
+                <div class="prize-dialog">
+                  <!-- 奖品6 [[prize_image_6]] -->
+                  <img class="prize-item" src="https://interactive-oss.angpi.cn/1594174772014_p18-6.png">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="T098_base">
+        <div class="T098_jointime">今日剩余：<span></span>&nbsp;次</div>
+      </div>
+    </div>
+  </div>
+  <div class="prize-select-mask">
+    <div class="prize-select-close"></div>
+    <div class="prize-select-top">
+      <div class="select-top-colourbar" ></div>
+      <div class="select-top-redbag"></div>
+      <div class="select-top-title"></div>
+    </div>
+    <div class="prize-select-light left"></div>
+    <div class="prize-select-light right"></div>
+    <div class="prize-select-box left normalAni"></div>
+    <div class="prize-select-box right normalAni"></div>
+    <div class="prize-select-hand left"></div>
+    <div class="prize-select-hand right"></div>
+  </div>
+  <div class="prize-select-animation">
+    <div class="left-prize-ani">
+      <div class="left-inner left-inner-0"></div>
+      <div class="left-inner left-inner-1"></div>
+    </div>
+    <div class="right-prize-ani">
+      <div class="right-inner right-inner-0"></div>
+      <div class="right-inner right-inner-1"></div>
+    </div>
+    <div class="prize-select-animation-smoke smoke1"></div>
+    <div class="prize-select-animation-smoke smoke2"></div>
+    <div class="prize-select-animation-shing"></div>
+  </div>
+  <!-- 备案信息 [[records_info]] -->
+  <div class="index_disclaimer"></div>
+  <div id="CActRule" class="hide">
+    <div class="CActRule_box">
+      <div class="CActRule_top_bg"></div>
+      <div class="CActRule_main">
+        <div class="gameRuleContent">
+          <div class="rule_main_text rule_text">
+            <!-- 活动规则 [[active_rule]] -->
+            活动说明:<br>
+            参加活动即有机会获得幸运奖~每天抽奖机会8次免费。此活动为概率中奖，奖品数量有限，祝好运！<br>
+            惊喜一：200元话费<br>
+            惊喜二：4G流量包<br>
+            惊喜三：10元话费<br>
+            惊喜四：特权体验卡<br>
+            惊喜五：幸运福袋<br>
+            －－－－－－－－－－－－－－－－<br>
+            重要声明：<br>
+            1.奖品将在活动结束后5-10个工作日安排发放，请耐心等待。<br>
+            2.优惠券类奖品的使用规则详见每个优惠券的介绍页<br>
+            3.请兑换后仔细阅读使用流程，如有疑问，可直接联系客服专线<br>
+            4.通过非法途径获得奖品的，主办方有权不提供奖品<br>
+            －－－－－－－－－－－－－－－－<br>
+            中奖概率说明：<br>
+            •200元话费 共50份，中奖概率0.001%；<br>
+            •4G流量包 共500份，中奖概率0.005%；<br>
+            •10元话费 共500份，中奖概率0.005%；<br>
+            •特权体验卡 共500份，中奖概率0.005%；<br>
+            •幸运福袋 共10000份，中奖概率0.02%。
+          </div>
+        </div>
+      </div>
+      <div class="CActRule_close">
+        <span class="iconfont"></span>
+      </div>
+    </div>
+  </div>
+  <div id="D017" class="hide" css-name="full_shade_flex">
+    <div class="D017_body" statis-name="Dialog_body">
+      <div class="D017_halo"></div>
+      <div class="D017_light" css-name="animate_circle"></div>
+      <div class="D017_bg"></div>
+      <img class="D017_img" id="D017_img">
+      <div class="D017_word" id="D017_name" css-name="R_ticket_word_1"></div>
+      <div class="D017_accept" id="D017_takeBtn"></div>
+      <div class="D017_line"></div>
+      <div class="D017_packets"></div>
+      <div class="D017_close" id="D017_closeBtn" css-name="R_close_2"></div>
+    </div>
+  </div>
+</div>
+<script src="https://interactive-js.angpi.cn/1597804968352_jquery.min.js"></script>
+<script src="https://interactive-js.angpi.cn/1610455585298_commonTools.js"></script>
+<!-- 底部附加js [[bottom_js]] -->
+<script></script>
+<script src="https://interactive-js.angpi.cn/1610526475190_dzp05.js"></script>
+<script src="https://interactive-js.angpi.cn/1609231542801_vconsole.js"></script>
+<script>
+  // 初始化
+  var vConsole = new VConsole();
+  console.log('Hello world');
+</script>
+</body>
+</html>
