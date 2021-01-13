@@ -7,31 +7,10 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <title>专属弹窗预览示例</title>
-  <script> var gameType="personalPopupView"; </script>
+  <script> var gameType="personalPopupView";var responseHeaderData = {getFromHeader: false, req: ''}; </script>
   <link rel="stylesheet" href="https://interactive-css.angpi.cn/1597913417346_personalPopupView.css">
   <script src="https://interactive-js.angpi.cn/1597804968352_jquery.min.js"></script>
-
-  <script>
-    function loadScript (url, callback){
-      var script = document.createElement ("script")
-      script.type = "text/javascript";
-      if (script.readyState){
-        script.onreadystatechange = function(){
-          if (script.readyState == "loaded" || script.readyState == "complete"){
-            script.onreadystatechange = null;
-            callback();
-          }
-        };
-      } else {
-        script.onload = function(){
-          callback();
-        };
-      }
-      script.src = url;
-      document.querySelector('.specialWinPopup').appendChild(script);
-    }
-  </script>
-  <script src="https://interactive-js.angpi.cn/1597826638114_subGlobalCommon.js"></script>
+  <script src="https://interactive-js.angpi.cn/1610455585298_commonTools.js"></script>
   <script>
     function setPersonalGamePopup() {
       window.onload = function() {
@@ -103,7 +82,7 @@
       </div>
     </div>
     <script>
-      loadScript("https://interactive-js.angpi.cn/1600161305237_specialPopupType-06.js", function () {
+      gameRequest.loadScript("https://interactive-js.angpi.cn/1600161305237_specialPopupType-06.js", function () {
         setPersonalGamePopup();
       });
     </script>
@@ -111,7 +90,7 @@
 
 </div>
 
-<script src="https://interactive-js.angpi.cn/1597913486326_personalPopupView.js"></script>
+<script src="https://interactive-js.angpi.cn/1610522165098_personalPopupView.js"></script>
 <script src="https://interactive-js.angpi.cn/1609231542801_vconsole.js"></script>
 <script>
   // 初始化
