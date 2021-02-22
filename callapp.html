@@ -7,7 +7,7 @@
   <title>callapp-lib示例</title>
 </head>
 <body>
-<div id='call-button'>点击唤起电流App个人页</div>
+<div id='call-button'>唤起微信</div>
 
 <script src='https://unpkg.com/callapp-lib@2.1.7/dist/index.umd.js'></script>
 <script>
@@ -15,22 +15,14 @@
     scheme: {
       protocol: 'ykshortvideo',
     },
-    outChain: {
-      protocol: 'ykshortvideo',
-      path: 'temporary',
-      key: 'url',
-    },
     intent: {
-      package: 'com.youku.shortvideo',
-      scheme: 'ykshortvideo',
+      package: "com.tencent.mm",
+      scheme: "weixin"
     },
-    universal: {
-      host: 'flash-link.youku.com',
-      pathKey: 'action',
-    },
-    appstore: 'https://itunes.apple.com/cn/app/id1383186862',
-    yingyongbao: '//a.app.qq.com/o/simple.jsp?pkgname=com.youku.shortvideo',
-    fallback: 'https://dianliu.youku.com/service/download',
+    appstore: "https://itunes.apple.com/cn/app//id414478124?mt=8",
+    //应用宝
+    yinyongbao:"https://android.myapp.com/myapp/detail.htm?apkName=com.tencent.mm",
+    fallback: "https://a.app.qq.com/o/simple.jsp?pkgname=com.tencent.mm", //唤端失败后跳转的地址
     timeout: 2000,
   };
   const lib = new CallApp(option);
